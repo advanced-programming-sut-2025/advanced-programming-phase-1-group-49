@@ -1,4 +1,4 @@
 package models.Person;
 
-public class Player {
+public class Player implements Person {
 }

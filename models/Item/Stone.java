@@ -1,4 +1,4 @@
 package models.Item;
 
-public class Stone {
+public class Stone implements Item {
 }

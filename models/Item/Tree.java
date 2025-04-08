@@ -1,4 +1,4 @@
 package models.Item;
 
-public class Tree {
+public class Tree implements Item{
 }

@@ -1,4 +1,4 @@
 package models.Season;
 
-public class Winter {
+public class Winter implements Season {
 }

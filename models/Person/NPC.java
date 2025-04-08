@@ -1,4 +1,4 @@
 package models.Person;
 
-public class NPC {
+public class NPC implements Person {
 }

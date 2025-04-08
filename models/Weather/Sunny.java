@@ -1,4 +1,4 @@
 package models.Weather;
 
-public class Sunny {
+public class Sunny implements Weather {
 }

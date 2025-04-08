@@ -1,4 +1,4 @@
 package models.Item;
 
-public class Foraging {
+public class Foraging implements Item {
 }
