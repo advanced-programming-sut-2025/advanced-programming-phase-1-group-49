@@ -2,3 +2,6 @@
 First Group participant: 
 Name: Mohamad Sadra Mohamadi 
 Student id: 403106668
+Second Group participant: 
+Name: Mohammad Amin Zeinaliyan
+Student id: 403106057
