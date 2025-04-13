@@ -2,7 +2,7 @@ package view;
 
 import java.util.Scanner;
 
-public class registerMenu implements AppMenu {
+public class profileMenu implements AppMenu {
     @Override
     public void check(Scanner scanner) {
 
