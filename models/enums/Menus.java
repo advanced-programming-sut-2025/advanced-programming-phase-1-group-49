@@ -4,5 +4,6 @@ public enum Menus {
     MainMenu,
     LoginMenu,
     ProfileMenu,
-    GameMenu
+    GameMenu,
+    AvatarMenu
 }

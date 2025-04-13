@@ -1,4 +1,4 @@
 package models.Season;
 
-public interface Season {
+public abstract class Season {
 }
