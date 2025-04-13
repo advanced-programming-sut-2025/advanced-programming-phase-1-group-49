@@ -14,6 +14,6 @@ Student id: 403106057
 
 Third Group participant;
 
-Name: Mohammad reza iranshahi
+Name: Mohammad Reza Iranshahi
 
 student id: 403105747
