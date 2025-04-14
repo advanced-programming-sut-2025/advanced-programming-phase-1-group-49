@@ -1,4 +1,6 @@
 package Models.Person;
 
-public interface Person {
+public abstract class Person {
+    protected String nickname;
+    protected String gender;
 }

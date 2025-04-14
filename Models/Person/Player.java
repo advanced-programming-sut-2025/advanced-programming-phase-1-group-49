@@ -2,16 +2,14 @@ package Models.Person;
 
 import java.util.ArrayList;
 
-public class Player implements Person {
+public class Player extends Person {
     private String username;
     private String password;
-    private String nickname;
     private String email;
-    private String gender;
-    private ArrayList<String> firstStageFriends = new ArrayList<>();
-    private ArrayList<String> secondStageFriends = new ArrayList<>();
-    private ArrayList<String> thirdStageFriends = new ArrayList<>();
-    private ArrayList<String> fourthStageFriends = new ArrayList<>();
+    private final ArrayList<String> firstStageFriends = new ArrayList<>();
+    private final ArrayList<String> secondStageFriends = new ArrayList<>();
+    private final ArrayList<String> thirdStageFriends = new ArrayList<>();
+    private final ArrayList<String> fourthStageFriends = new ArrayList<>();
 
     public Player(String username, String password, String nickname, String email, String gender) {
         this.username = username;
