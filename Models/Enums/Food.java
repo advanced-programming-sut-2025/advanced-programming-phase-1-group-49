@@ -1,6 +1,4 @@
 package Models.Enums;
-import Models.Energy;
-import Models.Person.Player;
 
 import java.util.ArrayList;
 

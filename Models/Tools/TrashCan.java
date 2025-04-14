@@ -1,4 +1,13 @@
 package Models.Tools;
 
-public class TrashCan implements Tool {
+public class TrashCan extends Tool {
+    @Override
+    void decreaseEnergy() {
+
+    }
+
+    @Override
+    void toolBehaviour() {
+
+    }
 }
