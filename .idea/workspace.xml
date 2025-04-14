@@ -1,118 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="535c61b4-1d42-4778-9101-ce6d7c52108e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Controllers/AvatarMenuController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Controllers/CookingController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Controllers/CraftingController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Controllers/FarmController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Controllers/GameMenuController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Controllers/LoginMenuController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Controllers/MainMenuController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Controllers/ProfileMenuController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/App.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/Enums/AvatarMenuController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/Enums/GameMenuController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/Enums/LoginMenuCommands.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/Enums/MainMenuController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/Enums/Menu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/Enums/ProfileMenuCommands.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/Enums/Seasons.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/Item/Foraging.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/Item/Item.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/Item/Stone.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/Item/Tree.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/Map/Block.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/Map/Building.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/Map/GreenHouse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/Map/Home.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/Map/Map.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/Person/NPC.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/Person/Person.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/Season/Fall.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/Season/Season.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/Season/Spring.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/Season/Summer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/Season/Winter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/Tools/Axe.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/Tools/Backpack.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/Tools/FishingPole.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/Tools/Hoe.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/Tools/MilkPail.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/Tools/Pickaxe.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/Tools/Scythe.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/Tools/Shear.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/Tools/Tool.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/Tools/TrashCan.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/Tools/WateringCan.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/Weather/Rain.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/Weather/Snow.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/Weather/Storm.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/Weather/Sunny.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/Weather/Weather.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/view/AppView.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/view/GameMenu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/view/MainMenu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/view/ProfileMenu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/view/RegisterMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/cookingController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/craftingController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/farmController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/gameMenuController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/loginMenuController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/mainMenuController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/profileMenuController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/registerMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/RegisterMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/App.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Result.java" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Result.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/enums/day.java" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Enums/Day.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/enums/foraging.java" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Enums/Foraging.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/enums/loginMenuCommands.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/enums/menus.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/enums/profileMenuCommands.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/enums/registerMenuCommands.java" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Enums/RegisterMenuCommands.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/enums/seasons.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/inventory.java" beforeDir="false" afterPath="$PROJECT_DIR$/Models/inventory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/item/foraging.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/item/item.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/item/stone.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/item/tree.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/map/block.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/map/greenHouse.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/map/home.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/map/map.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/person/NPC.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/person/person.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/person/player.java" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Person/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/season/fall.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/season/season.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/season/spring.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/season/summer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/season/winter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/tools/axe.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/tools/backpack.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/tools/fishingPole.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/tools/hoe.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/tools/milkPail.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/tools/pickaxe.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/tools/scythe.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/tools/shear.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/tools/tool.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/tools/trashCan.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/tools/wateringCan.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/weather/rain.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/weather/snow.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/weather/storm.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/weather/sunny.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/weather/weather.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/loginMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/view/LoginMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/profileMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/view/AvatarMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/registerMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/view/ExitMenu.java" afterDir="false" />
-    </list>
+    <list default="true" id="535c61b4-1d42-4778-9101-ce6d7c52108e" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -139,6 +28,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
@@ -163,6 +53,7 @@
       <workItem from="1744568989245" duration="105000" />
       <workItem from="1744569099663" duration="133000" />
       <workItem from="1744569237444" duration="149000" />
+      <workItem from="1744569388181" duration="100000" />
     </task>
     <servers />
   </component>
