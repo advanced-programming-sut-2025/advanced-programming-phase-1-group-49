@@ -1,5 +1,7 @@
 package Models.Map;
 
-public class Block {
+import Models.Enums.Blocks;
 
+public class Block {
+    Blocks block = Blocks.basic;
 }

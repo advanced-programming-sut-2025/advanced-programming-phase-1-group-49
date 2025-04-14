@@ -7,16 +7,19 @@ public class TimeDateController {
     private int day;
     private String dayName;
 
-    private int TimeShow(){
+    private int TimeShow() {
         return hour;
     }
-    private String DateShow(){
-        return (year + "/" + month + "/" + day) ;
+
+    private String DateShow() {
+        return (year + "/" + month + "/" + day);
     }
-    private String TimeDateShow(){
-        return ( hour + "  " + year + "/" + "/") ;
+
+    private String TimeDateShow() {
+        return (hour + "  " + year + "/" + "/");
     }
-    private String DayNameShow(){
+
+    private String DayNameShow() {
         return dayName;
     }
 
@@ -38,5 +41,11 @@ public class TimeDateController {
 
     public String getDayName() {
         return dayName;
+    }
+
+    // increase
+
+    public void increaseTime() {
+
     }
 }

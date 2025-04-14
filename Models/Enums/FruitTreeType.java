@@ -1,20 +1,22 @@
 package Models.Enums;
 
+import Models.Season.Season;
+
 public enum FruitTreeType {
-    APRICOT("Apricot", 59, "Spring"),
-    CHERRY("Cherry", 80, "Spring"),
-    BANANA("Banana", 150, "Summer"),
-    MANGO("Mango", 130, "Summer"),
-    ORANGE("Orange", 100, "Summer"),
-    PEACH("Peach", 140, "Summer"),
-    POMEGRANATE("Pomegranate", 140, "Fall"),
-    APPLE("Apple", 100, "Fall");
+    APRICOT("Apricot", 59, Seasons.Spring),
+    CHERRY("Cherry", 80, Seasons.Spring),
+    BANANA("Banana", 150, Seasons.Summer),
+    MANGO("Mango", 130, Seasons.Summer),
+    ORANGE("Orange", 100, Seasons.Summer),
+    PEACH("Peach", 140, Seasons.Summer),
+    POMEGRANATE("Pomegranate", 140, Seasons.Fall),
+    APPLE("Apple", 100, Seasons.Fall);
 
     private final String fruitName;
     private final int basePrice;
-    private final String season;
+    private final Seasons season;
 
-    FruitTreeType(String fruitName, int basePrice, String season) {
+    FruitTreeType(String fruitName, int basePrice, Seasons season) {
         this.fruitName = fruitName;
         this.basePrice = basePrice;
         this.season = season;
@@ -28,7 +30,7 @@ public enum FruitTreeType {
         return basePrice;
     }
 
-    public String getSeason() {
+    public Seasons getSeason() {
         return season;
     }
 }
