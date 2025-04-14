@@ -1,13 +1,7 @@
 package Models.Tools;
 
-public class Backpack extends Tool {
-    @Override
-    void decreaseEnergy() {
+import java.util.ArrayList;
 
-    }
-
-    @Override
-    void toolBehaviour() {
-
-    }
+public class Backpack {
+    ArrayList<Tool> tools = new ArrayList<>();
 }
