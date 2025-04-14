@@ -12,6 +12,7 @@ public class Player implements Person {
     private ArrayList<String> secondStageFriends = new ArrayList<>();
     private ArrayList<String> thirdStageFriends = new ArrayList<>();
     private ArrayList<String> fourthStageFriends = new ArrayList<>();
+    private ArrayList<String> fifthStageFriends = new ArrayList<>();
 
     public Player(String username, String password, String nickname, String email, String gender) {
         this.username = username;
