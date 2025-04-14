@@ -1,4 +1,13 @@
 package Models.Tools;
 
-public class Pickaxe implements Tool {
+public class Pickaxe extends Tool {
+    @Override
+    void toolBehaviour() {
+
+    }
+
+    @Override
+    void decreaseEnergy() {
+
+    }
 }

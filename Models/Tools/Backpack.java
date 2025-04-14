@@ -1,4 +1,13 @@
 package Models.Tools;
 
-public class Backpack implements Tool {
+public class Backpack extends Tool {
+    @Override
+    void decreaseEnergy() {
+
+    }
+
+    @Override
+    void toolBehaviour() {
+
+    }
 }

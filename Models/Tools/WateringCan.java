@@ -1,4 +1,13 @@
 package Models.Tools;
 
-public class WateringCan implements Tool {
+public class WateringCan extends Tool {
+    @Override
+    void toolBehaviour() {
+
+    }
+
+    @Override
+    void decreaseEnergy() {
+
+    }
 }
