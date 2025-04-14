@@ -1,18 +1,11 @@
 package Models.Person;
 
-import java.util.ArrayList;
-
-public class Player implements Person {
+public class Player extends Person {
     private String username;
     private String password;
     private String nickname;
     private String email;
     private String gender;
-    private ArrayList<String> firstStageFriends = new ArrayList<>();
-    private ArrayList<String> secondStageFriends = new ArrayList<>();
-    private ArrayList<String> thirdStageFriends = new ArrayList<>();
-    private ArrayList<String> fourthStageFriends = new ArrayList<>();
-    private ArrayList<String> fifthStageFriends = new ArrayList<>();
 
     public Player(String username, String password, String nickname, String email, String gender) {
         this.username = username;
@@ -20,22 +13,6 @@ public class Player implements Person {
         this.nickname = nickname;
         this.email = email;
         this.gender = gender;
-    }
-
-    public void addFirstStageFriend(String name) {
-        firstStageFriends.add(name);
-    }
-
-    public void addSecondStageFriend(String name) {
-        secondStageFriends.add(name);
-    }
-
-    public void addThirdStageFriend(String name) {
-        thirdStageFriends.add(name);
-    }
-
-    public void addFourthStageFriend(String name) {
-        fourthStageFriends.add(name);
     }
 
     public void setUsername(String username) {
