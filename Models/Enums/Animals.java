@@ -1,8 +1,8 @@
 package Models.Enums;
 
-import Models.Animal.Animal;
-import Models.Animal.Bird;
-import Models.Animal.Mammal;
+import Models.LivingBeings.Animal;
+import Models.LivingBeings.Bird;
+import Models.LivingBeings.Mammal;
 
 public enum Animals {
     Chicken(new Bird()),

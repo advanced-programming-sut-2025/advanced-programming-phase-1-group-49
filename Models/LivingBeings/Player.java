@@ -1,4 +1,4 @@
-package Models.Person;
+package Models.LivingBeings;
 
 public class Player extends Person {
     private String username;

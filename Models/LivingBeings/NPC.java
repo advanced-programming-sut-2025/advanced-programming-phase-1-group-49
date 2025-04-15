@@ -1,4 +1,4 @@
-package Models.Person;
+package Models.LivingBeings;
 
 import java.util.ArrayList;
 

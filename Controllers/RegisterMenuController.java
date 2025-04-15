@@ -1,5 +1,5 @@
 package Controllers;
-import Models.Person.Player;
+import Models.LivingBeings.Player;
 
 public class RegisterMenuController {
     public void Register(String username , String password , String confirmPassword ,

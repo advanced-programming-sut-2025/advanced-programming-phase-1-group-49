@@ -1,7 +1,7 @@
 package Controllers;
 
 import Models.App;
-import Models.Person.Player;
+import Models.LivingBeings.Player;
 import Models.Result;
 
 import java.util.Objects;

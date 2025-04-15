@@ -3,7 +3,7 @@ package Models;
 import java.util.ArrayList;
 
 import Models.Enums.Menu;
-import Models.Person.Player;
+import Models.LivingBeings.Player;
 
 public class App {
     private static final ArrayList<Player> playerList = new ArrayList<>();
