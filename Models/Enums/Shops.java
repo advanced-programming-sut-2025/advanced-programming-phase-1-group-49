@@ -1,6 +1,6 @@
 package Models.Enums;
 
-import Models.Shops.Shop;
+import Models.Houses.Shop;
 
 public enum Shops {
     BlackSmith(new Shop()),

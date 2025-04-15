@@ -1,4 +1,4 @@
-package Models.Map;
+package Models.Houses;
 
 public interface Building {
 }
