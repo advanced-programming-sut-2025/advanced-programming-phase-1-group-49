@@ -7,4 +7,7 @@ public class NPC extends Person {
     private String House;
     private static final ArrayList<String> Dialogues = new ArrayList<>();
     private static final ArrayList<String> Favorites = new ArrayList<>();
+
+    //
+
 }

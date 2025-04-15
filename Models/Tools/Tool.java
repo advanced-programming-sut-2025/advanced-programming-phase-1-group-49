@@ -2,10 +2,18 @@ package Models.Tools;
 
 import Models.Enums.ToolLevel;
 
-public abstract class Tool {
-    ToolLevel level = ToolLevel.basic;
+public class Tool {
+    ToolLevel level;
 
-    abstract void decreaseEnergy();
+    public Tool(ToolLevel level) {
+        this.level = level;
+    }
 
-    abstract void toolBehaviour();
+    public void decreaseEnergy() {
+
+    }
+
+    public void toolBehaviour() {
+
+    }
 }

@@ -1,6 +1,5 @@
 package Models.Enums;
 
-import Models.Season.Season;
 
 public enum FruitTreeType {
     APRICOT("Apricot", 59, Seasons.Spring),

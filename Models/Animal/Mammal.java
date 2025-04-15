@@ -1,4 +1,4 @@
 package Models.Animal;
 
-public abstract class Mammal {
+public class Mammal extends Animal {
 }

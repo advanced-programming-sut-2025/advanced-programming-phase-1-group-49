@@ -1,4 +1,6 @@
 package Models.Weather;
 
-public interface Weather {
+public class Weather {
+    public Weather() {
+    }
 }

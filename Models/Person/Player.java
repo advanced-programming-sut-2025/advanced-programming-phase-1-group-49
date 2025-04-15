@@ -10,6 +10,7 @@ public class Player extends Person {
     private Integer miningXP = 0;
     private Integer sightseeingXP = 0;
     private Integer fishingXP = 0;
+    private Integer Energy = 100;
     //  private final Integer XPMax = ;
 
     public Player(String username, String password, String nickname, String email, String gender) {
@@ -48,6 +49,10 @@ public class Player extends Person {
 
     public Integer getXP() {
         return XP;
+    }
+
+    public Integer getEnergy() {
+        return Energy;
     }
 
     // setter
@@ -112,5 +117,15 @@ public class Player extends Person {
 
     public Integer increaseFishingXP() {
         return fishingXP;
+    }
+
+    public void increaseEnergy(Integer energy) {
+        Energy += energy;
+    }
+
+    // decrease
+
+    public void decreaseEnergy(Integer energy) {
+        Energy -= energy;
     }
 }

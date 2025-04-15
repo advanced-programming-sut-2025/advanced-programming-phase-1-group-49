@@ -1,0 +1,543 @@
+Index: Models/Person/Player.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package Models.Person;\n\npublic class Player implements Person {\n    private String username;\n    private String password;\n    private String nickname;\n    private String email;\n    private String gender;\n    private Integer level = 0;\n    private Integer XP = 0;\n    private Integer farmingXP = 0;\n    private Integer miningXP = 0;\n    private Integer sightseeingXP = 0;\n    private Integer fishingXP = 0;\n    //  private final Integer XPMax = ;\n\n    public Player(String username, String password, String nickname, String email, String gender) {\n        this.username = username;\n        this.password = password;\n        this.nickname = nickname;\n        this.email = email;\n        this.gender = gender;\n    }\n\n    // getter\n\n    public String getUsername() {\n        return this.username;\n    }\n\n    public String getNickname() {\n        return this.nickname;\n    }\n\n    public String getEmail() {\n        return this.email;\n    }\n\n    public String getPassword() {\n        return this.password;\n    }\n\n    public String getGender() {\n        return this.gender;\n    }\n\n    public Integer getLevel() {\n        return level;\n    }\n\n    public Integer getXP() {\n        return XP;\n    }\n\n    // setter\n\n    public void setUsername(String username) {\n        this.username = username;\n    }\n\n    public void setNickname(String nickname) {\n        this.nickname = nickname;\n    }\n\n    public void setEmail(String email) {\n        this.email = email;\n    }\n\n    public void setPassword(String password) {\n        this.password = password;\n    }\n\n    public void setGender(String gender) {\n        this.gender = gender;\n    }\n\n    public void setFarmingXP(Integer farmingXP) {\n        this.farmingXP = farmingXP;\n    }\n\n    public void setMiningXP(Integer miningXP) {\n        this.miningXP = miningXP;\n    }\n\n    public void setSightseeingXP(Integer sightseeingXP) {\n        this.sightseeingXP = sightseeingXP;\n    }\n\n    public void setFishingXP(Integer fishingXP) {\n        this.fishingXP = fishingXP;\n    }\n\n    // increase\n\n    public Integer increaseMiningXP() {\n        return miningXP;\n    }\n\n    public Integer increaseSightseeingXP() {\n        return sightseeingXP;\n    }\n\n    public void increaseLevel(Integer level) {\n        this.level += level;\n    }\n\n    public void increaseXP(Integer XP) {\n        this.XP += XP;\n    }\n\n    public Integer increaseFarmingXP() {\n        return farmingXP;\n    }\n\n    public Integer increaseFishingXP() {\n        return fishingXP;\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Models/Person/Player.java b/Models/Person/Player.java
+--- a/Models/Person/Player.java	(revision e81f56c137f956734e6861ea56f757b1a7d46ba1)
++++ b/Models/Person/Player.java	(date 1744635571597)
+@@ -1,18 +1,11 @@
+ package Models.Person;
+ 
+-public class Player implements Person {
++public class Player extends Person {
+     private String username;
+     private String password;
+     private String nickname;
+     private String email;
+     private String gender;
+-    private Integer level = 0;
+-    private Integer XP = 0;
+-    private Integer farmingXP = 0;
+-    private Integer miningXP = 0;
+-    private Integer sightseeingXP = 0;
+-    private Integer fishingXP = 0;
+-    //  private final Integer XPMax = ;
+ 
+     public Player(String username, String password, String nickname, String email, String gender) {
+         this.username = username;
+@@ -22,97 +15,43 @@
+         this.gender = gender;
+     }
+ 
+-    // getter
+-
+-    public String getUsername() {
+-        return this.username;
+-    }
+-
+-    public String getNickname() {
+-        return this.nickname;
+-    }
+-
+-    public String getEmail() {
+-        return this.email;
+-    }
+-
+-    public String getPassword() {
+-        return this.password;
+-    }
+-
+-    public String getGender() {
+-        return this.gender;
+-    }
+-
+-    public Integer getLevel() {
+-        return level;
+-    }
+-
+-    public Integer getXP() {
+-        return XP;
+-    }
+-
+-    // setter
+-
+     public void setUsername(String username) {
+         this.username = username;
+     }
+ 
++    public String getUsername() {
++        return this.username;
++    }
++
+     public void setNickname(String nickname) {
+         this.nickname = nickname;
+     }
+ 
++    public String getNickname() {
++        return this.nickname;
++    }
++
+     public void setEmail(String email) {
+         this.email = email;
+     }
+ 
++    public String getEmail() {
++        return this.email;
++    }
++
+     public void setPassword(String password) {
+         this.password = password;
+     }
+ 
++    public String getPassword() {
++        return this.password;
++    }
++
+     public void setGender(String gender) {
+         this.gender = gender;
+     }
+ 
+-    public void setFarmingXP(Integer farmingXP) {
+-        this.farmingXP = farmingXP;
+-    }
+-
+-    public void setMiningXP(Integer miningXP) {
+-        this.miningXP = miningXP;
+-    }
+-
+-    public void setSightseeingXP(Integer sightseeingXP) {
+-        this.sightseeingXP = sightseeingXP;
+-    }
+-
+-    public void setFishingXP(Integer fishingXP) {
+-        this.fishingXP = fishingXP;
+-    }
+-
+-    // increase
+-
+-    public Integer increaseMiningXP() {
+-        return miningXP;
+-    }
+-
+-    public Integer increaseSightseeingXP() {
+-        return sightseeingXP;
+-    }
+-
+-    public void increaseLevel(Integer level) {
+-        this.level += level;
+-    }
+-
+-    public void increaseXP(Integer XP) {
+-        this.XP += XP;
+-    }
+-
+-    public Integer increaseFarmingXP() {
+-        return farmingXP;
+-    }
+-
+-    public Integer increaseFishingXP() {
+-        return fishingXP;
++    public String getGender() {
++        return this.gender;
+     }
+ }
+Index: Models/Person/NPC.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package Models.Person;\n\npublic class NPC implements Person {\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Models/Person/NPC.java b/Models/Person/NPC.java
+--- a/Models/Person/NPC.java	(revision e81f56c137f956734e6861ea56f757b1a7d46ba1)
++++ b/Models/Person/NPC.java	(date 1744635178876)
+@@ -1,4 +1,10 @@
+ package Models.Person;
+ 
+-public class NPC implements Person {
++import java.util.ArrayList;
++
++public class NPC extends Person {
++    private String Job;
++    private String House;
++    private static final ArrayList<String> Dialogues = new ArrayList<>();
++    private static final ArrayList<String> Favorites = new ArrayList<>();
+ }
+Index: Controllers/CookingController.java
+===================================================================
+diff --git a/Controllers/CookingController.java b/Controllers/CookingController.java
+deleted file mode 100644
+--- a/Controllers/CookingController.java	(revision e81f56c137f956734e6861ea56f757b1a7d46ba1)
++++ /dev/null	(revision e81f56c137f956734e6861ea56f757b1a7d46ba1)
+@@ -1,4 +0,0 @@
+-package Controllers;
+-
+-public class CookingController {
+-}
+Index: Controllers/FarmController.java
+===================================================================
+diff --git a/Controllers/FarmController.java b/Controllers/FarmController.java
+deleted file mode 100644
+--- a/Controllers/FarmController.java	(revision e81f56c137f956734e6861ea56f757b1a7d46ba1)
++++ /dev/null	(revision e81f56c137f956734e6861ea56f757b1a7d46ba1)
+@@ -1,4 +0,0 @@
+-package Controllers;
+-
+-public class FarmController {
+-}
+Index: Controllers/CraftingController.java
+===================================================================
+diff --git a/Controllers/CraftingController.java b/Controllers/CraftingController.java
+deleted file mode 100644
+--- a/Controllers/CraftingController.java	(revision e81f56c137f956734e6861ea56f757b1a7d46ba1)
++++ /dev/null	(revision e81f56c137f956734e6861ea56f757b1a7d46ba1)
+@@ -1,4 +0,0 @@
+-package Controllers;
+-
+-public class CraftingController {
+-}
+Index: Models/Energy.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Models/Energy.java b/Models/Energy.java
+new file mode 100644
+--- /dev/null	(date 1744635178876)
++++ b/Models/Energy.java	(date 1744635178876)
+@@ -0,0 +1,5 @@
++package Models;
++
++public class Energy {
++    public int Energy;
++}
+Index: view/TradingMenu.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/view/TradingMenu.java b/view/TradingMenu.java
+new file mode 100644
+--- /dev/null	(date 1744635178877)
++++ b/view/TradingMenu.java	(date 1744635178877)
+@@ -0,0 +1,12 @@
++package view;
++
++import java.util.Scanner;
++
++public class TradingMenu implements AppMenu {
++    Store currentStore;
++
++    @Override
++    public void check(Scanner scanner) {
++
++    }
++}
+Index: Models/Time/Time.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Models/Time/Time.java b/Models/Time/Time.java
+new file mode 100644
+--- /dev/null	(date 1744635178877)
++++ b/Models/Time/Time.java	(date 1744635178877)
+@@ -0,0 +1,7 @@
++package Models.Time;
++import Controllers.TimeDateController;
++public class Time {
++    private int currentSeason;
++    private int spentDays;
++    private int LenghtOfSeason = 28;
++}
+Index: Models/Time/Season/Season.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Models/Time/Season/Season.java b/Models/Time/Season/Season.java
+new file mode 100644
+--- /dev/null	(date 1744635178876)
++++ b/Models/Time/Season/Season.java	(date 1744635178876)
+@@ -0,0 +1,5 @@
++package Models.Time.Season;
++
++public abstract class Season {
++
++}
+Index: Models/Time/Season/Fall.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Models/Time/Season/Fall.java b/Models/Time/Season/Fall.java
+new file mode 100644
+--- /dev/null	(date 1744635178876)
++++ b/Models/Time/Season/Fall.java	(date 1744635178876)
+@@ -0,0 +1,4 @@
++package Models.Time.Season;
++
++public class Fall extends Season {
++}
+Index: Models/Time/Season/Summer.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Models/Time/Season/Summer.java b/Models/Time/Season/Summer.java
+new file mode 100644
+--- /dev/null	(date 1744635178876)
++++ b/Models/Time/Season/Summer.java	(date 1744635178876)
+@@ -0,0 +1,4 @@
++package Models.Time.Season;
++
++public class Summer extends Season {
++}
+Index: Models/Time/Season/Spring.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Models/Time/Season/Spring.java b/Models/Time/Season/Spring.java
+new file mode 100644
+--- /dev/null	(date 1744635178876)
++++ b/Models/Time/Season/Spring.java	(date 1744635178876)
+@@ -0,0 +1,4 @@
++package Models.Time.Season;
++
++public class Spring extends Season {
++}
+Index: Models/Interactions/Friendship.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Models/Interactions/Friendship.java b/Models/Interactions/Friendship.java
+new file mode 100644
+--- /dev/null	(date 1744635178876)
++++ b/Models/Interactions/Friendship.java	(date 1744635178876)
+@@ -0,0 +1,19 @@
++package Models.Interactions;
++
++public class Friendship {
++    public void Talk(){
++
++    }
++    public void Trade(){
++
++    }
++    public void Gift(){
++
++    }
++    public void Hug(){
++
++    }
++    public void Flowers(){
++
++    }
++}
+Index: Models/Time/Season/Winter.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Models/Time/Season/Winter.java b/Models/Time/Season/Winter.java
+new file mode 100644
+--- /dev/null	(date 1744635178877)
++++ b/Models/Time/Season/Winter.java	(date 1744635178877)
+@@ -0,0 +1,4 @@
++package Models.Time.Season;
++
++public class Winter extends Season {
++}
+Index: Models/Interactions/Selling.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Models/Interactions/Selling.java b/Models/Interactions/Selling.java
+new file mode 100644
+--- /dev/null	(date 1744635178876)
++++ b/Models/Interactions/Selling.java	(date 1744635178876)
+@@ -0,0 +1,4 @@
++package Models.Interactions;
++
++public class Selling {
++}
+Index: Models/Interactions/Marriage.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Models/Interactions/Marriage.java b/Models/Interactions/Marriage.java
+new file mode 100644
+--- /dev/null	(date 1744635178876)
++++ b/Models/Interactions/Marriage.java	(date 1744635178876)
+@@ -0,0 +1,4 @@
++package Models.Interactions;
++import Models.Person.Player;
++public class Marriage {
++}
+Index: Models/Enums/Food.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Models/Enums/Food.java b/Models/Enums/Food.java
+new file mode 100644
+--- /dev/null	(date 1744635178876)
++++ b/Models/Enums/Food.java	(date 1744635178876)
+@@ -0,0 +1,10 @@
++package Models.Enums;
++import Models.Energy;
++import Models.Person.Player;
++
++import java.util.ArrayList;
++
++public enum Food {;
++    private int energy;
++    private static final ArrayList<String> ingredients = new ArrayList<>();
++}
+Index: Models/Enums/TradingCommands.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Models/Enums/TradingCommands.java b/Models/Enums/TradingCommands.java
+new file mode 100644
+--- /dev/null	(date 1744635178876)
++++ b/Models/Enums/TradingCommands.java	(date 1744635178876)
+@@ -0,0 +1,4 @@
++package Models.Enums;
++
++public enum TradingCommands {
++}
+Index: Controllers/TradingMenuController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Controllers/TradingMenuController.java b/Controllers/TradingMenuController.java
+new file mode 100644
+--- /dev/null	(date 1744635178876)
++++ b/Controllers/TradingMenuController.java	(date 1744635178876)
+@@ -0,0 +1,4 @@
++package Controllers;
++
++public class TradingMenuController {
++}
+Index: Controllers/PlayerController/CookingController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Controllers/PlayerController/CookingController.java b/Controllers/PlayerController/CookingController.java
+new file mode 100644
+--- /dev/null	(date 1744635178875)
++++ b/Controllers/PlayerController/CookingController.java	(date 1744635178875)
+@@ -0,0 +1,4 @@
++package Controllers.PlayerController;
++
++public class CookingController {
++}
+Index: Controllers/TimeDateController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Controllers/TimeDateController.java b/Controllers/TimeDateController.java
+new file mode 100644
+--- /dev/null	(date 1744635178876)
++++ b/Controllers/TimeDateController.java	(date 1744635178876)
+@@ -0,0 +1,42 @@
++package Controllers;
++
++public class TimeDateController {
++    private int hour;
++    private int year;
++    private int month;
++    private int day;
++    private String dayName;
++
++    private int TimeShow(){
++        return hour;
++    }
++    private String DateShow(){
++        return (year + "/" + month + "/" + day) ;
++    }
++    private String TimeDateShow(){
++        return ( hour + "  " + year + "/" + "/") ;
++    }
++    private String DayNameShow(){
++        return dayName;
++    }
++
++    public int getHour() {
++        return hour;
++    }
++
++    public int getDay() {
++        return day;
++    }
++
++    public int getMonth() {
++        return month;
++    }
++
++    public int getYear() {
++        return year;
++    }
++
++    public String getDayName() {
++        return dayName;
++    }
++}
+Index: Controllers/PlayerController/FarmController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Controllers/PlayerController/FarmController.java b/Controllers/PlayerController/FarmController.java
+new file mode 100644
+--- /dev/null	(date 1744635178876)
++++ b/Controllers/PlayerController/FarmController.java	(date 1744635178876)
+@@ -0,0 +1,4 @@
++package Controllers.PlayerController;
++
++public class FarmController {
++}
+Index: Controllers/PlayerController/CraftingController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Controllers/PlayerController/CraftingController.java b/Controllers/PlayerController/CraftingController.java
+new file mode 100644
+--- /dev/null	(date 1744635178875)
++++ b/Controllers/PlayerController/CraftingController.java	(date 1744635178875)
+@@ -0,0 +1,4 @@
++package Controllers.PlayerController;
++
++public class CraftingController {
++}
+Index: Models/Person/Person.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package Models.Person;\n\npublic interface Person {\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Models/Person/Person.java b/Models/Person/Person.java
+--- a/Models/Person/Person.java	(revision e81f56c137f956734e6861ea56f757b1a7d46ba1)
++++ b/Models/Person/Person.java	(date 1744635178876)
+@@ -1,4 +1,6 @@
+ package Models.Person;
+ 
+-public interface Person {
++public abstract class Person {
++    protected String nickname;
++    protected String gender;
+ }
