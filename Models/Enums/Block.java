@@ -1,6 +1,6 @@
 package Models.Enums;
 
-public enum Blocks {
+public enum Block {
     basic,
     water,
 }
