@@ -1,19 +1,16 @@
-package Controllers;
+package com.project.Controllers;
 
-import Models.App;
-import Models.LivingBeings.Player;
-import Models.Result;
-
-import java.util.Objects;
+import com.project.Models.App;
+import com.project.Models.LivingBeings.Player;
+import com.project.Models.Result;
 
 public class LoginMenuController {
 
     public Result Login(String username, String password) {
         for (Player i : App.getPlayerList()) {
-            if (Objects.equals(i.getUsername(), username) &&
-                    Objects.equals(i.getPassword(), password)) return new Result(true, "logged in successfully!");
+            if (i.getUsername().equals(username) && i.getPassword().equals(password))
+                return new Result(true, "logged in successfully!");
         }
         return new Result(false, "Try again!");
     }
-
 }

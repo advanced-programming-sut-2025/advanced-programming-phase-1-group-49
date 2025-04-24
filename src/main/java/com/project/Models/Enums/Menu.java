@@ -1,6 +1,7 @@
-package Models.Enums;
+package com.project.Models.Enums;
 
-import view.*;
+
+import com.project.view.*;
 
 public enum Menu {
     MainMenu(new MainMenu()),

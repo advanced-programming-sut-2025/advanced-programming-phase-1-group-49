@@ -1,6 +1,6 @@
-package Models.Tools;
+package com.project.Models.Tools;
 
-import Models.Enums.ToolLevel;
+import com.project.Models.Enums.ToolLevel;
 
 public class Tool {
     ToolLevel level;

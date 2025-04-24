@@ -1,6 +1,6 @@
-package Models.Enums;
+package com.project.Models.Enums;
 
-import Models.Tools.Tool;
+import com.project.Models.Tools.Tool;
 
 public enum Tools {
     Axe(new Tool(ToolLevel.basic)),

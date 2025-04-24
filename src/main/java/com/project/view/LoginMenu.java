@@ -1,6 +1,6 @@
-package view;
+package com.project.view;
 
-import Controllers.LoginMenuController;
+import com.project.Controllers.LoginMenuController;
 
 import java.util.Scanner;
 import java.util.regex.Matcher;

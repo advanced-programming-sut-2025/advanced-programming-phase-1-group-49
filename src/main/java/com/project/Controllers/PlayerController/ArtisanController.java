@@ -1,4 +1,4 @@
-package Controllers.PlayerController;
+package com.project.Controllers.PlayerController;
 
 public class ArtisanController {
 }

@@ -1,7 +1,7 @@
-package view;
+package com.project.view;
 
-import Models.App;
-import Models.Enums.Menu;
+import com.project.Models.App;
+import com.project.Models.Enums.Menu;
 
 import java.util.Scanner;
 

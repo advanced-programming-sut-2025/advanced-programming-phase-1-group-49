@@ -1,4 +1,4 @@
-package Models.LivingBeings;
+package com.project.Models.LivingBeings;
 
 public abstract class Person implements LivingBeings {
     protected String nickname;

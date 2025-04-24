@@ -1,4 +1,4 @@
-package Models.Enums;
+package com.project.Models.Enums;
 
 public enum CookingRecipe {
     FRIED_EGG("FriedEgg", "1 egg", "Starter", 35, 50.0, ""),

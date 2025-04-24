@@ -1,4 +1,4 @@
-package Models.Item;
+package com.project.Models.Item;
 
 public class Tree implements Item {
 }

@@ -1,5 +1,4 @@
-package Models.Enums;
-
+package com.project.Models.Enums;
 
 public enum FruitTreeType {
     APRICOT("Apricot", 59, Seasons.Spring),

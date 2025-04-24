@@ -1,6 +1,6 @@
-package Models.Enums;
+package com.project.Models.Enums;
 
-import Models.Weather.Weather;
+import com.project.Models.Weather.Weather;
 
 public enum Weathers {
     SUNNY(new Weather()),

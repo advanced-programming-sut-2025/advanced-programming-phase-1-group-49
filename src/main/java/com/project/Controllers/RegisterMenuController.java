@@ -1,5 +1,6 @@
-package Controllers;
-import Models.LivingBeings.Player;
+package com.project.Controllers;
+
+import com.project.Models.LivingBeings.Player;
 
 public class RegisterMenuController {
     public void Register(String username , String password , String confirmPassword ,

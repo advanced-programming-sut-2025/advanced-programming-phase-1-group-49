@@ -1,4 +1,4 @@
-package Models.Interactions;
+package com.project.Models.Interactions;
 
 public class Friendship {
     public void Talk(){

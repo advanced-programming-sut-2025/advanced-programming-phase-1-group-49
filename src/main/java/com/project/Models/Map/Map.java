@@ -1,6 +1,6 @@
-package Models.Map;
+package com.project.Models.Map;
 
-import Models.Enums.Block;
+import com.project.Models.Enums.Block;
 
 import java.util.ArrayList;
 

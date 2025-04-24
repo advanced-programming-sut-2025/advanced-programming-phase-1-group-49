@@ -1,4 +1,4 @@
-package Models.Enums;
+package com.project.Models.Enums;
 
 public enum CraftingRecipe {
     CHERRY_BOMB("CherryBomb", "4 copper ore + 1 coal", "Mining1", 50, 3),

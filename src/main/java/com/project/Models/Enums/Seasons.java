@@ -1,6 +1,6 @@
-package Models.Enums;
+package com.project.Models.Enums;
 
-import Models.Time.Season;
+import com.project.Models.Time.Season;
 
 public enum Seasons {
     Spring(new Season()),

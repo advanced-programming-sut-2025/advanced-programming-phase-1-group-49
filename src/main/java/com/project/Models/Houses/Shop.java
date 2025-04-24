@@ -1,6 +1,6 @@
-package Models.Houses;
+package com.project.Models.Houses;
 
-import Models.Map.Location;
+import com.project.Models.Map.Location;
 
 public class Shop extends Location implements Building {
 }

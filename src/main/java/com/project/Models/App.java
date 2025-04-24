@@ -1,9 +1,9 @@
-package Models;
+package com.project.Models;
+
+import com.project.Models.Enums.Menu;
+import com.project.Models.LivingBeings.Player;
 
 import java.util.ArrayList;
-
-import Models.Enums.Menu;
-import Models.LivingBeings.Player;
 
 public class App {
     private static final ArrayList<Player> playerList = new ArrayList<>();

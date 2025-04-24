@@ -1,6 +1,6 @@
 package com.project;
 
-import view.AppView;
+import com.project.view.AppView;
 
 public class Main {
     public static void main(String[] args) {

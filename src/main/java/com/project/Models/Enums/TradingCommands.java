@@ -1,4 +1,4 @@
-package Models.Enums;
+package com.project.Models.Enums;
 
 public enum TradingCommands {
 }

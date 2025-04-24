@@ -1,4 +1,4 @@
-package Models.LivingBeings;
+package com.project.Models.LivingBeings;
 
 import java.util.ArrayList;
 
