@@ -1,6 +1,7 @@
 package com.project.Models.LivingBeings;
 
 import com.project.Models.Enums.Gender;
+import com.project.Models.Game;
 
 public class Player extends Person {
     private String username;
@@ -16,6 +17,7 @@ public class Player extends Person {
     //  private final Integer XPMax = ;
     private int x;
     private int y;
+    private Game currentGame = null;
 
     public Player(String username, String password, String nickname, String email, Gender gender) {
         this.username = username;
@@ -59,6 +61,10 @@ public class Player extends Person {
         return Energy;
     }
 
+    public Game getCurrentGame() {
+        return currentGame;
+    }
+
     // setter
 
     public void setUsername(String username) {
@@ -95,6 +101,10 @@ public class Player extends Person {
 
     public void setFishingXP(Integer fishingXP) {
         this.fishingXP = fishingXP;
+    }
+
+    public void setCurrentGame(Game currentGame) {
+        this.currentGame = currentGame;
     }
 
     // increase
