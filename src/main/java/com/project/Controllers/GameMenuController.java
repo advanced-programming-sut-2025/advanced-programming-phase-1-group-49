@@ -1,6 +1,7 @@
 package com.project.Controllers;
 
 import com.project.Models.App;
+import com.project.Models.Enums.Block;
 import com.project.Models.Game;
 import com.project.Models.LivingBeings.Player;
 import com.project.Models.Result;
@@ -24,7 +25,18 @@ public class GameMenuController {
         App.addGame(newGame);
         App.setGame(newGame);
 
-
         return new Result(true, "game created");
+    }
+
+    // Debug Method :
+
+    public void printMap() {
+        for (Block[] i : App.getGame().getMap().getBlocks()) {
+            for (Block b : i) {
+                if (b == Block.basic)
+                    System.out.print("#");
+            }
+            System.out.println();
+        }
     }
 }

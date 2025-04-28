@@ -15,6 +15,7 @@ public class Game {
         this.players.add(mainPlayer);
         this.players.add(player2);
         this.players.add(player3);
+        this.map = new Map();
     }
 
     // getter
@@ -25,6 +26,10 @@ public class Game {
 
     public Player getMainPlayer() {
         return mainPlayer;
+    }
+
+    public Map getMap() {
+        return map;
     }
 
     // add
