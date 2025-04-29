@@ -1,4 +1,4 @@
-package Models.Enums.machines;
+package com.project.Models.Enums.machines;
 
 public enum Keg {
     BEER("Beer", "Drink in moderation.", 50.0, "1 Day", "Wheat", 200),

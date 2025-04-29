@@ -1,4 +1,4 @@
-package Models.Enums.machines;
+package com.project.Models.Enums.machines;
 
 public enum Loom {
     CLOTH("Cloth", "A bolt of fine wool cloth.", "Inedible", "4 Hours", "Wool", 470);

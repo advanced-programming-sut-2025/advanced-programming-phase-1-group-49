@@ -1,17 +1,17 @@
-package Models.Enums.machines;
+package com.project.Models.Enums.machines;
 
-public enum PreservesJar {
-    PICKLES("Pickles", "A jar of home-made pickles.", "1.75 × Base Energy", "6 Hours", "Any Vegetable", "2 × Base + 50"),
-    JELLY("Jelly", "Gooey.", "2 × Base Energy", "3 Days", "Any Fruit", "2 × Base + 50");
+public enum OilMaker {
+    TRUFFLE_OIL("Truffle Oil", "A gourmet cooking ingredient.", 38.0, "6 Hours", "Truffle", 1065),
+    OIL("Oil", "All purpose cooking oil.", 13.0, "Variable", "Corn/Sunflower Seeds/Sunflower", 100);
 
     private final String name;
     private final String description;
-    private final String energy;
+    private final double energy;
     private final String processingTime;
     private final String ingredients;
-    private final String sellPrice;
+    private final int sellPrice;
 
-    PreservesJar(String name, String description, String energy, String processingTime, String ingredients, String sellPrice) {
+    OilMaker(String name, String description, double energy, String processingTime, String ingredients, int sellPrice) {
         this.name = name;
         this.description = description;
         this.energy = energy;
@@ -23,8 +23,8 @@ public enum PreservesJar {
     // Getters
     public String getName() { return name; }
     public String getDescription() { return description; }
-    public String getEnergy() { return energy; }
+    public double getEnergy() { return energy; }
     public String getProcessingTime() { return processingTime; }
     public String getIngredients() { return ingredients; }
-    public String getSellPrice() { return sellPrice; }
+    public int getSellPrice() { return sellPrice; }
 }

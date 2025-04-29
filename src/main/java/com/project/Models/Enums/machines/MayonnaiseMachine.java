@@ -1,4 +1,4 @@
-package Models.Enums.machines;
+package com.project.Models.Enums.machines;
 
 public enum MayonnaiseMachine {
     MAYONNAISE("Mayonnaise", "It looks spreadable.", 50.0, "3 Hours", "Egg/Large Egg", new int[]{190, 237}),
