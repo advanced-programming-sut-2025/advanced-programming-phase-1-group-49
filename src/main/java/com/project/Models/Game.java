@@ -10,9 +10,10 @@ public class Game {
     private Player mainPlayer;
     private Map map;
 
-    public Game(Player mainPlayer, Player player2, Player player3) {
-        this.mainPlayer = mainPlayer;
+    public Game(Player player1, Player player2, Player player3) {
+        this.mainPlayer = App.getCurrentPlayer();
         this.players.add(mainPlayer);
+        this.players.add(player1);
         this.players.add(player2);
         this.players.add(player3);
         this.map = new Map();

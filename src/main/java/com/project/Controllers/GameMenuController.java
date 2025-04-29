@@ -7,6 +7,12 @@ import com.project.Models.LivingBeings.Player;
 import com.project.Models.Result;
 
 public class GameMenuController {
+    final String RESET = "\u001B[0m";
+    final String RED = "\u001B[31m";
+    final String GREEN = "\u001B[32m";
+    final String YELLOW = "\u001B[33m";
+    final String BLUE = "\u001B[34m";
+
     public Result newGame(String Player1, String Player2, String Player3) {
         Player1 = Player1.trim();
         Player2 = Player2.trim();
@@ -37,10 +43,31 @@ public class GameMenuController {
     public void printMap() {
         for (Block[] i : App.getGame().getMap().getBlocks()) {
             for (Block b : i) {
-                if (b == Block.basic)
-                    System.out.print("#");
+                if (b == null)
+                    System.out.print("█");
+                if (b == Block.water)
+                    System.out.print(BLUE + "█" + RESET);
+                if (b == Block.homeWall)
+                    System.out.print(RED + "█" + RESET);
+                if (b == Block.greenhouseWall)
+                    System.out.print(RED + "█" + RESET);
+                if (b == Block.home)
+                    System.out.print(GREEN + "█" + RESET);
+                if (b == Block.greenhouse)
+                    System.out.print(GREEN + "█" + RESET);
             }
             System.out.println();
         }
+    }
+
+    public void gameInfo() {
+        System.out.println("------------Game Info:------------");
+        for (Player i : App.getGame().getPlayers()) {
+            System.out.print(i.getUsername() + "(" + i.getNickname() + "): " + i.getLevel() + ", " + i.getGender());
+            if (App.getGame().getMainPlayer().equals(i))
+                System.out.print("(main player)");
+            System.out.println();
+        }
+        System.out.println("------------------------");
     }
 }

@@ -19,6 +19,8 @@ public class GameMenu implements AppMenu {
             controller.printMap();
         } else if ((matcher = GameMenuCommands.selectMap.getMatcher(command)).find()) {
             System.out.println(controller.selectMap(matcher.group(1)));
+        } else if (GameMenuCommands.gameInfo.getMatcher(command).find()) {
+            controller.gameInfo();
         } else
             System.out.println("Invalid command");
     }

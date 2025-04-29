@@ -15,8 +15,8 @@ public class Player extends Person {
     private Integer fishingXP = 0;
     private Integer Energy = 100;
     //  private final Integer XPMax = ;
-    private int x;
-    private int y;
+    private int x = 84;
+    private int y = 5;
     private Game currentGame = null;
 
     public Player(String username, String password, String nickname, String email, Gender gender) {
