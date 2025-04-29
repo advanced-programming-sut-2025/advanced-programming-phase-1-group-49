@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="82739948-074a-4cc8-86e9-66d1bf2d9159" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Models/Enums/Animals.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Models/Enums/Items.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Models/Enums/Shops.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Models/Enums/Tools.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Models/Enums/Weathers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Animal/Bird.java" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Animal/Bird.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Animal/Chicken.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Animal/Cow.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Animal/Duck.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Animal/Goat.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Animal/Mammal.java" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Animal/Mammal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Animal/Pig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Animal/Rabbit.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Animal/Sheep.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Energy.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Enums/AvatarMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Enums/AvatarMenuCommands.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Enums/Blocks.java" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Enums/Blocks.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Enums/FruitTreeType.java" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Enums/FruitTreeType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Enums/GameMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Enums/GameMenuCommands.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Enums/MainMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Enums/MainMenuCommands.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Enums/Seasons.java" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Enums/Seasons.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Person/NPC.java" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Person/NPC.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Season/Fall.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Season/Season.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Season/Spring.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Season/Summer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Season/Winter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Shops/Blacksmith.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Shops/Carpenter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Shops/FishShop.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Shops/JojaMart.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Shops/Marnie.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Shops/Pierre.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Shops/StarDrop.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Time/Season/Fall.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Time/Season/Season.java" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Time/Season.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Time/Season/Spring.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Time/Season/Summer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Time/Season/Winter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Tools/Axe.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Tools/FishingPole.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Tools/Hoe.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Tools/MilkPail.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Tools/Pickaxe.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Tools/Scythe.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Tools/Shear.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Tools/Tool.java" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Tools/Tool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Tools/TrashCan.java" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Tools/TrashCan.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Tools/WateringCan.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Weather/Rain.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Weather/Snow.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Weather/Storm.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Weather/Sunny.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Weather/Weather.java" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Weather/Weather.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/TradingMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/view/TradingMenu.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+        <option value="Enum" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="2viMnoJtg9TArR4SfLOAoSb5ZsJ" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.main.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="main" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="advanced-programming-phase-1-group-49" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-a94e463ab2e7-intellij.indexing.shared.core-IU-243.26053.27" />
+        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-IU-243.26053.27" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="82739948-074a-4cc8-86e9-66d1bf2d9159" name="Changes" comment="" />
+      <created>1744623612510</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1744623612510</updated>
+      <workItem from="1744623614126" duration="2670000" />
+      <workItem from="1744634146271" duration="1318000" />
+      <workItem from="1744635467976" duration="110000" />
+      <workItem from="1744635593701" duration="2144000" />
+      <workItem from="1744637844005" duration="5009000" />
+      <workItem from="1744643284494" duration="13000" />
+      <workItem from="1744643299660" duration="581000" />
+      <workItem from="1744651171532" duration="7055000" />
+      <workItem from="1744717453914" duration="5144000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

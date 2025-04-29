@@ -1,0 +1,6 @@
+package com.project.Models.Enums;
+
+public enum Block {
+    basic,
+    water,
+}
