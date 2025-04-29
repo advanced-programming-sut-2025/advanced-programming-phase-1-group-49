@@ -28,6 +28,10 @@ public class GameMenuController {
         return new Result(true, "game created");
     }
 
+    public Result selectMap(String idString) {
+        return new Result(false, "map selected");
+    }
+
     // Debug Method :
 
     public void printMap() {
