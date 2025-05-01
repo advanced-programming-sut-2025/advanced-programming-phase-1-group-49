@@ -35,7 +35,15 @@ public class GameMenuController {
     }
 
     public Result selectMap(String idString) {
+        // select Map
+
         return new Result(false, "map selected");
+    }
+
+    public Result exitGame() {
+        // exit game
+
+        return new Result(true, "exit game");
     }
 
     // Debug Method :
@@ -69,5 +77,11 @@ public class GameMenuController {
             System.out.println();
         }
         System.out.println("------------------------");
+    }
+
+    public Result nextTurn() {
+        // next Turn
+
+        return new Result(true, "next turn");
     }
 }
