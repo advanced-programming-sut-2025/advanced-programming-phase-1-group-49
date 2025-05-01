@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="advanced-programming-phase-1-group-49:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/advanced_programming_phase_1_group_49_jar</output-path>
+    <root id="archive" name="advanced-programming-phase-1-group-49.jar">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="module-output" name="advanced-programming-phase-1-group-49" />
+    </root>
+  </artifact>
+</component>

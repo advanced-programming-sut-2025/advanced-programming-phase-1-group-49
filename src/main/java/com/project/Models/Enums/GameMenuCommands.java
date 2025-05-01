@@ -8,7 +8,11 @@ public enum GameMenuCommands {
     selectMap("^\\s*game\\s+map\\s+(?<id>.*)\\s*$"),
     loadMap("^\\s*load\\s+game\\s*$"),
     exitGame("^\\s*exit\\s+game\\s*$"),
-    nextTurn("^\\s*next\\s+turn\\s*$");
+    nextTurn("^\\s*next\\s+turn\\s*$"),
+    // for debugging :
+    gameInfo("^\\s*game\\s+info\\s*$"),
+    printMap("^\\s*print\\s+map\\s*$"),
+    ;
 
     private final String pattern;
 

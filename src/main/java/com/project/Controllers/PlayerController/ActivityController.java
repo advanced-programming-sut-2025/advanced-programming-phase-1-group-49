@@ -1,6 +1,10 @@
 package com.project.Controllers.PlayerController;
 
 public class ActivityController {
+    public void walk() {
+
+    }
+
     public void increaseEnergy() {
 
     }
