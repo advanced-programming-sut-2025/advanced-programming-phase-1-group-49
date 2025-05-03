@@ -1,6 +1,11 @@
 package com.project.Models.Houses;
 
-import com.project.Models.Map.Location;
+import com.project.Models.inventory;
 
-public class Shop extends Location implements Building {
+public class Shop implements Building {
+    private final inventory inventory = new inventory();
+
+    public inventory getInventory() {
+        return inventory;
+    }
 }

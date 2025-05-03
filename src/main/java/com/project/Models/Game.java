@@ -9,6 +9,7 @@ public class Game {
     private final ArrayList<Player> players = new ArrayList<>();
     private Player mainPlayer;
     private Map map;
+    private final inventory inventory = new inventory();
 
     public Game(Player player1, Player player2, Player player3) {
         this.mainPlayer = App.getCurrentPlayer();
@@ -43,5 +44,9 @@ public class Game {
 
     public void setMainPlayer(Player mainPlayer) {
         this.mainPlayer = mainPlayer;
+    }
+
+    public inventory getInventory() {
+        return inventory;
     }
 }
