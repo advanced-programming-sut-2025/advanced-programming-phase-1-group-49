@@ -6,13 +6,10 @@ public class Time {
     private Seasons currentSeason = Seasons.Spring;
     private int spentDays = 0;
     private int currentHour = 9;
+    private final int LengthOfSeason = 28;
 
     public Seasons getCurrentSeason() {
         return currentSeason;
-    }
-
-    public int getLengthOfSeason() {
-        return LengthOfSeason;
     }
 
     public int getCurrentHour() {
@@ -24,31 +21,33 @@ public class Time {
     }
 
     public void changeTime(int hour) {
-        this.currentHour = hour;
-        if (this.currentHour >= 22) {
-            this.currentHour = 9;
-            this.spentDays ++;
-            if (this.spentDays >= 28) {
-                switch (this.currentSeason) {
+        currentHour += hour;
+
+        if (currentHour >= 22) {
+            currentHour = 9;
+            spentDays++;
+            if (spentDays >= 28) {
+                switch (currentSeason) {
                     case Spring:
-                        this.currentSeason = Seasons.Summer;
+                        currentSeason = Seasons.Summer;
                         break;
 
                     case Summer:
-                        this.currentSeason = Seasons.Fall;
+                        currentSeason = Seasons.Fall;
                         break;
 
                     case Fall:
-                        this.currentSeason = Seasons.Winter;
+                        currentSeason = Seasons.Winter;
                         break;
 
                     case Winter:
-                        this.currentSeason = Seasons.Spring;
+                        currentSeason = Seasons.Spring;
                         break;
                 }
                 spentDays = 0;
             }
         }
+
+        // call time function
     }
-    private final int LengthOfSeason = 28;
 }
