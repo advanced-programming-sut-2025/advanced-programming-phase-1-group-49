@@ -1,16 +1,19 @@
 package com.project.Models.Map;
 
 import com.project.Models.Enums.Block;
+import com.project.Models.Houses.GreenHouse;
 import com.project.Models.Houses.Home;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Map {
-    //    ArrayList<ArrayList<Block>> blocks;
-
-    private Block[][] blocks = new Block[20][100];
+    private final Block[][] blocks = new Block[20][100];
 
     public Map() {
+        for (Block[] block : blocks)
+            Arrays.fill(block, Block.basic);
+
         // home
         int homeX = 1;
         int homeLength = 4;
@@ -28,6 +31,7 @@ public class Map {
         for (int i = greenHouseX; i < greenHouseX + greenHouseWidth; i++)
             for (int j = greenHouseY; j < greenHouseY + greenHouseLength; j++)
                 blocks[i][j] = Block.greenhouse;
+        GreenHouse greenHouse = new GreenHouse();
         // leak
         int LeakX = 12;
         int LeakY = 48;
@@ -40,9 +44,5 @@ public class Map {
 
     public Block[][] getBlocks() {
         return blocks;
-    }
-
-    public void setBlocks(Block[][] blocks) {
-        this.blocks = blocks;
     }
 }

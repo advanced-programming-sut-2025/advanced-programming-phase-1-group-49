@@ -1,5 +1,6 @@
 package com.project.Models.LivingBeings;
 
+import com.project.Models.Enums.Block;
 import com.project.Models.Enums.Gender;
 import com.project.Models.Game;
 import com.project.Models.inventory;
@@ -15,11 +16,11 @@ public class Player extends Person {
     private Integer sightseeingXP = 0;
     private Integer fishingXP = 0;
     private Integer Energy = 100;
-    //  private final Integer XPMax = ;
-    private int x = 84;
-    private int y = 5;
     private Game currentGame = null;
     private final inventory inventory = new inventory();
+    private int x;
+    private int y;
+    private Block previousBlock = Block.basic;
 
     public Player(String username, String password, String nickname, String email, Gender gender) {
         this.username = username;
@@ -71,6 +72,14 @@ public class Player extends Person {
         return inventory;
     }
 
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
     // setter
 
     public void setUsername(String username) {
@@ -109,8 +118,16 @@ public class Player extends Person {
         this.fishingXP = fishingXP;
     }
 
-    public void setCurrentGame(Game currentGame) {
+    public void setGame(Game currentGame) {
         this.currentGame = currentGame;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public void setY(int y) {
+        this.y = y;
     }
 
     // increase
@@ -147,5 +164,15 @@ public class Player extends Person {
 
     public void decreaseEnergy(Integer energy) {
         Energy -= energy;
+    }
+
+    //
+
+    public void walk(int x, int y) {
+        previousBlock = currentGame.getMap().getBlocks()[x][y];
+        currentGame.getMap().getBlocks()[this.x][this.y] = previousBlock;
+        this.x = x;
+        this.y = y;
+        currentGame.getMap().getBlocks()[x][y] = null;
     }
 }

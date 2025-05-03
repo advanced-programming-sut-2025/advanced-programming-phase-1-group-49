@@ -3,7 +3,7 @@ package com.project.Models.Enums;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public enum RegisterMenuCommands {
+public enum RegisterMenuCommands implements Commands {
     register("^(?!.*\\.\\..*)[a-zA-Z0-9][a-zA-Z0-9._-]*[a-zA-Z0-9]@[a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]" +
             "(\\.ir|\\.com|\\.org)$"),
     USERNAME_PATTERN("^[a-zA-Z0-9-]{3,16}$"),

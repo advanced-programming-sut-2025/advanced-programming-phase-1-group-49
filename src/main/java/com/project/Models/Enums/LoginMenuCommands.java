@@ -1,5 +1,12 @@
 package com.project.Models.Enums;
 
-public enum LoginMenuCommands {
+import java.util.regex.Matcher;
 
+public enum LoginMenuCommands implements Commands {
+    ;
+
+    @Override
+    public Matcher getMatcher(String input) {
+        return null;
+    }
 }

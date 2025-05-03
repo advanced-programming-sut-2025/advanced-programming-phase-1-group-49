@@ -14,7 +14,7 @@ public class App {
 
     // getter
 
-    public static Player getCurrentPlayer() {
+    public static Player getPlayer() {
         return currentPlayer;
     }
 

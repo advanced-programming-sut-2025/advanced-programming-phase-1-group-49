@@ -12,7 +12,7 @@ public class Game {
     private final inventory inventory = new inventory();
 
     public Game(Player player1, Player player2, Player player3) {
-        this.mainPlayer = App.getCurrentPlayer();
+        this.mainPlayer = App.getPlayer();
         this.players.add(mainPlayer);
         this.players.add(player1);
         this.players.add(player2);
