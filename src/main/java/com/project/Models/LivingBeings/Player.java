@@ -2,6 +2,7 @@ package com.project.Models.LivingBeings;
 
 import com.project.Models.Enums.Gender;
 import com.project.Models.Game;
+import com.project.Models.inventory;
 
 public class Player extends Person {
     private String username;
@@ -18,6 +19,7 @@ public class Player extends Person {
     private int x = 84;
     private int y = 5;
     private Game currentGame = null;
+    private final inventory inventory = new inventory();
 
     public Player(String username, String password, String nickname, String email, Gender gender) {
         this.username = username;
@@ -63,6 +65,10 @@ public class Player extends Person {
 
     public Game getCurrentGame() {
         return currentGame;
+    }
+
+    public inventory getInventory() {
+        return inventory;
     }
 
     // setter
