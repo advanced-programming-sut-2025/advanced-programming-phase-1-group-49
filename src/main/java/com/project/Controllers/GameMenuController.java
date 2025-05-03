@@ -46,6 +46,16 @@ public class GameMenuController {
         return new Result(true, "exit game");
     }
 
+    public Result nextTurn() {
+        // next Turn
+
+        return new Result(true, "next turn");
+    }
+
+    public Result loadGame() {
+        return new Result(true, "load game");
+    }
+
     // Debug Method :
 
     public void printMap() {
@@ -77,11 +87,5 @@ public class GameMenuController {
             System.out.println();
         }
         System.out.println("------------------------");
-    }
-
-    public Result nextTurn() {
-        // next Turn
-
-        return new Result(true, "next turn");
     }
 }

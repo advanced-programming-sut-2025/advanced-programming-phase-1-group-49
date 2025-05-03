@@ -25,6 +25,8 @@ public class GameMenu implements AppMenu {
             System.out.println(controller.nextTurn());
         else if(GameMenuCommands.exitGame.getMatcher(command).find())
             System.out.println(controller.exitGame());
+        else if (GameMenuCommands.loadMap.getMatcher(command).find())
+            System.out.println(controller.loadGame());
         else
             System.out.println("Invalid command");
     }
