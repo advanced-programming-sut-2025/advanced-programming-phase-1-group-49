@@ -1,7 +1,7 @@
 package com.project.Models.Enums.machines;
 
 public enum BeeHouse {
-    HONEY("Honey", "It's a sweet syrup produced by bees.", 75.0, "4 Days", "-", 350);
+    HONEY("Honey", "It's a sweet syrup produced by bees.", 75.0, "", "", 350);
 
     private final String name;
     private final String description;
