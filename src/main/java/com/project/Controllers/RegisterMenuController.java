@@ -33,7 +33,6 @@ public class RegisterMenuController {
     ));
 
     private void resetFields() {
-        System.out.println("Reset Fields");
         checkPassword = false;
         randomPassword = false;
         securityQ = false;
@@ -94,70 +93,6 @@ public class RegisterMenuController {
 
     //
 
-    public Result checkPassword(String passwordString) {
-        passwordString = passwordString.trim();
-
-        if (!RegisterMenuCommands.PASSWORD_PATTERN.getMatcher(passwordString).find())
-            return new Result(false,
-                    "Invalid password. enter another password or register again.\n");
-
-        password = passwordString;
-        for (String question : SecurityQuestions)
-            System.out.println(question);
-        checkPassword = false;
-        securityQ = true;
-        return new Result(true, "");
-    }
-
-    public Result randomPassword(String accepted) {
-        accepted = accepted.trim().toLowerCase();
-        if (!RegisterMenuCommands.accept.getMatcher(accepted).find())
-            return new Result(false,
-                    String.format("if %s is good enter \"yes\"(y) else enter \"no\"(n)", password));
-
-        if (accepted.equals("y") || accepted.equals("yes")) {
-            for (String question : SecurityQuestions)
-                System.out.println(question);
-            securityQ = true;
-            randomPassword = false;
-            return new Result(true, "randomPassword checker, Done.");
-        }
-
-        return new Result(false, generatePassword() + "\nwhat about this?");
-    }
-
-    public Result securityQuestion(String command) {
-        command = command.trim();
-        Matcher matcher;
-        if (!(matcher = RegisterMenuCommands.securityQuestion.getMatcher(command)).find())
-            return new Result(false, "Enter with this form :\n<question ID>, \"<Your Answer>\"");
-        String questionIDString = matcher.group("questionID");
-        String answer = matcher.group("Answer");
-
-        int questionID;
-        try {
-            questionID = Integer.parseInt(questionIDString);
-        } catch (NumberFormatException e) {
-            return new Result(false,
-                    "Invalid question ID, Enter with this form :\n <question ID>, <Your Answer>");
-        }
-        if (questionID < 1 || questionID > 5)
-            return new Result(false, "Invalid question ID, enter something between 1 and 5");
-
-        Player player = new
-                Player(username, password, nickname, email, gender, questionID + ", " + answer);
-        App.addPlayer(player);
-
-        return new Result(true, String.format("""
-                        User Created Successfully. user info :
-                        username = %s
-                        nickname = %s
-                        email = %s
-                        gender = %s
-                        password = %s""", player.getUsername(), player.getNickname(), player.getEmail(),
-                player.getGender().toString(), player.getPassword()));
-    }
-
     public Result Register(String usernameString, String passwordString,
                            String confirmPasswordString, String nicknameString, String emailString,
                            String genderString) {
@@ -169,15 +104,21 @@ public class RegisterMenuController {
         genderString = genderString.trim();
         resetFields();
 
-        // check UserName
+        // check UserName Pattern
         if (!RegisterMenuCommands.USERNAME_PATTERN.getMatcher(usernameString).find())
             return new Result(false, "Invalid username, try Again.\n");
+        // check username exists
+        if (App.searchPlayer(usernameString) != null)
+            return new Result(false, "User whit this username already exists.\n");
         // check Password equality
         if (!passwordString.equals(confirmPasswordString))
             return new Result(false, "Passwords do not match, try again.\n");
         // check Email
         if (!RegisterMenuCommands.EMAIL_PATTERN.getMatcher(emailString).find())
             return new Result(false, "Invalid email. Try Again.\n");
+        // check email exists
+        if (App.searchPlayerEmail(emailString) != null)
+            return new Result(false, "User with this email already exists.\n");
         // check Nick Name
         if (!RegisterMenuCommands.USERNAME_PATTERN.getMatcher(nicknameString).find())
             return new Result(false, "Invalid nickname. Try Again.\n");
@@ -213,6 +154,74 @@ public class RegisterMenuController {
         return new Result(true, "");
     }
 
+    public Result checkPassword(String passwordString) {
+        passwordString = passwordString.trim();
+
+        if (!RegisterMenuCommands.PASSWORD_PATTERN.getMatcher(passwordString).find())
+            return new Result(false,
+                    "Invalid password. enter another password or register again.\n");
+
+        password = passwordString;
+        for (String question : SecurityQuestions)
+            System.out.println(question);
+        checkPassword = false;
+        securityQ = true;
+        return new Result(true, "");
+    }
+
+    public Result randomPassword(String accepted) {
+        accepted = accepted.trim().toLowerCase();
+        if (!RegisterMenuCommands.accept.getMatcher(accepted).find())
+            return new Result(false,
+                    String.format("if %s is good enter \"yes\"(y) else enter \"no\"(n)", password));
+
+        if (accepted.equals("y") || accepted.equals("yes")) {
+            for (String question : SecurityQuestions)
+                System.out.println(question);
+            securityQ = true;
+            randomPassword = false;
+            return new Result(true, "randomPassword checker, Done.");
+        }
+
+        return new Result(false, generatePassword() + "\nwhat about this?");
+    }
+
+    public Result securityQuestion(String command) {
+        command = command.trim();
+        Matcher matcher;
+        if (!(matcher = RegisterMenuCommands.pickQuestion.getMatcher(command)).find())
+            return new Result(false, "please pick a security question");
+        String questionIDString = matcher.group(1);
+        String answer = matcher.group(2);
+        String answerConfirm = matcher.group(3);
+
+        int questionID;
+        try {
+            questionID = Integer.parseInt(questionIDString);
+        } catch (NumberFormatException e) {
+            return new Result(false,
+                    "Invalid question ID, Enter with this form :\n <question ID>, <Your Answer>");
+        }
+        if (questionID < 1 || questionID > 5)
+            return new Result(false, "Invalid question ID, enter something between 1 and 5");
+        if (!answer.equals(answerConfirm))
+            return new Result(false, "Answer did not match. try again");
+
+        Player player = new
+                Player(username, password, nickname, email, gender, questionID + ", " + answer);
+        App.addPlayer(player);
+        resetFields();
+
+        return new Result(true, String.format("""
+                        User Created Successfully. user info :
+                        username = %s
+                        nickname = %s
+                        email = %s
+                        gender = %s
+                        password = %s""", player.getUsername(), player.getNickname(), player.getEmail(),
+                player.getGender().toString(), player.getPassword()));
+    }
+
     public Result switchMenu(String menuString) {
         if (!menuString.trim().equals("LoginMenu"))
             return new Result(false, "You are in Register and can go to LoginMenu only.");
@@ -239,5 +248,13 @@ public class RegisterMenuController {
 
     public boolean isSecurityQ() {
         return securityQ;
+    }
+
+    public Result exit() {
+        // save data
+
+        App.setCurrentMenu(Menu.ExitMenu);
+
+        return new Result(true, "");
     }
 }

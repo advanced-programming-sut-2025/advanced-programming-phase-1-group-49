@@ -19,6 +19,7 @@ public class RegisterMenu implements AppMenu {
                     >>> Register Menu Commands:
                     - register -u <username> -p <password> <password_confirm> -n <nickname> -e <email> -g <gender>
                     can replace <password> and <password_confirm> with "Random" to generate random password.
+                    - pick question -q <questionID> -a <Answer> -c <Answer_Confirm>
                     - show current menu
                     - menu enter LoginMenu
                     - exit
@@ -44,7 +45,9 @@ public class RegisterMenu implements AppMenu {
             Result temp = controller.switchMenu(matcher.group(1));
             System.out.println(temp);
             printMenuInfo = temp.isSuccessfully();
-        } else
+        }else if (RegisterMenuCommands.exit.getMatcher(command).find())
+            System.out.println(controller.exit());
+        else
             System.out.println("Invalid command");
     }
 }

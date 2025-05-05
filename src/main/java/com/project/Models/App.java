@@ -6,10 +6,10 @@ import com.project.Models.LivingBeings.Player;
 import java.util.ArrayList;
 
 public class App {
-    private static final ArrayList<Player> playerList = new ArrayList<>();
-    private static Player currentPlayer = null;
-    private static Menu currentMenu = Menu.RegisterMenu;
     private static Game game;
+    private static Menu currentMenu = Menu.RegisterMenu;
+    private static Player currentPlayer = null;
+    private static final ArrayList<Player> playerList = new ArrayList<>();
     private static final ArrayList<Game> gameList = new ArrayList<>();
 
     // getter
@@ -22,16 +22,8 @@ public class App {
         return currentMenu;
     }
 
-    public static ArrayList<Player> getPlayerList() {
-        return playerList;
-    }
-
     public static Game getGame() {
         return game;
-    }
-
-    public static ArrayList<Game> getGameList() {
-        return gameList;
     }
 
     // setter
@@ -63,6 +55,13 @@ public class App {
     public static Player searchPlayer(String username) {
         for (Player player : playerList)
             if (player.getUsername().equals(username))
+                return player;
+        return null;
+    }
+
+    public static Player searchPlayerEmail(String email) {
+        for (Player player : playerList)
+            if (player.getEmail().equals(email))
                 return player;
         return null;
     }
