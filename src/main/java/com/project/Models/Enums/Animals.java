@@ -11,7 +11,9 @@ public enum Animals {
     Goat(new Mammal()),
     Pig(new Mammal()),
     Rabbit(new Mammal()),
-    Sheep(new Mammal());
+    Sheep(new Mammal()),
+    Dinosaur(new Bird());
+
 
     private final Animal animal;
 

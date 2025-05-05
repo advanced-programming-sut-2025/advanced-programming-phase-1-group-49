@@ -17,9 +17,11 @@ public class GameMenuController {
         Player1 = Player1.trim();
         Player2 = Player2.trim();
         Player3 = Player3.trim();
+
         Player player1 = App.searchPlayer(Player1);
         Player player2 = App.searchPlayer(Player2);
         Player player3 = App.searchPlayer(Player3);
+
         if (player1 == null)
             return new Result(false, "No Player Found with Name " + Player1);
         if (player2 == null)
@@ -30,6 +32,8 @@ public class GameMenuController {
         Game newGame = new Game(player1, player2, player3);
         App.addGame(newGame);
         App.setGame(newGame);
+        App.getPlayer().setGame(newGame);
+        App.getPlayer().walk(5, 84);
 
         return new Result(true, "game created");
     }
@@ -62,7 +66,9 @@ public class GameMenuController {
         for (Block[] i : App.getGame().getMap().getBlocks()) {
             for (Block b : i) {
                 if (b == null)
-                    System.out.print("█");
+                    System.out.print("*");
+                if (b == Block.basic)
+                    System.out.print(" ");
                 if (b == Block.water)
                     System.out.print(BLUE + "█" + RESET);
                 if (b == Block.homeWall)
