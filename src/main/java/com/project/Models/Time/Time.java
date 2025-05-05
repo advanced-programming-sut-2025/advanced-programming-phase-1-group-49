@@ -24,7 +24,7 @@ public class Time {
     }
 
     public void changeTime(int hour) {
-        this.currentHour = hour;
+        this.currentHour += hour;
         if (this.currentHour >= 22) {
             this.currentHour = 9;
             this.spentDays ++;
