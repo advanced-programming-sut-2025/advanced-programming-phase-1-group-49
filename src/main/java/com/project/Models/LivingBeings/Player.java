@@ -21,13 +21,15 @@ public class Player extends Person {
     private int x;
     private int y;
     private Block previousBlock = Block.basic;
+    private String securityQuestion = null;
 
-    public Player(String username, String password, String nickname, String email, Gender gender) {
+    public Player(String username, String password, String nickname, String email, Gender gender, String securityQuestion) {
         this.username = username;
         this.password = password;
         this.nickname = nickname;
         this.email = email;
         this.gender = gender;
+        this.securityQuestion = securityQuestion;
     }
 
     // getter
@@ -80,6 +82,10 @@ public class Player extends Person {
         return y;
     }
 
+    public String getSecurityQuestion() {
+        return securityQuestion;
+    }
+
     // setter
 
     public void setUsername(String username) {
@@ -128,6 +134,10 @@ public class Player extends Person {
 
     public void setY(int y) {
         this.y = y;
+    }
+
+    public void setSecurityQuestion(String securityQuestion) {
+        this.securityQuestion = securityQuestion;
     }
 
     // increase

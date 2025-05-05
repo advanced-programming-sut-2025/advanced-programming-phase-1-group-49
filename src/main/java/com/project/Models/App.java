@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class App {
     private static final ArrayList<Player> playerList = new ArrayList<>();
     private static Player currentPlayer = null;
-    private static Menu currentMenu = Menu.GameMenu;
+    private static Menu currentMenu = Menu.RegisterMenu;
     private static Game game;
     private static final ArrayList<Game> gameList = new ArrayList<>();
 
