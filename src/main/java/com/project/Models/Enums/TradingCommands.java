@@ -1,4 +1,12 @@
 package com.project.Models.Enums;
 
-public enum TradingCommands {
+import java.util.regex.Matcher;
+
+public enum TradingCommands implements Commands {
+    ;
+
+    @Override
+    public Matcher getMatcher(String input) {
+        return null;
+    }
 }
