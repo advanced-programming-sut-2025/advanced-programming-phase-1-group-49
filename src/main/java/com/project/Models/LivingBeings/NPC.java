@@ -8,6 +8,16 @@ public class NPC extends Person {
     private static final ArrayList<String> Dialogues = new ArrayList<>();
     private static final ArrayList<String> Favorites = new ArrayList<>();
 
+    @Override
+    public void passByHour() {
+
+    }
+
+    @Override
+    public void passByDay() {
+
+    }
+
     //
 
 }

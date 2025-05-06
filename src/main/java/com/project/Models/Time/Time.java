@@ -2,11 +2,17 @@ package com.project.Models.Time;
 
 import com.project.Models.Enums.Seasons;
 
+import java.util.ArrayList;
+
 public class Time {
+    ArrayList<ObserveTime> observes = new ArrayList<>();
+
     private Seasons currentSeason = Seasons.Spring;
     private int spentDays = 0;
     private int currentHour = 9;
     private final int LengthOfSeason = 28;
+
+    public
 
     public Seasons getCurrentSeason() {
         return currentSeason;

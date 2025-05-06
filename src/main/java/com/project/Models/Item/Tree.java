@@ -1,4 +1,15 @@
 package com.project.Models.Item;
 
-public class Tree implements Item {
+import com.project.Models.Time.ObserveTime;
+
+public class Tree implements Item, ObserveTime {
+    @Override
+    public void passByHour() {
+
+    }
+
+    @Override
+    public void passByDay() {
+
+    }
 }

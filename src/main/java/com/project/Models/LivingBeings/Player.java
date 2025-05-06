@@ -185,4 +185,14 @@ public class Player extends Person {
         this.y = y;
         currentGame.getMap().getBlocks()[x][y] = null;
     }
+
+    @Override
+    public void passByHour() {
+
+    }
+
+    @Override
+    public void passByDay() {
+
+    }
 }
