@@ -1,6 +1,7 @@
 package com.project.Controllers;
 
 
+import com.google.gson.Gson;
 import com.project.Models.App;
 import com.project.Models.Enums.LoginMenuCommands;
 import com.project.Models.Enums.Menu;
@@ -8,9 +9,7 @@ import com.project.Models.Enums.RegisterMenuCommands;
 import com.project.Models.LivingBeings.Player;
 import com.project.Models.Result;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.regex.Matcher;
@@ -41,9 +40,21 @@ public class LoginMenuController {
         stayLoggedIn = stayLoggedIn.trim();
         boolean stayLoggedInCheck = stayLoggedIn.equals("-stay logged in");
 
+        File playerData = new File("Data/" + username + "/PlayerInfo.json");
+        if (!playerData.exists())
+            return new Result(false, "Username doesn't exist");
+
         Player targetPlayer = App.searchPlayer(username);
         if (targetPlayer == null)
-            return new Result(false, "Username doesn't exist");
+            try {
+                FileReader fileReader = new FileReader("Data/" + username + "/PlayerInfo.json");
+                Player loadPlayer = new Gson().fromJson(fileReader, Player.class);
+                App.addPlayer(loadPlayer);
+                targetPlayer = loadPlayer;
+                fileReader.close();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         if (!password.equals(targetPlayer.getPassword()))
             return new Result(false, "Wrong password");
 
