@@ -12,8 +12,6 @@ public class Time {
     private int currentHour = 9;
     private final int LengthOfSeason = 28;
 
-    public
-
     public Seasons getCurrentSeason() {
         return currentSeason;
     }

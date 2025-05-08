@@ -46,7 +46,7 @@ public class RegisterMenu implements AppMenu {
             System.out.println(temp);
             printMenuInfo = temp.isSuccessfully();
         }else if (RegisterMenuCommands.exit.getMatcher(command).find())
-            System.out.println(controller.exit());
+            System.out.print(controller.exit());
         else
             System.out.println("Invalid command");
     }
