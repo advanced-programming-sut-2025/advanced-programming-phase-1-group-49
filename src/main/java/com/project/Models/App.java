@@ -43,6 +43,7 @@ public class App {
     // add
 
     public static void addPlayer(Player player) {
+        System.out.println("What the fuck");
         playerList.add(player);
     }
 
@@ -60,9 +61,20 @@ public class App {
     }
 
     public static Player searchPlayerEmail(String email) {
-        for (Player player : playerList)
+        for (Player player : playerList) {
+            System.out.println(player.getEmail());
             if (player.getEmail().equals(email))
                 return player;
+        }
         return null;
+    }
+
+    // debug methods
+
+    public static void printPlayers() {
+        for (Player player : playerList) {
+            System.out.println(player.getUsername());
+            System.out.println(player.getEmail());
+        }
     }
 }

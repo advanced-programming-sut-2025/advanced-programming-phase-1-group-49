@@ -123,6 +123,7 @@ public class RegisterMenuController {
         if (!RegisterMenuCommands.EMAIL_PATTERN.getMatcher(emailString).find())
             return new Result(false, "Invalid email. Try Again.\n");
         // check email exists
+        System.out.println(emailString);
         if (App.searchPlayerEmail(emailString) != null)
             return new Result(false, "User with this email already exists.\n");
         // check Nick Name
@@ -131,6 +132,7 @@ public class RegisterMenuController {
         // check Gender
         if (!RegisterMenuCommands.GENDER_PATTERN.getMatcher(genderString).find())
             return new Result(false, "Invalid gender. Try Again.\n");
+
         // Save Data :
         username = usernameString;
         nickname = nicknameString;
@@ -193,6 +195,7 @@ public class RegisterMenuController {
     }
 
     public Result securityQuestion(String command) {
+        System.out.println("Enter Security Question");
         command = command.trim();
         Matcher matcher;
         if (!(matcher = RegisterMenuCommands.pickQuestion.getMatcher(command)).find())
@@ -218,12 +221,12 @@ public class RegisterMenuController {
         App.addPlayer(player);
         resetFields();
 
-        File folder = new File("Game/" + player.getUsername());
+        File folder = new File("Data/" + player.getUsername());
         if (!folder.exists())
             if (!folder.mkdir())
                 return new Result(false, "SomeThing is wrong while create Folder for player.");
 
-        try (FileWriter writer = new FileWriter("Game/" + player.getUsername() + "/" + player.getUsername() + ".json")) {
+        try (FileWriter writer = new FileWriter("Data/" + player.getUsername() + "/PlayerInfo.json")) {
             gson.toJson(player, writer);
             System.out.println("Player Saved.");
         } catch (IOException e) {
