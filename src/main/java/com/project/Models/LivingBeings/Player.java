@@ -30,7 +30,6 @@ public class Player extends Person {
         this.email = email;
         this.gender = gender;
         this.securityQuestion = securityQuestion;
-        System.out.println("Player " + username + " has been created");
     }
 
     // getter
