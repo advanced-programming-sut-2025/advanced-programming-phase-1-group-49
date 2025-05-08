@@ -29,7 +29,7 @@ public class ArtisanDirector {
 
     public Artisan buildCheese() {
         return (Artisan) new ArtisanBuilder("cheese",
-                "It's your basic cheese.",
+                "It's your Basic cheese.",
                 100,
                 3,
                 230,
@@ -38,7 +38,7 @@ public class ArtisanDirector {
 
     public Artisan buildLargeCheese() {
         return (Artisan) new ArtisanBuilder("large cheese",
-                "It's your basic cheese made from large milk.",
+                "It's your Basic cheese made from large milk.",
                 100,
                 3,
                 345,

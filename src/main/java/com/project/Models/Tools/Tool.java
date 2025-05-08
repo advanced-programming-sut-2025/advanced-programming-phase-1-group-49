@@ -8,6 +8,7 @@ public class Tool {
     int energy;
     int capacity = 0;
     ToolLevel level;
+    int cost = 0;
 
 
     boolean digging = false;
@@ -196,5 +197,14 @@ public class Tool {
 
     public void toolBehaviour() {
 
+    }
+
+    public int getCost() {
+        return cost;
+    }
+
+    public Tool setCost(int cost) {
+        this.cost = cost;
+        return this;
     }
 }
