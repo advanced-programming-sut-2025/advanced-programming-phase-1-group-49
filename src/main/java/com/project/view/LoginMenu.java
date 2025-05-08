@@ -45,7 +45,7 @@ public class LoginMenu implements AppMenu {
             System.out.println(temp);
             printMenuInfo = temp.isSuccessfully();
         } else if (LoginMenuCommands.exit.getMatcher(command).find())
-            System.out.println(controller.exit());
+            System.out.print(controller.exit());
         else if (LoginMenuCommands.ShowCurrentMenu.getMatcher(command).find())
             System.out.println(controller.showCurrentMenu());
         else

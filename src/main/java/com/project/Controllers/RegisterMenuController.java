@@ -1,5 +1,6 @@
 package com.project.Controllers;
 
+import com.google.gson.Gson;
 import com.project.Models.App;
 import com.project.Models.Enums.Gender;
 import com.project.Models.Enums.Menu;
@@ -7,6 +8,9 @@ import com.project.Models.Enums.RegisterMenuCommands;
 import com.project.Models.LivingBeings.Player;
 import com.project.Models.Result;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -23,6 +27,8 @@ public class RegisterMenuController {
     private String nickname;
     private String email;
     private Gender gender;
+
+    private Gson gson = new Gson();
 
     private final ArrayList<String> SecurityQuestions = new ArrayList<>(Arrays.asList(
             "1. What was the name of your first pet?",
@@ -212,14 +218,23 @@ public class RegisterMenuController {
         App.addPlayer(player);
         resetFields();
 
+        File folder = new File("Game/" + player.getUsername());
+        if (!folder.exists())
+            if (!folder.mkdir())
+                return new Result(false, "SomeThing is wrong while create Folder for player.");
+
+        try (FileWriter writer = new FileWriter("Game/" + player.getUsername() + "/" + player.getUsername() + ".json")) {
+            gson.toJson(player, writer);
+            System.out.println("Player Saved.");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
         return new Result(true, String.format("""
-                        User Created Successfully. user info :
-                        username = %s
-                        nickname = %s
-                        email = %s
-                        gender = %s
-                        password = %s""", player.getUsername(), player.getNickname(), player.getEmail(),
-                player.getGender().toString(), player.getPassword()));
+                User Created Successfully. user info :
+                nickname = %s(%s)
+                email = %s
+                ===========================""", player.getNickname(), player.getUsername(), player.getEmail()));
     }
 
     public Result switchMenu(String menuString) {
@@ -236,6 +251,14 @@ public class RegisterMenuController {
         return new Result(true, App.getCurrentMenu().toString());
     }
 
+    public Result exit() {
+        // save data
+
+        App.setCurrentMenu(Menu.ExitMenu);
+
+        return new Result(true, "");
+    }
+
     // getter
 
     public boolean isCheckPassword() {
@@ -248,13 +271,5 @@ public class RegisterMenuController {
 
     public boolean isSecurityQ() {
         return securityQ;
-    }
-
-    public Result exit() {
-        // save data
-
-        App.setCurrentMenu(Menu.ExitMenu);
-
-        return new Result(true, "");
     }
 }
