@@ -1,4 +1,1 @@
-register -u test1 -p Test!234 Test!234 -n test -e test1@gmail.com -g male
-pick question -q 3 -a 3 -c 3
-register -u test2 -p Test!234 Test!234 -n test -e test2@gmail.com -g male
-
+test1
