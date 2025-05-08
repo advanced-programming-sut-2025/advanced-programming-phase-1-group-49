@@ -8,5 +8,4 @@ public enum Block {
     greenhouse,
     greenhouseWall,
     rock,
-
 }

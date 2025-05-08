@@ -8,6 +8,9 @@ import com.project.Models.Enums.RegisterMenuCommands;
 import com.project.Models.LivingBeings.Player;
 import com.project.Models.Result;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.regex.Matcher;
@@ -36,6 +39,7 @@ public class LoginMenuController {
         username = username.trim();
         password = password.trim();
         stayLoggedIn = stayLoggedIn.trim();
+        boolean stayLoggedInCheck = stayLoggedIn.equals("-stay logged in");
 
         Player targetPlayer = App.searchPlayer(username);
         if (targetPlayer == null)
@@ -43,7 +47,12 @@ public class LoginMenuController {
         if (!password.equals(targetPlayer.getPassword()))
             return new Result(false, "Wrong password");
 
-        // stay logged in
+        if (stayLoggedInCheck)
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter("Data/AppData.txt"))) {
+                writer.write(targetPlayer.getUsername());
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
 
         App.setCurrentPlayer(targetPlayer);
         App.setCurrentMenu(Menu.MainMenu);
