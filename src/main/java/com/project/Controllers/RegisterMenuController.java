@@ -28,7 +28,7 @@ public class RegisterMenuController {
     private String email;
     private Gender gender;
 
-    private Gson gson = new Gson();
+    private final Gson gson = new Gson();
 
     private final ArrayList<String> SecurityQuestions = new ArrayList<>(Arrays.asList(
             "1. What was the name of your first pet?",
