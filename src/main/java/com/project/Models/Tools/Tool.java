@@ -7,6 +7,8 @@ public class Tool {
     String name;
     int energy;
     int capacity = 0;
+    ToolLevel level;
+
 
     boolean digging = false;
     boolean breakStone = false;
@@ -28,6 +30,15 @@ public class Tool {
 
     public Tool setOwner(String owner) {
         this.owner = owner;
+        return this;
+    }
+
+    public ToolLevel getLevel() {
+        return level;
+    }
+
+    public Tool setLevel(ToolLevel level) {
+        this.level = level;
         return this;
     }
 
