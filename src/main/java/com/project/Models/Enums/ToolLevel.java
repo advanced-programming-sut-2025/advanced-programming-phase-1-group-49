@@ -1,11 +1,18 @@
 package com.project.Models.Enums;
 
 public enum ToolLevel {
-    basic(5, 0),
+    Basic(5, 0),
     Cu(4, 1),
     Fe(3, 2),
     Au(2, 3),
-    Ir(1, 4);
+    Ir(1, 4),
+    TrainingFP(8, 0),
+    BambooFP(8, 1),
+    FiberGlassFP(6, 2),
+    IrFP(4, 3),
+    Scythe(2, 0),
+    ShearOrMilk(4, 0),
+    ;
 
     private final int energy;
     private final int level;

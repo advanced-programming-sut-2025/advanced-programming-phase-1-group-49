@@ -1,7 +1,7 @@
 package com.project.Models.Enums.machines;
 
 public enum CheesePress {
-    CHEESE("Cheese", "It's your basic cheese.", 100.0, "3 Hours", "Milk/Large Milk", new int[]{230, 345}),
+    CHEESE("Cheese", "It's your Basic cheese.", 100.0, "3 Hours", "Milk/Large Milk", new int[]{230, 345}),
     GOAT_CHEESE("Goat Cheese", "Soft cheese made from goat's milk.", 100.0, "3 Hours", "Goat Milk/Large Goat Milk", new int[]{400, 600});
 
     private final String name;
