@@ -12,6 +12,11 @@ public enum ToolLevel {
     IrFP(4, 3),
     Scythe(2, 0),
     ShearOrMilk(4, 0),
+    BasicCan(5, 40),
+    CuCan(4, 55),
+    FeCan(3, 70),
+    AuCan(2, 85),
+    IrCan(1, 100),
     ;
 
     private final int energy;
