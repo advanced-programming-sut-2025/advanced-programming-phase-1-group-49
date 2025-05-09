@@ -123,7 +123,6 @@ public class RegisterMenuController {
         if (!RegisterMenuCommands.EMAIL_PATTERN.getMatcher(emailString).find())
             return new Result(false, "Invalid email. Try Again.\n");
         // check email exists
-        System.out.println(emailString);
         if (App.searchPlayerEmail(emailString) != null)
             return new Result(false, "User with this email already exists.\n");
         // check Nick Name
@@ -228,7 +227,6 @@ public class RegisterMenuController {
 
         try (FileWriter writer = new FileWriter("Data/" + player.getUsername() + "/PlayerInfo.json")) {
             gson.toJson(player, writer);
-            System.out.println("Player Saved.");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

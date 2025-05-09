@@ -8,4 +8,9 @@ public class Shop implements Building {
     public inventory getInventory() {
         return inventory;
     }
+
+    @Override
+    public String tooString() {
+        return "";
+    }
 }

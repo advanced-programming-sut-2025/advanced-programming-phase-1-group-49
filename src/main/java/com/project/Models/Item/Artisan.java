@@ -30,4 +30,9 @@ public class Artisan implements Item {
     public void passByDay() {
 
     }
+
+    @Override
+    public String tooString() {
+        return "";
+    }
 }

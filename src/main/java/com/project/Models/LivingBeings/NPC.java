@@ -18,6 +18,11 @@ public class NPC extends Person {
 
     }
 
+    @Override
+    public String tooString() {
+        return "";
+    }
+
     //
 
 }

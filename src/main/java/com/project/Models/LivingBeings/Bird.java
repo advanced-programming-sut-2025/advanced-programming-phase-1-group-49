@@ -10,4 +10,9 @@ public class Bird extends Animal {
     public void passByDay() {
 
     }
+
+    @Override
+    public String tooString() {
+        return "";
+    }
 }

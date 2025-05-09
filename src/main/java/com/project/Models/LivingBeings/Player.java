@@ -1,6 +1,5 @@
 package com.project.Models.LivingBeings;
 
-import com.project.Models.Enums.Block;
 import com.project.Models.Enums.Gender;
 import com.project.Models.Game;
 import com.project.Models.inventory;
@@ -16,7 +15,8 @@ public class Player extends Person {
     private Integer sightseeingXP = 0;
     private Integer fishingXP = 0;
     private Integer Energy = 100;
-    private Game currentGame = null;
+    transient private Game currentGame = null;
+    private int gameID = 0;
     private final inventory inventory = new inventory();
     private int x;
     private int y;
@@ -85,6 +85,10 @@ public class Player extends Person {
         return securityQuestion;
     }
 
+    public int getGameID() {
+        return gameID;
+    }
+
     // setter
 
     public void setUsername(String username) {
@@ -139,6 +143,10 @@ public class Player extends Person {
         this.securityQuestion = securityQuestion;
     }
 
+    public void setGameID(int gameID) {
+        this.gameID = gameID;
+    }
+
     // increase
 
     public Integer increaseMiningXP() {
@@ -181,7 +189,7 @@ public class Player extends Person {
         currentGame.getMap().getBlocks()[this.x][this.y].remove(this);
         this.x = x;
         this.y = y;
-        currentGame.getMap().getBlocks()[x][y].set(currentGame.getMap().getBlocks()[x][y].size(), this);
+        currentGame.getMap().getBlocks()[x][y].set(currentGame.getMap().getBlocks()[x][y].size() - 1, this);
     }
 
     @Override

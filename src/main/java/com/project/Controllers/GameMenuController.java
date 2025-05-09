@@ -1,6 +1,7 @@
 package com.project.Controllers;
 
 import com.google.gson.Gson;
+import com.project.Builders.GameBuilder;
 import com.project.Models.App;
 import com.project.Models.Enums.Block;
 import com.project.Models.Game;
@@ -15,17 +16,22 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class GameMenuController {
-    final String RESET = "\u001B[0m";
-    final String RED = "\u001B[31m";
-    final String GREEN = "\u001B[32m";
-    final String YELLOW = "\u001B[33m";
-    final String BLUE = "\u001B[34m";
+    private boolean createNewGame = false;
+
+    private GameBuilder builder;
+    private final Gson gson = new Gson();
+
+    private void resetFields() {
+        createNewGame = false;
+        builder = null;
+    }
 
     public Result newGame(String Player1, String Player2, String Player3) {
+        resetFields();
         Player1 = Player1.trim();
         Player2 = Player2.trim();
         Player3 = Player3.trim();
-        ArrayList<Player> players = new ArrayList<>();
+        final ArrayList<Player> players = new ArrayList<>();
         final ArrayList<String> playerUsernames = new ArrayList<>(Arrays.asList(Player1, Player2, Player3));
 
         for (String playerUserName : playerUsernames) {
@@ -45,24 +51,41 @@ public class GameMenuController {
             }
             if (App.getPlayer().equals(newPlayer))
                 return new Result(false, "You are already in a game.");
+//            if (newPlayer.getGameID() != 0)
+//                return new Result(false, "Player is already in a game.");
             players.add(newPlayer);
         }
 
         if (players.size() < 3)
             return new Result(false, "Not enough players found");
-        Game newGame = new Game(players.get(0), players.get(1), players.get(2));
-        App.addGame(newGame);
-        App.setGame(newGame);
-        App.getPlayer().setGame(newGame);
-        App.getPlayer().walk(5, 84);
 
-        return new Result(true, "game created");
+        builder = new GameBuilder();
+        builder.player1(App.getPlayer());
+        builder.player2(players.get(0));
+        builder.player3(players.get(1));
+        builder.player4(players.get(2));
+        createNewGame = true;
+
+        return new Result(true, "");
     }
 
     public Result selectMap(String idString) {
-        // select Map
+        idString = idString.trim();
+        int id;
 
-        return new Result(false, "map selected");
+        try {
+            id = Integer.parseInt(idString);
+        } catch (NumberFormatException e) {
+            return new Result(false, "Not a valid map id");
+        }
+
+        if (id > 4 || id < 1)
+            return new Result(false, "Not a valid map id");
+
+        if ()
+            game.setMainPlayer(players.get(players.indexOf(game.getMainPlayer()) + 1));
+
+        return new Result(true, "map selected");
     }
 
     public Result exitGame() {
@@ -81,13 +104,19 @@ public class GameMenuController {
         return new Result(true, "load game");
     }
 
+    // getter
+
+    public boolean isCreateNewGame() {
+        return createNewGame;
+    }
+
     // Debug Method :
 
     public void printMap() {
         for (ArrayList<GameObject>[] i : App.getGame().getMap().getBlocks()) {
             for (ArrayList<GameObject> b : i) {
                 GameObject gameObject = b.get(b.size() - 1);
-                System.out.println(gameObject);
+                System.out.print(gameObject.tooString());
             }
             System.out.println();
         }

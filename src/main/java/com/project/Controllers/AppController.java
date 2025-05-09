@@ -9,7 +9,9 @@ import java.io.*;
 import java.util.Scanner;
 
 public class AppController {
-    public void loadData() {
+    private static final Gson gson = new Gson();
+
+    public static void loadData() {
         File folder = new File("Data");
         if (!folder.exists() && folder.mkdir() || !new File("Data/AppData.txt").exists())
             createAppDataFile();
@@ -32,9 +34,22 @@ public class AppController {
         }
     }
 
-    private void createAppDataFile() {
+    private static void createAppDataFile() {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("Data/AppData.txt"))) {
             writer.write("");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static void saveData() {
+        for (Player i : App.getPlayerList())
+            savePlayer(i);
+    }
+
+    public static void savePlayer(Player player) {
+        try (FileWriter writer = new FileWriter("Data/" + player.getUsername() + "/PlayerInfo.json")) {
+            gson.toJson(player, writer);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

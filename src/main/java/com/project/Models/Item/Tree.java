@@ -11,4 +11,9 @@ public class Tree implements Item {
     public void passByDay() {
 
     }
+
+    @Override
+    public String tooString() {
+        return "";
+    }
 }

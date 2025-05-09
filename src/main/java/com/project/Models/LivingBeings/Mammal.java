@@ -10,4 +10,9 @@ public class Mammal extends Animal {
     public void passByDay() {
 
     }
+
+    @Override
+    public String tooString() {
+        return "";
+    }
 }

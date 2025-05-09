@@ -14,6 +14,10 @@ public class App {
 
     // getter
 
+    public static ArrayList<Player> getPlayerList() {
+        return playerList;
+    }
+
     public static Player getPlayer() {
         return currentPlayer;
     }

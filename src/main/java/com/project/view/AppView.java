@@ -7,13 +7,13 @@ import com.project.Models.Enums.Menu;
 import java.util.Scanner;
 
 public class AppView {
-    private final AppController controller = new AppController();
 
     public void run() {
-        controller.loadData();
+        AppController.loadData();
         Scanner scanner = new Scanner(System.in);
         do {
             App.getCurrentMenu().getMenu().check(scanner);
         } while (App.getCurrentMenu() != Menu.ExitMenu);
+        AppController.saveData();
     }
 }
