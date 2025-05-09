@@ -1,8 +1,10 @@
 package com.project.Models.Tools;
 
 import com.project.Models.Enums.ToolLevel;
+import com.project.Models.Map.GameObject;
+import com.project.Models.Time.ObserveTime;
 
-public class Tool {
+public class Tool implements ObserveTime, GameObject {
     String owner;
     String name;
     int energy;
@@ -206,5 +208,15 @@ public class Tool {
     public Tool setCost(int cost) {
         this.cost = cost;
         return this;
+    }
+
+    @Override
+    public void passByHour() {
+
+    }
+
+    @Override
+    public void passByDay() {
+
     }
 }
