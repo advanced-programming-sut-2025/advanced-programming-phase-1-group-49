@@ -10,4 +10,12 @@ public class MainMenuController {
         App.setCurrentPlayer(null);
         return new Result(true, "You are logged out");
     }
+
+    public Result switchMenu(String menuString) {
+        menuString = menuString.trim();
+        switch (menuString){
+            case ""
+        }
+        return new Result(true, "");
+    }
 }
