@@ -1,5 +1,6 @@
 package com.project.Controllers.PlayerController;
 
+import com.project.Controllers.GameMenuController;
 import com.project.Models.App;
 import com.project.Models.Enums.Block;
 import com.project.Models.LivingBeings.Player;
@@ -44,26 +45,6 @@ public class ActivityController {
 
     }
 
-    public void printMap() {
-        for (ArrayList<GameObject>[] i : App.getGame().getMap().getBlocks()) {
-            for (ArrayList<GameObject> b : i) {
-                GameObject gameObject = b.get(b.size() - 1);
-                if (gameObject.equals(Block.basic)) {
-                    System.out.print(" ");
-                } else if (gameObject.equals(Block.water)) {
-                    System.out.print(BLUE + "█" + RESET);
-                } else if (gameObject.equals(Block.homeWall) || gameObject.equals(Block.greenhouseWall)) {
-                    System.out.print(RED + "█" + RESET);
-                } else if (gameObject.equals(Block.home) || gameObject.equals(Block.greenhouse)) {
-                    System.out.print(GREEN + "█" + RESET);
-                } else {
-                    System.out.print("*");
-                }
-            }
-            System.out.println();
-        }
-    }
-
     public void gameInfo() {
         System.out.println("------------Game Info:------------");
         for (Player i : App.getGame().getPlayers()) {
@@ -73,5 +54,9 @@ public class ActivityController {
             System.out.println();
         }
         System.out.println("------------------------");
+    }
+
+    public void printMap() {
+        (new GameMenuController()).printMap();
     }
 }

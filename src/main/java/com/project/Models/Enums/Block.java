@@ -10,4 +10,10 @@ public enum Block implements GameObject {
     greenhouse,
     greenhouseWall,
     rock,
+    ;
+
+    @Override
+    public String tooString() {
+        return "";
+    }
 }

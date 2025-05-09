@@ -20,7 +20,6 @@ public class Player extends Person {
     private final inventory inventory = new inventory();
     private int x;
     private int y;
-    private Block previousBlock = Block.basic;
     private String securityQuestion = null;
 
     public Player(String username, String password, String nickname, String email, Gender gender, String securityQuestion) {
@@ -179,11 +178,10 @@ public class Player extends Person {
     //
 
     public void walk(int x, int y) {
-//        previousBlock = currentGame.getMap().getBlocks()[x][y];
-//        currentGame.getMap().getBlocks()[this.x][this.y] = previousBlock;
+        currentGame.getMap().getBlocks()[this.x][this.y].remove(this);
         this.x = x;
         this.y = y;
-        currentGame.getMap().getBlocks()[x][y] = null;
+        currentGame.getMap().getBlocks()[x][y].set(currentGame.getMap().getBlocks()[x][y].size(), this);
     }
 
     @Override
@@ -194,5 +192,10 @@ public class Player extends Person {
     @Override
     public void passByDay() {
 
+    }
+
+    @Override
+    public String tooString() {
+        return "Y";
     }
 }
