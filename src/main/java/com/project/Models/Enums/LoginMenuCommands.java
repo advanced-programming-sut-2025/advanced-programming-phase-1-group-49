@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 public enum LoginMenuCommands implements Commands {
     login("^\\s*login\\s+-u\\s+(?<username>\\S*)\\s+-p\\s+(?<password>\\S*)" +
             "((\\s+-stay logged in)?)\\s*$"),
-    switchMenu("^\\s*menu\\s+enter\\s+(?<menu>.\\S+)\\s*$"),
+    switchMenu("^\\s*menu\\s+enter\\s+(?<menu>RegisterMenu)\\s*$"),
     ShowCurrentMenu("^\\s*show\\s+current\\s+menu\\s*$"),
     exit("^\\s*exit\\s*$"),
     forgetPassword("^\\s*forget\\s+password\\s+-u\\s+(?<username>\\S*)\\s*$"),

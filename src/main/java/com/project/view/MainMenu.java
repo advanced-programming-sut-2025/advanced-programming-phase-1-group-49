@@ -17,8 +17,7 @@ public class MainMenu implements AppMenu {
             System.out.println("""
                     >>> Main Menu :
                     - logout
-                    - menu enter <menu>
-                    """);
+                    - menu enter <menu>""");
             printMenuInfo = false;
         }
         String command = scanner.nextLine();
@@ -26,9 +25,8 @@ public class MainMenu implements AppMenu {
         if (MainMenuCommands.logout.getMatcher(command).find())
             System.out.println(controller.logout());
         else if ((matcher = MainMenuCommands.switchMenu.getMatcher(command)).find()) {
-            Result temp = controller.switchMenu(matcher.group(1));
-            System.out.print(temp);
-            printMenuInfo = temp.isSuccessfully();
+            System.out.print(controller.switchMenu(matcher.group(1)));
+            printMenuInfo = true;
         } else
             System.out.println("Invalid command");
     }

@@ -14,13 +14,11 @@ public class GameMenu implements AppMenu {
     public void check(Scanner scanner) {
         if (printMenuInfo) {
             System.out.println("""
-                    
                     >>> Game Menu Commands:
                     - new game -u <username1> <username2> <username3>
                     - menu enter <menu>
                     - show current menu
-                    - exit
-                    """);
+                    - exit""");
             printMenuInfo = false;
         }
 

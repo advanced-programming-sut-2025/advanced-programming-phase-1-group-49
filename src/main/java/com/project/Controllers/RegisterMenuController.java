@@ -123,7 +123,6 @@ public class RegisterMenuController {
         if (!RegisterMenuCommands.EMAIL_PATTERN.getMatcher(emailString).find())
             return new Result(false, "Invalid email. Try Again.\n");
         // check email exists
-        System.out.println(emailString);
         if (App.searchPlayerEmail(emailString) != null)
             return new Result(false, "User with this email already exists.\n");
         // check Nick Name
@@ -240,14 +239,10 @@ public class RegisterMenuController {
                 ===========================""", player.getNickname(), player.getUsername(), player.getEmail()));
     }
 
-    public Result switchMenu(String menuString) {
-        if (!menuString.trim().equals("LoginMenu"))
-            return new Result(false, "You are in Register and can go to LoginMenu only.");
-
+    public Result switchMenu() {
         App.setCurrentMenu(Menu.LoginMenu);
         resetFields();
-
-        return new Result(true, "switch menu successful. current menu : " + menuString);
+        return new Result(true, "");
     }
 
     public Result showCurrentMenu() {

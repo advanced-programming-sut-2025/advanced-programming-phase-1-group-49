@@ -82,10 +82,7 @@ public class LoginMenuController {
         return new Result(true, "");
     }
 
-    public Result switchMenu(String menu) {
-        menu = menu.trim();
-        if (!menu.equals("RegisterMenu"))
-            return new Result(false, "Unavailable menu");
+    public Result switchMenu() {
         App.setCurrentMenu(Menu.RegisterMenu);
         resetFields();
         return new Result(true, "");
