@@ -20,7 +20,9 @@ public class MainMenu implements AppMenu {
         Matcher matcher;
         if (MainMenuCommands.logout.getMatcher(command).find())
             System.out.println(controller.logout());
+        else if ((matcher = MainMenuCommands.switchMenu.getMatcher(command)).find())
+            System.out.println(controller.switchMenu(matcher.group(1)));
         else
-            System.out.println("Invalid command");
+        System.out.println("Invalid command");
     }
 }
