@@ -1,6 +1,6 @@
 package com.project.Models.Enums;
 
-public enum Foraging {
+public enum ForagingTypes {
     Quartz(25),
     EarthCrystal(50),
     FrozenTear(75),
@@ -21,9 +21,10 @@ public enum Foraging {
 
     private final Integer price;
 
-    Foraging(Integer price) {
+    ForagingTypes(Integer price) {
         this.price = price;
     }
+
 
     public Integer getPrice() {
         return price;

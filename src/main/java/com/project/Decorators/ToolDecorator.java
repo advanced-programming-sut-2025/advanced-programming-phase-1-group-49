@@ -12,6 +12,7 @@ public class ToolDecorator extends Tool {
     }
     public Tool upgrade() {
         ToolLevel level = tool.getLevel();
+
         switch (level) {
             case Basic :
                 tool.setLevel(Cu);
@@ -60,6 +61,8 @@ public class ToolDecorator extends Tool {
             default :
                 break;
         }
+        tool.setEnergy(tool.getLevel().getEnergy());
+
         return tool;
     }
 }
