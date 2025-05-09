@@ -4,6 +4,7 @@ public class Foraging implements Item {
 
     private String name;
     private String source;
+    private int growthStage;
     private int growthTime; // days until harvest
     private boolean regrowable;
     private int regrowInterval; // days between harvests if regrowable
@@ -12,20 +13,9 @@ public class Foraging implements Item {
     private int energyGain;
     private String season; // e.g., "Spring", "Summer", etc.
     private boolean canBecomeGiant;
+    private int quality = 1;
 
-    public Foraging(String name, String source, int growthTime, boolean regrowable, int regrowInterval,
-                    int baseSellPrice, boolean edible, int energyGain, String season, boolean canBecomeGiant) {
-        this.name = name;
-        this.source = source;
-        this.growthTime = growthTime;
-        this.regrowable = regrowable;
-        this.regrowInterval = regrowInterval;
-        this.baseSellPrice = baseSellPrice;
-        this.edible = edible;
-        this.energyGain = energyGain;
-        this.season = season;
-        this.canBecomeGiant = canBecomeGiant;
-    }
+    public Foraging() { }
 
     @Override
     public void passByHour() {
@@ -37,7 +27,69 @@ public class Foraging implements Item {
         // Implementation if needed
     }
 
-    // Getters and Setters
+    // Fluent Setters
+
+    public Foraging setName(String name) {
+        this.name = name;
+        return this;
+    }
+
+    public Foraging setSource(String source) {
+        this.source = source;
+        return this;
+    }
+
+    public Foraging setGrowthStage(int growthStage) {
+        this.growthStage = growthStage;
+        return this;
+    }
+
+    public Foraging setGrowthTime(int growthTime) {
+        this.growthTime = growthTime;
+        return this;
+    }
+
+    public Foraging setRegrowable(boolean regrowable) {
+        this.regrowable = regrowable;
+        return this;
+    }
+
+    public Foraging setRegrowInterval(int regrowInterval) {
+        this.regrowInterval = regrowInterval;
+        return this;
+    }
+
+    public Foraging setBaseSellPrice(int baseSellPrice) {
+        this.baseSellPrice = baseSellPrice;
+        return this;
+    }
+
+    public Foraging setEdible(boolean edible) {
+        this.edible = edible;
+        return this;
+    }
+
+    public Foraging setEnergyGain(int energyGain) {
+        this.energyGain = energyGain;
+        return this;
+    }
+
+    public Foraging setSeason(String season) {
+        this.season = season;
+        return this;
+    }
+
+    public Foraging setCanBecomeGiant(boolean canBecomeGiant) {
+        this.canBecomeGiant = canBecomeGiant;
+        return this;
+    }
+
+    public Foraging setQuality(int quality) {
+        this.quality = quality;
+        return this;
+    }
+
+    // Getters
 
     public String getName() {
         return name;
@@ -45,6 +97,10 @@ public class Foraging implements Item {
 
     public String getSource() {
         return source;
+    }
+
+    public int getGrowthStage() {
+        return growthStage;
     }
 
     public int getGrowthTime() {
@@ -75,7 +131,11 @@ public class Foraging implements Item {
         return season;
     }
 
-    public boolean canBecomeGiant() {
+    public boolean isCanBecomeGiant() {
         return canBecomeGiant;
+    }
+
+    public int getQuality() {
+        return quality;
     }
 }
