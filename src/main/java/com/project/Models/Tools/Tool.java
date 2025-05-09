@@ -6,7 +6,7 @@ public class Tool {
     String owner;
     String name;
     int energy;
-    int capacity = 0;
+    int complement = 0;
     ToolLevel level;
     int cost = 0;
 
@@ -52,12 +52,12 @@ public class Tool {
         return this;
     }
 
-    public int getCapacity() {
-        return capacity;
+    public int getComplement() {
+        return complement;
     }
 
-    public Tool setCapacity(int capacity) {
-        this.capacity = capacity;
+    public Tool setComplement(int complement) {
+        this.complement = complement;
         return this;
     }
 
