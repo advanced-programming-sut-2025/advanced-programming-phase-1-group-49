@@ -3,7 +3,10 @@ package com.project.Controllers.PlayerController;
 import com.project.Models.App;
 import com.project.Models.Enums.Block;
 import com.project.Models.LivingBeings.Player;
+import com.project.Models.Map.GameObject;
 import com.project.Models.Result;
+
+import java.util.ArrayList;
 
 public class ActivityController {
     final String RESET = "\u001B[0m";
@@ -41,24 +44,21 @@ public class ActivityController {
 
     }
 
-
     public void printMap() {
-        for (Block[] i : App.getGame().getMap().getBlocks()) {
-            for (Block b : i) {
-                if (b == null)
-                    System.out.print("*");
-                if (b == Block.basic)
+        for (ArrayList<GameObject>[] i : App.getGame().getMap().getBlocks()) {
+            for (ArrayList<GameObject> b : i) {
+                GameObject gameObject = b.get(b.size() - 1);
+                if (gameObject.equals(Block.basic)) {
                     System.out.print(" ");
-                if (b == Block.water)
+                } else if (gameObject.equals(Block.water)) {
                     System.out.print(BLUE + "█" + RESET);
-                if (b == Block.homeWall)
+                } else if (gameObject.equals(Block.homeWall) || gameObject.equals(Block.greenhouseWall)) {
                     System.out.print(RED + "█" + RESET);
-                if (b == Block.greenhouseWall)
-                    System.out.print(RED + "█" + RESET);
-                if (b == Block.home)
+                } else if (gameObject.equals(Block.home) || gameObject.equals(Block.greenhouse)) {
                     System.out.print(GREEN + "█" + RESET);
-                if (b == Block.greenhouse)
-                    System.out.print(GREEN + "█" + RESET);
+                } else {
+                    System.out.print("*");
+                }
             }
             System.out.println();
         }

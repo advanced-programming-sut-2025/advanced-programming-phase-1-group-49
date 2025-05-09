@@ -1,6 +1,8 @@
 package com.project.Models.Enums;
 
-public enum Block {
+import com.project.Models.Map.GameObject;
+
+public enum Block implements GameObject {
     basic,
     water,
     home,

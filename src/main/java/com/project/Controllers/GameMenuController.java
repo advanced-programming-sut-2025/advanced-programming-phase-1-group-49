@@ -1,10 +1,18 @@
 package com.project.Controllers;
 
+import com.google.gson.Gson;
 import com.project.Models.App;
 import com.project.Models.Enums.Block;
 import com.project.Models.Game;
 import com.project.Models.LivingBeings.Player;
+import com.project.Models.Map.GameObject;
 import com.project.Models.Result;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class GameMenuController {
     final String RESET = "\u001B[0m";
@@ -17,19 +25,32 @@ public class GameMenuController {
         Player1 = Player1.trim();
         Player2 = Player2.trim();
         Player3 = Player3.trim();
+        ArrayList<Player> players = new ArrayList<>();
+        final ArrayList<String> playerUsernames = new ArrayList<>(Arrays.asList(Player1, Player2, Player3));
 
-        Player player1 = App.searchPlayer(Player1);
-        Player player2 = App.searchPlayer(Player2);
-        Player player3 = App.searchPlayer(Player3);
+        for (String playerUserName : playerUsernames) {
+            Player newPlayer = App.searchPlayer(playerUserName);
+            if (newPlayer == null) {
+                File player = new File("Data/" + playerUserName + "/PlayerInfo.json");
+                if (player.exists())
+                    try {
+                        FileReader reader = new FileReader(player);
+                        newPlayer = new Gson().fromJson(reader, Player.class);
+                        App.addPlayer(newPlayer);
+                    } catch (FileNotFoundException e) {
+                        throw new RuntimeException(e);
+                    }
+                else
+                    return new Result(false, "No Player Found with Name " + playerUserName);
+            }
+            if (App.getPlayer().equals(newPlayer))
+                return new Result(false, "You are already in a game.");
+            players.add(newPlayer);
+        }
 
-        if (player1 == null)
-            return new Result(false, "No Player Found with Name " + Player1);
-        if (player2 == null)
-            return new Result(false, "No Player Found with Name " + Player2);
-        if (player3 == null)
-            return new Result(false, "No Player Found with Name " + Player3);
-
-        Game newGame = new Game(player1, player2, player3);
+        if (players.size() < 3)
+            return new Result(false, "Not enough players found");
+        Game newGame = new Game(players.get(0), players.get(1), players.get(2));
         App.addGame(newGame);
         App.setGame(newGame);
         App.getPlayer().setGame(newGame);
@@ -63,22 +84,20 @@ public class GameMenuController {
     // Debug Method :
 
     public void printMap() {
-        for (Block[] i : App.getGame().getMap().getBlocks()) {
-            for (Block b : i) {
-                if (b == null)
-                    System.out.print("*");
-                if (b == Block.basic)
+        for (ArrayList<GameObject>[] i : App.getGame().getMap().getBlocks()) {
+            for (ArrayList<GameObject> b : i) {
+                GameObject gameObject = b.get(b.size() - 1);
+                if (gameObject.equals(Block.basic)) {
                     System.out.print(" ");
-                if (b == Block.water)
+                } else if (gameObject.equals(Block.water)) {
                     System.out.print(BLUE + "█" + RESET);
-                if (b == Block.homeWall)
+                } else if (gameObject.equals(Block.homeWall) || gameObject.equals(Block.greenhouseWall)) {
                     System.out.print(RED + "█" + RESET);
-                if (b == Block.greenhouseWall)
-                    System.out.print(RED + "█" + RESET);
-                if (b == Block.home)
+                } else if (gameObject.equals(Block.home) || gameObject.equals(Block.greenhouse)) {
                     System.out.print(GREEN + "█" + RESET);
-                if (b == Block.greenhouse)
-                    System.out.print(GREEN + "█" + RESET);
+                } else {
+                    System.out.print("*");
+                }
             }
             System.out.println();
         }

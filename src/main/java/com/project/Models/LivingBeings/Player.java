@@ -179,8 +179,8 @@ public class Player extends Person {
     //
 
     public void walk(int x, int y) {
-        previousBlock = currentGame.getMap().getBlocks()[x][y];
-        currentGame.getMap().getBlocks()[this.x][this.y] = previousBlock;
+//        previousBlock = currentGame.getMap().getBlocks()[x][y];
+//        currentGame.getMap().getBlocks()[this.x][this.y] = previousBlock;
         this.x = x;
         this.y = y;
         currentGame.getMap().getBlocks()[x][y] = null;
