@@ -17,7 +17,7 @@ public class AppController {
         try (BufferedReader reader = new BufferedReader(new FileReader("Data/AppData.txt"))) {
             Scanner scanner = new Scanner(reader);
             String line;
-            if ((line = scanner.nextLine()) != null) {
+            if (scanner.hasNext() && (line = scanner.nextLine()) != null) {
                 File target = new File("Data/" + line + "/PlayerInfo.json");
                 if (target.exists()) {
                     FileReader fileReader = new FileReader(target);

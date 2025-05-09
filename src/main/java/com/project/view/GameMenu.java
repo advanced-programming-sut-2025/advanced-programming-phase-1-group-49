@@ -8,6 +8,7 @@ import java.util.regex.Matcher;
 
 public class GameMenu implements AppMenu {
     GameMenuController controller = new GameMenuController();
+    
 
     @Override
     public void check(Scanner scanner) {
