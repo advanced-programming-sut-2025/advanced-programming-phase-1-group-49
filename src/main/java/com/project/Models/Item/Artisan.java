@@ -21,4 +21,13 @@ public class Artisan implements Item {
         if (builder.getIngredients().size() != 0) this.ingredients = builder.getIngredients();
     }
 
+    @Override
+    public void passByHour() {
+
+    }
+
+    @Override
+    public void passByDay() {
+
+    }
 }

@@ -1,8 +1,7 @@
 package com.project.Models.Item;
 
-import com.project.Models.Time.ObserveTime;
 
-public class Tree implements Item, ObserveTime {
+public class Tree implements Item {
     @Override
     public void passByHour() {
 

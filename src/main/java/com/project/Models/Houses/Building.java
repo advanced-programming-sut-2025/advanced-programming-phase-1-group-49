@@ -1,4 +1,6 @@
 package com.project.Models.Houses;
 
-public interface Building {
+import com.project.Models.Map.GameObject;
+
+public interface Building extends GameObject {
 }
