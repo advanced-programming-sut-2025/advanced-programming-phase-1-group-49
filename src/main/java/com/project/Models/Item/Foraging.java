@@ -12,8 +12,13 @@ public class Foraging implements Item {
     private boolean edible = false;
     private int energyGain;
     private String season; // e.g., "Spring", "Summer", etc.
+    private boolean canBecomeGiant = false;
     private boolean isGiant = false;
     private int quality = 1;
+    private boolean spring = false;
+    private boolean summer = false;
+    private boolean winter = false;
+    private boolean fall = false;
 
     public Foraging() { }
 
@@ -84,6 +89,15 @@ public class Foraging implements Item {
         return this;
     }
 
+    public boolean getCanBecomeGiant() {
+        return canBecomeGiant;
+    }
+
+    public Foraging setCanBecomeGiant(boolean canBecomeGiant) {
+        this.canBecomeGiant = canBecomeGiant;
+        return this;
+    }
+
     public Foraging setQuality(int quality) {
         this.quality = quality;
         return this;
@@ -137,6 +151,42 @@ public class Foraging implements Item {
 
     public int getQuality() {
         return quality;
+    }
+
+    public boolean isSpring() {
+        return spring;
+    }
+
+    public Foraging setSpring(boolean spring) {
+        this.spring = spring;
+        return this;
+    }
+
+    public boolean isSummer() {
+        return summer;
+    }
+
+    public Foraging setSummer(boolean summer) {
+        this.summer = summer;
+        return this;
+    }
+
+    public boolean isWinter() {
+        return winter;
+    }
+
+    public Foraging setWinter(boolean winter) {
+        this.winter = winter;
+        return this;
+    }
+
+    public boolean isFall() {
+        return fall;
+    }
+
+    public Foraging setFall(boolean fall) {
+        this.fall = fall;
+        return this;
     }
 
     @Override
