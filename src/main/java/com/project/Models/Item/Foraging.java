@@ -138,4 +138,9 @@ public class Foraging implements Item {
     public int getQuality() {
         return quality;
     }
+
+    @Override
+    public String tooString() {
+        return "";
+    }
 }
