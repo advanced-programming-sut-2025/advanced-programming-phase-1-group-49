@@ -87,17 +87,7 @@ public class GameMenuController {
         for (ArrayList<GameObject>[] i : App.getGame().getMap().getBlocks()) {
             for (ArrayList<GameObject> b : i) {
                 GameObject gameObject = b.get(b.size() - 1);
-                if (gameObject.equals(Block.basic)) {
-                    System.out.print(" ");
-                } else if (gameObject.equals(Block.water)) {
-                    System.out.print(BLUE + "█" + RESET);
-                } else if (gameObject.equals(Block.homeWall) || gameObject.equals(Block.greenhouseWall)) {
-                    System.out.print(RED + "█" + RESET);
-                } else if (gameObject.equals(Block.home) || gameObject.equals(Block.greenhouse)) {
-                    System.out.print(GREEN + "█" + RESET);
-                } else {
-                    System.out.print("*");
-                }
+                System.out.println(gameObject);
             }
             System.out.println();
         }
