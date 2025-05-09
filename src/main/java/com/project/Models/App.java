@@ -67,4 +67,9 @@ public class App {
     }
 
     // debug methods
+
+    public static void printPlayers() {
+        for (Player player : playerList)
+            System.out.println(player.getUsername());
+    }
 }

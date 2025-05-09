@@ -240,14 +240,10 @@ public class RegisterMenuController {
                 ===========================""", player.getNickname(), player.getUsername(), player.getEmail()));
     }
 
-    public Result switchMenu(String menuString) {
-        if (!menuString.trim().equals("LoginMenu"))
-            return new Result(false, "You are in Register and can go to LoginMenu only.");
-
+    public Result switchMenu() {
         App.setCurrentMenu(Menu.LoginMenu);
         resetFields();
-
-        return new Result(true, "switch menu successful. current menu : " + menuString);
+        return new Result(true, "");
     }
 
     public Result showCurrentMenu() {

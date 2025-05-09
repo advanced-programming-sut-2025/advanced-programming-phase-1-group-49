@@ -41,11 +41,10 @@ public class RegisterMenu implements AppMenu {
             System.out.println(controller.securityQuestion(command));
         else if (RegisterMenuCommands.ShowCurrentMenu.getMatcher(command).find())
             System.out.println(controller.showCurrentMenu());
-        else if ((matcher = RegisterMenuCommands.switchMenu.getMatcher(command)).find()) {
-            Result temp = controller.switchMenu(matcher.group(1));
-            System.out.println(temp);
-            printMenuInfo = temp.isSuccessfully();
-        }else if (RegisterMenuCommands.exit.getMatcher(command).find())
+        else if (RegisterMenuCommands.switchMenu.getMatcher(command).find()) {
+            System.out.println(controller.switchMenu());
+            printMenuInfo = true;
+        } else if (RegisterMenuCommands.exit.getMatcher(command).find())
             System.out.print(controller.exit());
         else
             System.out.println("Invalid command");

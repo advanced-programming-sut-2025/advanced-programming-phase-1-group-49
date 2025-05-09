@@ -15,7 +15,6 @@ public class LoginMenu implements AppMenu {
     public void check(Scanner scanner) {
         if (printMenuInfo) {
             System.out.println("""
-                    
                     >>> Login Menu Commands:
                     - login -u <username> -p <password> –stay logged in
                     "-stay logged in" flag is optional.
@@ -40,10 +39,9 @@ public class LoginMenu implements AppMenu {
             System.out.println(controller.enterNewPass(command));
         else if ((matcher = LoginMenuCommands.forgetPassword.getMatcher(command)).find())
             System.out.print(controller.forgetPassword(matcher.group(1)));
-        else if ((matcher = LoginMenuCommands.switchMenu.getMatcher(command)).find()) {
-            Result temp = controller.switchMenu(matcher.group(1));
-            System.out.println(temp);
-            printMenuInfo = temp.isSuccessfully();
+        else if (LoginMenuCommands.switchMenu.getMatcher(command).find()) {
+            System.out.print(controller.switchMenu());
+            printMenuInfo = true;
         } else if (LoginMenuCommands.exit.getMatcher(command).find())
             System.out.print(controller.exit());
         else if (LoginMenuCommands.ShowCurrentMenu.getMatcher(command).find())

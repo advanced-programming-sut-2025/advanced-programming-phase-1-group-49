@@ -219,4 +219,9 @@ public class Tool implements ObserveTime, GameObject {
     public void passByDay() {
 
     }
+
+    @Override
+    public String tooString() {
+        return "";
+    }
 }
