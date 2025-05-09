@@ -8,10 +8,22 @@ import java.util.regex.Matcher;
 
 public class GameMenu implements AppMenu {
     GameMenuController controller = new GameMenuController();
-    
+    private boolean printMenuInfo = true;
 
     @Override
     public void check(Scanner scanner) {
+        if (printMenuInfo) {
+            System.out.println("""
+                    
+                    >>> Game Menu Commands:
+                    - new game -u <username1> <username2> <username3>
+                    - menu enter <menu>
+                    - show current menu
+                    - exit
+                    """);
+            printMenuInfo = false;
+        }
+
         String command = scanner.nextLine();
         Matcher matcher;
         if ((matcher = GameMenuCommands.newGame.getMatcher(command)).find())
@@ -24,7 +36,7 @@ public class GameMenu implements AppMenu {
             controller.gameInfo();
         else if (GameMenuCommands.nextTurn.getMatcher(command).find())
             System.out.println(controller.nextTurn());
-        else if(GameMenuCommands.exitGame.getMatcher(command).find())
+        else if (GameMenuCommands.exitGame.getMatcher(command).find())
             System.out.println(controller.exitGame());
         else if (GameMenuCommands.loadMap.getMatcher(command).find())
             System.out.println(controller.loadGame());
