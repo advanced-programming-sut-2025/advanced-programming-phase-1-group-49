@@ -1,4 +1,6 @@
-package com.project.Models.Enums;
+package com.project.Models.Enums.ForagingEnums;
+
+import com.project.Models.Enums.Seasons;
 
 public enum FruitTreeType {
     APRICOT("Apricot", 59, Seasons.Spring),

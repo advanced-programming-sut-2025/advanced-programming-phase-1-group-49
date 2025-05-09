@@ -1,4 +1,4 @@
-package com.project.Models.Enums.machines;
+package com.project.Models.Enums.Machines;
 
 public enum CheesePress {
     CHEESE("Cheese", "It's your Basic cheese.", 100.0, "3 Hours", "Milk/Large Milk", new int[]{230, 345}),

@@ -6,13 +6,13 @@ public class Foraging implements Item {
     private String source;
     private int growthStage;
     private int growthTime; // days until harvest
-    private boolean regrowable;
+    private boolean regrowable = false;
     private int regrowInterval; // days between harvests if regrowable
     private int baseSellPrice;
-    private boolean edible;
+    private boolean edible = false;
     private int energyGain;
     private String season; // e.g., "Spring", "Summer", etc.
-    private boolean canBecomeGiant;
+    private boolean isGiant = false;
     private int quality = 1;
 
     public Foraging() { }
@@ -79,8 +79,8 @@ public class Foraging implements Item {
         return this;
     }
 
-    public Foraging setCanBecomeGiant(boolean canBecomeGiant) {
-        this.canBecomeGiant = canBecomeGiant;
+    public Foraging setIsGiant(boolean isGiant) {
+        this.isGiant = isGiant;
         return this;
     }
 
@@ -131,8 +131,8 @@ public class Foraging implements Item {
         return season;
     }
 
-    public boolean isCanBecomeGiant() {
-        return canBecomeGiant;
+    public boolean getIsGiant() {
+        return isGiant;
     }
 
     public int getQuality() {

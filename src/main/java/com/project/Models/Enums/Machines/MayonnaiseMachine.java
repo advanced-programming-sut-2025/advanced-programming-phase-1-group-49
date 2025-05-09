@@ -1,17 +1,18 @@
-package com.project.Models.Enums.machines;
+package com.project.Models.Enums.Machines;
 
-public enum OilMaker {
-    TRUFFLE_OIL("Truffle Oil", "A gourmet cooking ingredient.", 38.0, "6 Hours", "Truffle", 1065),
-    OIL("Oil", "All purpose cooking oil.", 13.0, "Variable", "Corn/Sunflower Seeds/Sunflower", 100);
+public enum MayonnaiseMachine {
+    MAYONNAISE("Mayonnaise", "It looks spreadable.", 50.0, "3 Hours", "Egg/Large Egg", new int[]{190, 237}),
+    DUCK_MAYONNAISE("Duck Mayonnaise", "It's a rich, yellow mayonnaise.", 75.0, "3 Hours", "Duck Egg", 375),
+    DINOSAUR_MAYONNAISE("Dinosaur Mayonnaise", "It's thick and creamy, with a vivid green hue.", 125.0, "3 Hours", "Dinosaur Egg", 800);
 
     private final String name;
     private final String description;
     private final double energy;
     private final String processingTime;
     private final String ingredients;
-    private final int sellPrice;
+    private final Object sellPrice; // int or int[]
 
-    OilMaker(String name, String description, double energy, String processingTime, String ingredients, int sellPrice) {
+    MayonnaiseMachine(String name, String description, double energy, String processingTime, String ingredients, Object sellPrice) {
         this.name = name;
         this.description = description;
         this.energy = energy;
@@ -26,5 +27,5 @@ public enum OilMaker {
     public double getEnergy() { return energy; }
     public String getProcessingTime() { return processingTime; }
     public String getIngredients() { return ingredients; }
-    public int getSellPrice() { return sellPrice; }
+    public Object getSellPrice() { return sellPrice; }
 }

@@ -1,4 +1,4 @@
-package com.project.Models.Enums.machines;
+package com.project.Models.Enums.Machines;
 
 public enum PreservesJar {
     PICKLES("Pickles", "A jar of home-made pickles.", "1.75 × Base Energy", "6 Hours", "Any Vegetable", "2 × Base + 50"),
