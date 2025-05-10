@@ -21,10 +21,12 @@ public class Game {
     transient private ArrayList<Player> players = new ArrayList<>();
     private final ArrayList<String> playerUserNames = new ArrayList<>();
     private final ArrayList<Integer> farmsOwner = new ArrayList<>();
+    private int turn = 0;
 
     public Game(GameBuilder builder) {
         this.map = new Map();
         this.mainPlayer = 0;
+        turn = 0;
         GameCounter++;
         id = GameCounter;
 
@@ -94,5 +96,11 @@ public class Game {
     }
 
     //
+
+    public void nextTurn() {
+        turn++;
+        if (turn > 3)
+            turn = 0;
+    }
 
 }

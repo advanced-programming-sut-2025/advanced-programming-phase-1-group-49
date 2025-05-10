@@ -11,6 +11,7 @@ public class Map {
     private final ArrayList<GameObject>[][] blocks = new ArrayList[20][100];
 
     public Map() {
+        // initialize
         for (int i = 0; i < blocks.length; i++)
             for (int j = 0; j < blocks[i].length; j++) {
                 blocks[i][j] = new ArrayList<>();
@@ -18,23 +19,15 @@ public class Map {
             }
 
         // home
-        int homeX = 1;
-        int homeLength = 4;
-        int homeY = 80;
-        int homeWidth = 8;
         Home home = new Home();
-        for (int i = homeX; i < homeX + homeLength; i++)
-            for (int j = homeY; j < homeY + homeWidth; j++)
+        for (int i = home.getHomeX(); i < home.getHomeX() + home.getHomeLength(); i++)
+            for (int j = home.getHomeY(); j < home.getHomeY() + home.getHomeWidth(); j++)
                 blocks[i][j].add(home);
 
         // greenhouse
-        int greenHouseX = 2;
-        int greenHouseY = 2;
-        int greenHouseLength = 9;
-        int greenHouseWidth = 4;
         GreenHouse greenHouse = new GreenHouse();
-        for (int i = greenHouseX; i < greenHouseX + greenHouseWidth; i++)
-            for (int j = greenHouseY; j < greenHouseY + greenHouseLength; j++)
+        for (int i = greenHouse.getGreenHouseX(); i < greenHouse.getGreenHouseX() + greenHouse.getGreenHouseWidth(); i++)
+            for (int j = greenHouse.getGreenHouseY(); j < greenHouse.getGreenHouseY() + greenHouse.getGreenHouseLength(); j++)
                 blocks[i][j].add(greenHouse);
 
         // leak

@@ -94,22 +94,18 @@ public class GameMenuController {
             File gameFolder = new File("Data/Games/" + game.getGameID());
             if (!gameFolder.mkdir())
                 return new Result(false, "Unable to create game.create game folder fail");
-
-            try (FileWriter writer = new FileWriter("Data/Games/" + game.getGameID() + "/game.json")) {
-                gson.toJson(game, writer);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+            saveGame(game);
+            loadGame();
             resetFields();
 
-            return new Result(true, "Game Created. Now you can load game");
+            return new Result(true, "Game Created.");
         }
         return new Result(true, String.format("%s, select your map :", builder.getPlayers()[index].getNickname()));
     }
 
     public Result exitGame() {
-        // exit game
-
+        saveGame(App.getGame());
+        App.setCurrentMenu(Menu.MainMenu);
         return new Result(true, "exit game");
     }
 
@@ -129,9 +125,20 @@ public class GameMenuController {
                 throw new RuntimeException(e);
             }
         }
+        App.addGame(game);
         App.setGame(game);
         App.setCurrentMenu(Menu.GameActivity);
         return new Result(true, "load game");
+    }
+
+    private void saveGame(Game game) {
+        try (FileWriter writer = new FileWriter("Data/Games/" + game.getGameID() + "/game.json")) {
+            gson.toJson(game, writer);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        App.setGame(null);
+        resetFields();
     }
 
     // getter
