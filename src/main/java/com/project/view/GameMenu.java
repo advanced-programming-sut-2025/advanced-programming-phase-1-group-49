@@ -24,13 +24,13 @@ public class GameMenu implements AppMenu {
 
         String command = scanner.nextLine();
         Matcher matcher;
-        if (controller.isCreateNewGame())
-            System.out.println(controller.selectMap(command));
-        else if ((matcher = GameMenuCommands.newGame.getMatcher(command)).find())
+        if ((matcher = GameMenuCommands.newGame.getMatcher(command)).find())
             System.out.println(controller.newGame(matcher.group(1), matcher.group(2), matcher.group(3)));
-        else if (GameMenuCommands.printMap.getMatcher(command).find())
+        else if (controller.isCreateNewGame())
+            System.out.println(controller.selectMap(command));
+        else if (GameMenuCommands.printMap.getMatcher(command).find()) {
             controller.printMap();
-        else if (GameMenuCommands.gameInfo.getMatcher(command).find())
+        } else if (GameMenuCommands.gameInfo.getMatcher(command).find())
             controller.gameInfo();
         else if (GameMenuCommands.nextTurn.getMatcher(command).find())
             System.out.println(controller.nextTurn());

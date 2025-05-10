@@ -10,7 +10,9 @@ public enum Menu {
     GameMenu(new GameMenu()),
     AvatarMenu(new AvatarMenu()),
     RegisterMenu(new RegisterMenu()),
-    ExitMenu(new ExitMenu());
+    ExitMenu(new ExitMenu()),
+    GameActivity(new GameActivity()),
+    ;
 
     private final AppMenu menu;
 

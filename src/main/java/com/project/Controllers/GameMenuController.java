@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.project.Builders.GameBuilder;
 import com.project.Models.App;
 import com.project.Models.Enums.Block;
+import com.project.Models.Enums.Menu;
 import com.project.Models.Game;
 import com.project.Models.LivingBeings.Player;
 import com.project.Models.Map.GameObject;
@@ -20,10 +21,12 @@ public class GameMenuController {
 
     private GameBuilder builder;
     private final Gson gson = new Gson();
+    private int index = 1;
 
     private void resetFields() {
         createNewGame = false;
         builder = null;
+        index = 1;
     }
 
     public Result newGame(String Player1, String Player2, String Player3) {
@@ -60,13 +63,11 @@ public class GameMenuController {
             return new Result(false, "Not enough players found");
 
         builder = new GameBuilder();
-        builder.player1(App.getPlayer());
-        builder.player2(players.get(0));
-        builder.player3(players.get(1));
-        builder.player4(players.get(2));
+        for (int i = 0; i < players.size(); i++)
+            builder.player(players.get(i), i);
         createNewGame = true;
 
-        return new Result(true, "");
+        return new Result(true, String.format("%s, select your map :", builder.getPlayers()[index].getNickname()));
     }
 
     public Result selectMap(String idString) {
@@ -78,14 +79,22 @@ public class GameMenuController {
         } catch (NumberFormatException e) {
             return new Result(false, "Not a valid map id");
         }
-
         if (id > 4 || id < 1)
             return new Result(false, "Not a valid map id");
+        for (int i : builder.getFarm())
+            if (i == id)
+                return new Result(false, "already selected farm");
 
-        if ()
-            game.setMainPlayer(players.get(players.indexOf(game.getMainPlayer()) + 1));
-
-        return new Result(true, "map selected");
+        builder.farm(id, index - 1);
+        index++;
+        if (index > 4) {
+            Game game = new Game(builder);
+            App.setGame(game);
+            App.setCurrentMenu(Menu.GameActivity);
+            resetFields();
+            return new Result(true, "Game Created");
+        }
+        return new Result(true, String.format("%s, select your map :", builder.getPlayers()[index].getNickname()));
     }
 
     public Result exitGame() {

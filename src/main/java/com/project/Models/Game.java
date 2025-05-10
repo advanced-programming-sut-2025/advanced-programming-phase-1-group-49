@@ -22,21 +22,20 @@ public class Game {
         GameCounter++;
         id = GameCounter;
 
-        players.put(builder.getPlayer1(), builder.getFarm1());
-        players.put(builder.getPlayer2(), builder.getFarm2());
-        players.put(builder.getPlayer3(), builder.getFarm3());
-        players.put(builder.getPlayer4(), builder.getFarm4());
-
-        for (Player player : players.keySet()) {
+        for (int i = 0; i < 4; i++) {
+            Player player = builder.getPlayers()[i];
+            players.put(player, builder.getFarm()[i]);
             player.setGame(this);
             player.setGameID(id);
-        }
-
-        for (Player player : players.keySet())
             AppController.savePlayer(player);
+        }
     }
 
     // getter
+
+    public int getGameID() {
+        return id;
+    }
 
     public Player[] getPlayers() {
         return players.keySet().toArray(new Player[0]);
