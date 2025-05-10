@@ -14,7 +14,7 @@ public enum RegisterMenuCommands implements Commands {
             "-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]" +
             "(\\.ir|\\.com|\\.org)$"),
     GENDER_PATTERN("^female|male$"),
-    switchMenu("^\\s*menu\\s+enter\\s+(?<menu>LoginMenu)\\s*$"),
+    switchMenu("^\\s*menu\\s+(?<menu>LoginMenu|loginmenu|login)\\s*$"),
     ShowCurrentMenu("^\\s*show\\s+current\\s+menu\\s*$"),
     accept("^(yes|y|no|n)$"),
     exit("^\\s*exit\\s*$"),

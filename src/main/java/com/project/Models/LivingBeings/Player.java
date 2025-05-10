@@ -18,8 +18,8 @@ public class Player extends Person {
     transient private Game currentGame = null;
     private int gameID = 0;
     private final inventory inventory = new inventory();
-    private int x;
-    private int y;
+    private int x = 5;
+    private int y = 84;
     private String securityQuestion = null;
 
     public Player(String username, String password, String nickname, String email, Gender gender, String securityQuestion) {
@@ -183,19 +183,13 @@ public class Player extends Person {
         Energy -= energy;
     }
 
-    //
-
-    public void walk(int x, int y) {
-        currentGame.getMap().getBlocks()[this.x][this.y].remove(this);
-        this.x = x;
-        this.y = y;
-        currentGame.getMap().getBlocks()[x][y].set(currentGame.getMap().getBlocks()[x][y].size() - 1, this);
-    }
+    // Override
 
     @Override
     public void passByHour() {
 
     }
+
 
     @Override
     public void passByDay() {
@@ -205,5 +199,14 @@ public class Player extends Person {
     @Override
     public String tooString() {
         return "Y";
+    }
+
+    //
+
+    public void walk(int x, int y) {
+        currentGame.getMap().getBlocks()[this.x][this.y].remove(this);
+        this.x = x;
+        this.y = y;
+        currentGame.getMap().getBlocks()[x][y].set(currentGame.getMap().getBlocks()[x][y].size() - 1, this);
     }
 }

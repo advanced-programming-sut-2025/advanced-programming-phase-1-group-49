@@ -1,5 +1,6 @@
 package com.project.Models.Map;
 
+import com.project.Models.App;
 import com.project.Models.Enums.Block;
 import com.project.Models.Houses.GreenHouse;
 import com.project.Models.Houses.Home;
@@ -44,6 +45,9 @@ public class Map {
         for (int i = LeakX; i < LeakLength + LeakX; i++)
             for (int j = LeakY; j < LeakY + LeakWidth; j++)
                 blocks[i][j].add(Block.water);
+
+        // player
+        blocks[App.getPlayer().getX()][App.getPlayer().getY()].add(App.getPlayer());
     }
 
     public ArrayList<GameObject>[][] getBlocks() {

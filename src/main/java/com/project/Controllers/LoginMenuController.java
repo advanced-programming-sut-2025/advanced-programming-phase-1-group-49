@@ -58,6 +58,10 @@ public class LoginMenuController {
         if (!password.equals(targetPlayer.getPassword()))
             return new Result(false, "Wrong password");
 
+        if (targetPlayer.getGameID() != 0) {
+
+        }
+
         if (stayLoggedInCheck)
             try (BufferedWriter writer = new BufferedWriter(new FileWriter("Data/AppData.txt"))) {
                 writer.write(targetPlayer.getUsername());

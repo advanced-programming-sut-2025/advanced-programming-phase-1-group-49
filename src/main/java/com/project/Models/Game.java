@@ -1,20 +1,26 @@
 package com.project.Models;
 
+import com.google.gson.Gson;
 import com.project.Builders.GameBuilder;
 import com.project.Controllers.AppController;
 import com.project.Models.LivingBeings.Player;
 import com.project.Models.Map.Map;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
 public class Game {
-    private final Map map;
+    transient private final Map map;
     private static int GameCounter = 0;
     private final int id;
-    private int mainPlayer = -1;
-    private final LinkedHashMap<Player, Integer> players = new LinkedHashMap<>();
     private final inventory inventory = new inventory();
+    private int mainPlayer = -1;
+    transient private ArrayList<Player> players = new ArrayList<>();
+    private final ArrayList<String> playerUserNames = new ArrayList<>();
+    private final ArrayList<Integer> farmsOwner = new ArrayList<>();
 
     public Game(GameBuilder builder) {
         this.map = new Map();
@@ -23,11 +29,12 @@ public class Game {
         id = GameCounter;
 
         for (int i = 0; i < 4; i++) {
-            Player player = builder.getPlayers()[i];
-            players.put(player, builder.getFarm()[i]);
-            player.setGame(this);
-            player.setGameID(id);
-            AppController.savePlayer(player);
+            players.add(builder.getPlayers()[i]);
+            playerUserNames.add(players.get(i).getUsername());
+            farmsOwner.add(builder.getFarm()[i]);
+            players.get(i).setGame(this);
+            players.get(i).setGameID(id);
+            AppController.savePlayer(players.get(i));
         }
     }
 
@@ -37,12 +44,12 @@ public class Game {
         return id;
     }
 
-    public Player[] getPlayers() {
-        return players.keySet().toArray(new Player[0]);
+    public ArrayList<Player> getPlayers() {
+        return players;
     }
 
     public Player getMainPlayer() {
-        return new ArrayList<>(players.keySet()).get(mainPlayer);
+        return players.get(mainPlayer);
     }
 
     public Map getMap() {
@@ -56,8 +63,36 @@ public class Game {
     // setter
 
     public void setMainPlayer(Player player) {
-        if (!players.containsKey(player))
+        if (!players.contains(player))
             return;
-        this.mainPlayer = (new ArrayList<>(players.keySet())).indexOf(player);
+        this.mainPlayer = players.indexOf(player);
     }
+
+    public static void setGameCounter(int gameCounter) {
+        GameCounter = gameCounter;
+    }
+
+    public void initializePlayers() {
+        players = new ArrayList<>();
+        for (String username : playerUserNames) {
+            Player targetPlayer = App.searchPlayer(username);
+            if (targetPlayer == null) {
+                File player = new File("Data/" + username + "/PlayerInfo.json");
+                try {
+                    FileReader reader = new FileReader(player);
+                    targetPlayer = new Gson().fromJson(reader, Player.class);
+                    App.addPlayer(targetPlayer);
+                } catch (FileNotFoundException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+            players.add(targetPlayer);
+        }
+    }
+
+    public void initializeMap() {
+    }
+
+    //
+
 }

@@ -70,6 +70,13 @@ public class App {
         return null;
     }
 
+    public static Game searchGame(int gameId) {
+        for (Game game : gameList)
+            if (game.getGameID() == gameId)
+                return game;
+        return null;
+    }
+
     // debug methods
 
     public static void printPlayers() {

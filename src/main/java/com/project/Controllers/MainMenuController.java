@@ -20,12 +20,14 @@ public class MainMenuController {
     }
 
     public Result switchMenu(String menuString) {
-        menuString = menuString.trim();
+        menuString = menuString.trim().toLowerCase();
         switch (menuString) {
-            case "GameMenu":
+            case "game":
+            case "gamemenu":
                 App.setCurrentMenu(Menu.GameMenu);
                 break;
-            case "ProfileMenu":
+            case "profile":
+            case "profilemenu":
                 App.setCurrentMenu(Menu.ProfileMenu);
                 break;
         }

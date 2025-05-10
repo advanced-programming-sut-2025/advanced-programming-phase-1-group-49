@@ -3,12 +3,26 @@ package com.project.Controllers;
 import com.google.gson.Gson;
 import com.project.Models.App;
 import com.project.Models.Enums.Menu;
+import com.project.Models.Game;
 import com.project.Models.LivingBeings.Player;
 
 import java.io.*;
 import java.util.Scanner;
 
 public class AppController {
+    /*
+    Data Folder Structur :
+    Data :
+        user1 :
+            PlayerInfo.json
+        .
+        Games :
+            1 :
+                game.json
+            .
+        AppData.txt
+    */
+
     private static final Gson gson = new Gson();
 
     public static void loadData() {
@@ -32,6 +46,13 @@ public class AppController {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
+        folder = new File("Data/Games/");
+        File[] files;
+        if (folder.exists() && (files = folder.listFiles()) != null)
+            Game.setGameCounter(files.length);
+        if (!folder.exists() && !folder.mkdir())
+            System.out.println("Game Folder not created");
     }
 
     private static void createAppDataFile() {

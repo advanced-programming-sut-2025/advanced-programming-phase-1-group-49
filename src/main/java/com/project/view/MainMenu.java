@@ -21,9 +21,10 @@ public class MainMenu implements AppMenu {
         }
         String command = scanner.nextLine();
         Matcher matcher;
-        if (MainMenuCommands.logout.getMatcher(command).find())
+        if (MainMenuCommands.logout.getMatcher(command).find()) {
             System.out.println(controller.logout());
-        else if ((matcher = MainMenuCommands.switchMenu.getMatcher(command)).find()) {
+            printMenuInfo = true;
+        } else if ((matcher = MainMenuCommands.switchMenu.getMatcher(command)).find()) {
             System.out.print(controller.switchMenu(matcher.group(1)));
             printMenuInfo = true;
         } else
