@@ -3,9 +3,9 @@ package com.project.Controllers;
 
 import com.google.gson.Gson;
 import com.project.Models.App;
-import com.project.Models.Enums.LoginMenuCommands;
+import com.project.Models.Enums.Menus.LoginMenuCommands;
 import com.project.Models.Enums.Menu;
-import com.project.Models.Enums.RegisterMenuCommands;
+import com.project.Models.Enums.Menus.RegisterMenuCommands;
 import com.project.Models.LivingBeings.Player;
 import com.project.Models.Result;
 

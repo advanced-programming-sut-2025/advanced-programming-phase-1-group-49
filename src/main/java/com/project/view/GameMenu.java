@@ -1,7 +1,7 @@
 package com.project.view;
 
 import com.project.Controllers.GameMenuController;
-import com.project.Models.Enums.GameMenuCommands;
+import com.project.Models.Enums.Menus.GameMenuCommands;
 
 import java.util.Scanner;
 import java.util.regex.Matcher;
@@ -28,12 +28,6 @@ public class GameMenu implements AppMenu {
             System.out.println(controller.newGame(matcher.group(1), matcher.group(2), matcher.group(3)));
         else if (controller.isCreateNewGame())
             System.out.println(controller.selectMap(command));
-        else if (GameMenuCommands.printMap.getMatcher(command).find()) {
-            controller.printMap();
-        } else if (GameMenuCommands.gameInfo.getMatcher(command).find())
-            controller.gameInfo();
-        else if (GameMenuCommands.nextTurn.getMatcher(command).find())
-            System.out.println(controller.nextTurn());
         else if (GameMenuCommands.exitGame.getMatcher(command).find())
             System.out.println(controller.exitGame());
         else if (GameMenuCommands.loadMap.getMatcher(command).find())

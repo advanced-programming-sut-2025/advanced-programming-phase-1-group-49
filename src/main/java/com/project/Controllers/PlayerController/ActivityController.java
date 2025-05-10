@@ -1,8 +1,7 @@
 package com.project.Controllers.PlayerController;
 
-import com.project.Controllers.GameMenuController;
 import com.project.Models.App;
-import com.project.Models.Enums.Block;
+import com.project.Models.Enums.Menu;
 import com.project.Models.LivingBeings.Player;
 import com.project.Models.Map.GameObject;
 import com.project.Models.Result;
@@ -10,12 +9,6 @@ import com.project.Models.Result;
 import java.util.ArrayList;
 
 public class ActivityController {
-    final String RESET = "\u001B[0m";
-    final String RED = "\u001B[31m";
-    final String GREEN = "\u001B[32m";
-    final String YELLOW = "\u001B[33m";
-    final String BLUE = "\u001B[34m";
-
     public Result walk(String xString, String yString) {
         xString = xString.trim();
         yString = yString.trim();
@@ -45,6 +38,17 @@ public class ActivityController {
 
     }
 
+    public Result exit() {
+        // exit from game
+
+        App.setCurrentMenu(Menu.GameMenu);
+        App.setGame(null);
+
+        return new Result(true, "exit");
+    }
+
+    // debugging
+
     public void gameInfo() {
         System.out.println("------------Game Info:------------");
         for (Player i : App.getGame().getPlayers()) {
@@ -57,6 +61,12 @@ public class ActivityController {
     }
 
     public void printMap() {
-        (new GameMenuController()).printMap();
+        for (ArrayList<GameObject>[] i : App.getGame().getMap().getBlocks()) {
+            for (ArrayList<GameObject> b : i) {
+                GameObject gameObject = b.get(b.size() - 1);
+                System.out.print(gameObject.tooString());
+            }
+            System.out.println();
+        }
     }
 }

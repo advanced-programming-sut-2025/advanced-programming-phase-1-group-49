@@ -4,14 +4,13 @@ import com.google.gson.Gson;
 import com.project.Models.App;
 import com.project.Models.Enums.Gender;
 import com.project.Models.Enums.Menu;
-import com.project.Models.Enums.RegisterMenuCommands;
+import com.project.Models.Enums.Menus.RegisterMenuCommands;
 import com.project.Models.LivingBeings.Player;
 import com.project.Models.Result;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;

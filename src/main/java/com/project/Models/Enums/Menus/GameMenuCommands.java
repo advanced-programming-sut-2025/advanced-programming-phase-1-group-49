@@ -1,4 +1,4 @@
-package com.project.Models.Enums;
+package com.project.Models.Enums.Menus;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -8,10 +8,6 @@ public enum GameMenuCommands implements Commands {
     selectMap("^\\s*game\\s+map\\s+(?<id>\\S+)\\s*$"),
     loadMap("^\\s*load\\s+game\\s*$"),
     exitGame("^\\s*exit\\s+game\\s*$"),
-    nextTurn("^\\s*next\\s+turn\\s*$"),
-    // for debugging :
-    gameInfo("^\\s*game\\s+info\\s*$"),
-    printMap("^\\s*print\\s+map\\s*$"),
     ;
 
     private final String pattern;

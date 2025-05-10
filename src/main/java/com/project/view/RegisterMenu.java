@@ -1,8 +1,7 @@
 package com.project.view;
 
 import com.project.Controllers.RegisterMenuController;
-import com.project.Models.Enums.RegisterMenuCommands;
-import com.project.Models.Result;
+import com.project.Models.Enums.Menus.RegisterMenuCommands;
 
 import java.util.Scanner;
 import java.util.regex.Matcher;

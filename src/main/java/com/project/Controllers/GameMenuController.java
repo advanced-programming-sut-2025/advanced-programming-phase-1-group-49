@@ -89,10 +89,12 @@ public class GameMenuController {
         index++;
         if (index > 4) {
             Game game = new Game(builder);
-            App.setGame(game);
-            App.setCurrentMenu(Menu.GameActivity);
+            App.addGame(game);
             resetFields();
-            return new Result(true, "Game Created");
+
+            // Save Game
+
+            return new Result(true, "Game Created. Now you can load game");
         }
         return new Result(true, String.format("%s, select your map :", builder.getPlayers()[index].getNickname()));
     }
@@ -103,13 +105,9 @@ public class GameMenuController {
         return new Result(true, "exit game");
     }
 
-    public Result nextTurn() {
-        // next Turn
-
-        return new Result(true, "next turn");
-    }
-
     public Result loadGame() {
+        // load game
+
         return new Result(true, "load game");
     }
 
@@ -117,28 +115,5 @@ public class GameMenuController {
 
     public boolean isCreateNewGame() {
         return createNewGame;
-    }
-
-    // Debug Method :
-
-    public void printMap() {
-        for (ArrayList<GameObject>[] i : App.getGame().getMap().getBlocks()) {
-            for (ArrayList<GameObject> b : i) {
-                GameObject gameObject = b.get(b.size() - 1);
-                System.out.print(gameObject.tooString());
-            }
-            System.out.println();
-        }
-    }
-
-    public void gameInfo() {
-        System.out.println("------------Game Info:------------");
-        for (Player i : App.getGame().getPlayers()) {
-            System.out.print(i.getUsername() + "(" + i.getNickname() + "): " + i.getLevel() + ", " + i.getGender());
-            if (App.getGame().getMainPlayer().equals(i))
-                System.out.print("(main player)");
-            System.out.println();
-        }
-        System.out.println("------------------------");
     }
 }

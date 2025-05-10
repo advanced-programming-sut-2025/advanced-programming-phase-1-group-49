@@ -1,4 +1,4 @@
-package com.project.Models.Enums;
+package com.project.Models.Enums.Menus;
 
 import java.util.regex.Matcher;
 
