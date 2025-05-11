@@ -19,6 +19,7 @@ public class Foraging implements Item {
     private boolean summer = false;
     private boolean winter = false;
     private boolean fall = false;
+    private int stages;
 
     public Foraging() { }
 
@@ -187,6 +188,15 @@ public class Foraging implements Item {
     public Foraging setFall(boolean fall) {
         this.fall = fall;
         return this;
+    }
+
+    public Foraging setStages(int stages) {
+        this.stages = stages;
+        return this;
+    }
+
+    public int getStages() {
+        return stages;
     }
 
     @Override

@@ -5,6 +5,5 @@ public enum Seasons {
     Summer(),
     Fall(),
     Winter(),
-    Special(),
     ;
 }

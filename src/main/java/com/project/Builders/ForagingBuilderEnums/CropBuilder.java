@@ -1,8 +1,8 @@
-package com.project.Models.Enums.ForagingEnums;
+package com.project.Builders.ForagingBuilderEnums;
 
 import com.project.Models.Item.Foraging;
 
-public enum CropTypes {
+public enum CropBuilder {
     BlueJazz(new Foraging().setName("BlueJazz").setSource("JazzSeeds").setBaseSellPrice(50).setEdible(true).setEnergyGain(45).setSpring(true).setCanBecomeGiant(false)),
     Carrot(new Foraging().setName("Carrot").setSource("CarrotSeeds").setBaseSellPrice(35).setEdible(true).setEnergyGain(75).setSpring(true).setCanBecomeGiant(false)),
     Cauliflower(new Foraging().setName("Cauliflower").setSource("CauliflowerSeeds").setBaseSellPrice(175).setEdible(true).setEnergyGain(75).setSpring(true).setCanBecomeGiant(true)),
@@ -46,6 +46,6 @@ public enum CropTypes {
     Mango(new Foraging().setName("Mango").setSource("MangoSapling").setBaseSellPrice(130).setEdible(true).setEnergyGain(45).setSummer(true).setCanBecomeGiant(false)),
     ;
 
-    CropTypes(Foraging foraging) {
+    CropBuilder(Foraging foraging) {
     }
 }

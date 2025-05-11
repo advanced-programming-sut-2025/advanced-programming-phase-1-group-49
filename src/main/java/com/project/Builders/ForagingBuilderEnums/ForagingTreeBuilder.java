@@ -1,8 +1,8 @@
-package com.project.Models.Enums.ForagingEnums;
+package com.project.Builders.ForagingBuilderEnums;
 
 import com.project.Models.Item.Foraging;
 
-public enum ForagingTreeTypes {
+public enum ForagingTreeBuilder {
     OakTree(new Foraging().setName("OakTree").setSource("Forest").setBaseSellPrice(0).setEdible(false).setEnergyGain(0).setSpring(true).setSummer(true).setFall(true).setCanBecomeGiant(false)),
     MapleTree(new Foraging().setName("MapleTree").setSource("Forest").setBaseSellPrice(0).setEdible(false).setEnergyGain(0).setSpring(true).setSummer(true).setFall(true).setCanBecomeGiant(false)),
     PineTree(new Foraging().setName("PineTree").setSource("Forest").setBaseSellPrice(0).setEdible(false).setEnergyGain(0).setSpring(true).setSummer(true).setFall(true).setWinter(true).setCanBecomeGiant(false)),
@@ -11,7 +11,7 @@ public enum ForagingTreeTypes {
 
     final Foraging foraging;
 
-    ForagingTreeTypes(Foraging foraging) {
+    ForagingTreeBuilder(Foraging foraging) {
         this.foraging = foraging;
     }
 }
