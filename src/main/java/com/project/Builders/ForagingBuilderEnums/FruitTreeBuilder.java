@@ -11,12 +11,12 @@ public enum FruitTreeBuilder {
     PEACH(new Foraging().setName("Peach").setSource("Peach Tree").setBaseSellPrice(140).setEdible(true).setEnergyGain(38).setSummer(true)),
     APPLE(new Foraging().setName("Apple").setSource("Apple Tree").setBaseSellPrice(100).setEdible(true).setEnergyGain(38).setFall(true)),
     POMEGRANATE(new Foraging().setName("Pomegranate").setSource("Pomegranate Tree").setBaseSellPrice(140).setEdible(true).setEnergyGain(38).setFall(true)),
-    OAKRESIN(new Foraging().setName("Oak Resin").setSource("Oak Tree").setBaseSellPrice(150).setEdible(false).setSpecial(true)),
-    MAPLESYRUP(new Foraging().setName("Maple Syrup").setSource("Maple Tree").setBaseSellPrice(200).setEdible(false).setSpecial(true)),
-    PINETAR(new Foraging().setName("Pine Tar").setSource("Pine Tree").setBaseSellPrice(100).setEdible(false).setSpecial(true)),
-    SAP(new Foraging().setName("Sap").setSource("Mahogany Tree").setBaseSellPrice(2).setEdible(true).setEnergyGain(-2).setSpecial(true)),
-    COMMONMUSHROOM(new Foraging().setName("Common Mushroom").setSource("Mushroom Tree").setBaseSellPrice(40).setEdible(true).setEnergyGain(38).setSpecial(true)),
-    MYSTICSYRUP(new Foraging().setName("Mystic Syrup").setSource("Mystic Tree").setBaseSellPrice(1000).setEdible(true).setEnergyGain(500).setSpecial(true)));
+    OAKRESIN(new Foraging().setName("Oak Resin").setSource("Oak Tree").setBaseSellPrice(150).setEdible(false).setSpring(true).setSummer(true).setFall(true).setWinter(true)),
+    MAPLESYRUP(new Foraging().setName("Maple Syrup").setSource("Maple Tree").setBaseSellPrice(200).setEdible(false).setSpring(true).setSummer(true).setFall(true).setWinter(true)),
+    PINETAR(new Foraging().setName("Pine Tar").setSource("Pine Tree").setBaseSellPrice(100).setEdible(false).setSpring(true).setSummer(true).setFall(true).setWinter(true)),
+    SAP(new Foraging().setName("Sap").setSource("Mahogany Tree").setBaseSellPrice(2).setEdible(true).setEnergyGain(-2).setSpring(true).setSummer(true).setFall(true).setWinter(true)),
+    COMMONMUSHROOM(new Foraging().setName("Common Mushroom").setSource("Mushroom Tree").setBaseSellPrice(40).setEdible(true).setEnergyGain(38).setSpring(true).setSummer(true).setFall(true).setWinter(true)),
+    MYSTICSYRUP(new Foraging().setName("Mystic Syrup").setSource("Mystic Tree").setBaseSellPrice(1000).setEdible(true).setEnergyGain(500).setSpring(true).setSummer(true).setFall(true).setWinter(true));
 
     public final Foraging foraging;
     FruitTreeBuilder(Foraging foraging) { this.foraging = foraging; }
