@@ -1,8 +1,8 @@
-package com.project.Models.Enums.ForagingEnums;
+package com.project.Builders.ForagingBuilderEnums;
 
 import com.project.Models.Item.Foraging;
 
-public enum MineralTypes {
+public enum MineralBuilder {
     Quartz(new Foraging().setName("Quartz").setBaseSellPrice(25)),
     EarthCrystal(new Foraging().setName("EarthCrystal").setBaseSellPrice(50)),
     FrozenTear(new Foraging().setName("FrozenTear").setBaseSellPrice(75)),
@@ -22,8 +22,8 @@ public enum MineralTypes {
     Coal(new Foraging().setName("Coal").setBaseSellPrice(15)),
     ;
 
-    final Foraging foraging;
-    MineralTypes(Foraging foraging) {
+    public final Foraging foraging;
+    MineralBuilder(Foraging foraging) {
         this.foraging = foraging;
     }
 }
