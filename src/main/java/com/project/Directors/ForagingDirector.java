@@ -160,7 +160,7 @@ public class ForagingDirector {
         int i = 0;
         ArrayList<Foraging> foragings = new ArrayList<Foraging>();
         if (season == Seasons.Spring) {
-            for () {
+            for (ForagingSeedBuilder foragingSeedBuilder : ForagingSeedBuilder.values()) {
 
             }
         }
