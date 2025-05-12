@@ -1,9 +1,6 @@
 package com.project.Directors;
 
-import com.project.Builders.ForagingBuilderEnums.ForagingCropBuilder;
-import com.project.Builders.ForagingBuilderEnums.ForagingSeedBuilder;
-import com.project.Builders.ForagingBuilderEnums.FruitTreeBuilder;
-import com.project.Builders.ForagingBuilderEnums.MineralBuilder;
+import com.project.Builders.ForagingBuilderEnums.*;
 import com.project.Models.Enums.Seasons;
 import com.project.Models.Item.Foraging;
 
@@ -49,7 +46,7 @@ public class ForagingDirector {
         return foragings.get(randomFactor);
     }
 
-    public Foraging randomCropsSeeds(Seasons season) {
+    public Foraging randomCropsAndSeeds(Seasons season) {
         int i = 0;
         ArrayList<Foraging> foragings = new ArrayList<Foraging>();
         if (season == Seasons.Spring) {
@@ -156,14 +153,41 @@ public class ForagingDirector {
         return foragings.get(randomFactor);
     }
 
-    public Foraging randomMixedSeed (Seasons season) {
-        int i = 0;
-        ArrayList<Foraging> foragings = new ArrayList<Foraging>();
+    public Foraging randomMixedSeed(Seasons season) {
         if (season == Seasons.Spring) {
-            for (ForagingSeedBuilder foragingSeedBuilder : ForagingSeedBuilder.values()) {
-
+            int randomFactor = (int)(Math.random() * 1000 % 5);
+            switch (randomFactor) {
+                case 0: return ForagingSeedBuilder.CauliflowerSeeds.foraging;
+                case 1: return ForagingSeedBuilder.ParsnipSeeds.foraging;
+                case 2: return ForagingSeedBuilder.PotatoSeeds.foraging;
+                case 3: return ForagingSeedBuilder.JazzSeeds.foraging;
+                case 4: return ForagingSeedBuilder.TulipBulb.foraging;
             }
+        } else if (season == Seasons.Summer) {
+            int randomFactor = (int)(Math.random() * 1000 % 7);
+            switch (randomFactor) {
+                case 0: return ForagingSeedBuilder.CornSeeds.foraging;
+                case 1: return ForagingSeedBuilder.PepperSeeds.foraging;
+                case 2: return ForagingSeedBuilder.RadishSeeds.foraging;
+                case 3: return ForagingSeedBuilder.WheatSeeds.foraging;
+                case 4: return ForagingSeedBuilder.PoppySeeds.foraging;
+                case 5: return ForagingSeedBuilder.SunflowerSeeds.foraging;
+                case 6: return ForagingSeedBuilder.SpangleSeeds.foraging;
+            }
+        } else if (season == Seasons.Fall) {
+            int randomFactor = (int)(Math.random() * 1000 % 6);
+            switch (randomFactor) {
+                case 0: return ForagingSeedBuilder.ArtichokeSeeds.foraging;
+                case 1: return ForagingSeedBuilder.CornSeeds.foraging;
+                case 2: return ForagingSeedBuilder.EggplantSeeds.foraging;
+                case 3: return ForagingSeedBuilder.PumpkinSeeds.foraging;
+                case 4: return ForagingSeedBuilder.SunflowerSeeds.foraging;
+                case 5: return ForagingSeedBuilder.FairySeeds.foraging;
+            }
+        } else if (season == Seasons.Winter) {
+            return ForagingSeedBuilder.PowdermelonSeeds.foraging;
         }
-        return randomCropsSeeds(season);
+
+        return null;
     }
 }
