@@ -7,6 +7,11 @@ public class Home implements Building {
     private final int homeWidth = 8;
 
     @Override
+    public String getID() {
+        return "Home";
+    }
+
+    @Override
     public String tooString() {
         return "H";
     }

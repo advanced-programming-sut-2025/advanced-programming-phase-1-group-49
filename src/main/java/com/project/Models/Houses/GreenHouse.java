@@ -7,6 +7,11 @@ public class GreenHouse implements Building {
     private final int greenHouseWidth = 4;
 
     @Override
+    public String getID() {
+        return "";
+    }
+
+    @Override
     public String tooString() {
         return "G";
     }

@@ -12,6 +12,11 @@ public class Mammal extends Animal {
     }
 
     @Override
+    public String getID() {
+        return "";
+    }
+
+    @Override
     public String tooString() {
         return "";
     }

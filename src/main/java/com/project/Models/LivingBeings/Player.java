@@ -197,6 +197,11 @@ public class Player extends Person {
     }
 
     @Override
+    public String getID() {
+        return username;
+    }
+
+    @Override
     public String tooString() {
         return "Y";
     }

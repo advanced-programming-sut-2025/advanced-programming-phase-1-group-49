@@ -19,6 +19,11 @@ public class NPC extends Person {
     }
 
     @Override
+    public String getID() {
+        return "";
+    }
+
+    @Override
     public String tooString() {
         return "";
     }

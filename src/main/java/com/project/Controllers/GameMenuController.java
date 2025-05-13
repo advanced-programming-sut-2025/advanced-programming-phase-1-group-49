@@ -91,6 +91,11 @@ public class GameMenuController {
         if (index > 3) {
             Game game = builder.build();
             App.addGame(game);
+            File checkGameFolder = new File("Data/Games");
+            if (!checkGameFolder.exists()) {
+                if (!checkGameFolder.mkdir())
+                    return new Result(false, "Unable to create games folder");
+            }
             File gameFolder = new File("Data/Games/" + game.getGameID());
             if (!gameFolder.mkdir())
                 return new Result(false, "Unable to create game.create game folder fail");

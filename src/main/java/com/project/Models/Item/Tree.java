@@ -13,6 +13,11 @@ public class Tree implements Item {
     }
 
     @Override
+    public String getID() {
+        return "";
+    }
+
+    @Override
     public String tooString() {
         return "";
     }

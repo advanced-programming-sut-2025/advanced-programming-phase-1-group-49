@@ -13,6 +13,11 @@ public class Stone implements Item {
     }
 
     @Override
+    public String getID() {
+        return "";
+    }
+
+    @Override
     public String tooString() {
         return "";
     }

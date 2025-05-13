@@ -221,6 +221,11 @@ public class Tool implements ObserveTime, GameObject {
     }
 
     @Override
+    public String getID() {
+        return "";
+    }
+
+    @Override
     public String tooString() {
         return "";
     }
