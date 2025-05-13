@@ -17,24 +17,21 @@ public class ForagingDirector {
                     i++;
                 }
             }
-        }
-        else if (season == Seasons.Summer) {
+        } else if (season == Seasons.Summer) {
             for (FruitTreeBuilder fruitTreeBuilder : FruitTreeBuilder.values()) {
                 if (fruitTreeBuilder.foraging.isSummer()) {
                     foragings.add(fruitTreeBuilder.foraging);
                     i++;
                 }
             }
-        }
-        else if (season == Seasons.Fall) {
+        } else if (season == Seasons.Fall) {
             for (FruitTreeBuilder fruitTreeBuilder : FruitTreeBuilder.values()) {
                 if (fruitTreeBuilder.foraging.isFall()) {
                     foragings.add(fruitTreeBuilder.foraging);
                     i++;
                 }
             }
-        }
-        else if (season == Seasons.Winter) {
+        } else if (season == Seasons.Winter) {
             for (FruitTreeBuilder fruitTreeBuilder : FruitTreeBuilder.values()) {
                 if (fruitTreeBuilder.foraging.isWinter()) {
                     foragings.add(fruitTreeBuilder.foraging);
@@ -42,7 +39,7 @@ public class ForagingDirector {
                 }
             }
         }
-        int randomFactor = (int)(Math.random()*1000%i);
+        int randomFactor = (int) (Math.random() * 1000 % i);
         return foragings.get(randomFactor);
     }
 
@@ -62,8 +59,7 @@ public class ForagingDirector {
                     i++;
                 }
             }
-        }
-        else if (season == Seasons.Summer) {
+        } else if (season == Seasons.Summer) {
             for (ForagingCropBuilder foragingCropBuilder : ForagingCropBuilder.values()) {
                 if (foragingCropBuilder.foraging.isSummer()) {
                     foragings.add(foragingCropBuilder.foraging);
@@ -76,8 +72,7 @@ public class ForagingDirector {
                     i++;
                 }
             }
-        }
-        else if (season == Seasons.Fall) {
+        } else if (season == Seasons.Fall) {
             for (ForagingCropBuilder foragingCropBuilder : ForagingCropBuilder.values()) {
                 if (foragingCropBuilder.foraging.isFall()) {
                     foragings.add(foragingCropBuilder.foraging);
@@ -90,8 +85,7 @@ public class ForagingDirector {
                     i++;
                 }
             }
-        }
-        else if (season == Seasons.Winter) {
+        } else if (season == Seasons.Winter) {
             for (ForagingCropBuilder foragingCropBuilder : ForagingCropBuilder.values()) {
                 if (foragingCropBuilder.foraging.isWinter()) {
                     foragings.add(foragingCropBuilder.foraging);
@@ -106,7 +100,7 @@ public class ForagingDirector {
             }
         }
 
-        int randomFactor = (int)(Math.random()*1000%i);
+        int randomFactor = (int) (Math.random() * 1000 % i);
         return foragings.get(randomFactor);
     }
 
@@ -121,8 +115,7 @@ public class ForagingDirector {
                     i++;
                 }
             }
-        }
-        else if (season == Seasons.Summer) {
+        } else if (season == Seasons.Summer) {
             for (MineralBuilder mineralBuilder : MineralBuilder.values()) {
                 if (mineralBuilder.foraging.isSummer()) {
 //                    System.Fuck(you);
@@ -130,8 +123,7 @@ public class ForagingDirector {
                     i++;
                 }
             }
-        }
-        else if (season == Seasons.Fall) {
+        } else if (season == Seasons.Fall) {
             for (MineralBuilder mineralBuilder : MineralBuilder.values()) {
                 if (mineralBuilder.foraging.isFall()) {
 //                    System.Fuck(you);
@@ -139,8 +131,7 @@ public class ForagingDirector {
                     i++;
                 }
             }
-        }
-        else if (season == Seasons.Winter) {
+        } else if (season == Seasons.Winter) {
             for (MineralBuilder mineralBuilder : MineralBuilder.values()) {
                 if (mineralBuilder.foraging.isWinter()) {
 //                    System.Fuck(you);
@@ -149,40 +140,58 @@ public class ForagingDirector {
                 }
             }
         }
-        int randomFactor = (int)(Math.random()*1000%i);
+        int randomFactor = (int) (Math.random() * 1000 % i);
         return foragings.get(randomFactor);
     }
 
     public Foraging randomMixedSeed(Seasons season) {
         if (season == Seasons.Spring) {
-            int randomFactor = (int)(Math.random() * 1000 % 5);
+            int randomFactor = (int) (Math.random() * 1000 % 5);
             switch (randomFactor) {
-                case 0: return ForagingSeedBuilder.CauliflowerSeeds.foraging;
-                case 1: return ForagingSeedBuilder.ParsnipSeeds.foraging;
-                case 2: return ForagingSeedBuilder.PotatoSeeds.foraging;
-                case 3: return ForagingSeedBuilder.JazzSeeds.foraging;
-                case 4: return ForagingSeedBuilder.TulipBulb.foraging;
+                case 0:
+                    return ForagingSeedBuilder.CauliflowerSeeds.foraging;
+                case 1:
+                    return ForagingSeedBuilder.ParsnipSeeds.foraging;
+                case 2:
+                    return ForagingSeedBuilder.PotatoSeeds.foraging;
+                case 3:
+                    return ForagingSeedBuilder.JazzSeeds.foraging;
+                case 4:
+                    return ForagingSeedBuilder.TulipBulb.foraging;
             }
         } else if (season == Seasons.Summer) {
-            int randomFactor = (int)(Math.random() * 1000 % 7);
+            int randomFactor = (int) (Math.random() * 1000 % 7);
             switch (randomFactor) {
-                case 0: return ForagingSeedBuilder.CornSeeds.foraging;
-                case 1: return ForagingSeedBuilder.PepperSeeds.foraging;
-                case 2: return ForagingSeedBuilder.RadishSeeds.foraging;
-                case 3: return ForagingSeedBuilder.WheatSeeds.foraging;
-                case 4: return ForagingSeedBuilder.PoppySeeds.foraging;
-                case 5: return ForagingSeedBuilder.SunflowerSeeds.foraging;
-                case 6: return ForagingSeedBuilder.SpangleSeeds.foraging;
+                case 0:
+                    return ForagingSeedBuilder.CornSeeds.foraging;
+                case 1:
+                    return ForagingSeedBuilder.PepperSeeds.foraging;
+                case 2:
+                    return ForagingSeedBuilder.RadishSeeds.foraging;
+                case 3:
+                    return ForagingSeedBuilder.WheatSeeds.foraging;
+                case 4:
+                    return ForagingSeedBuilder.PoppySeeds.foraging;
+                case 5:
+                    return ForagingSeedBuilder.SunflowerSeeds.foraging;
+                case 6:
+                    return ForagingSeedBuilder.SpangleSeeds.foraging;
             }
         } else if (season == Seasons.Fall) {
-            int randomFactor = (int)(Math.random() * 1000 % 6);
+            int randomFactor = (int) (Math.random() * 1000 % 6);
             switch (randomFactor) {
-                case 0: return ForagingSeedBuilder.ArtichokeSeeds.foraging;
-                case 1: return ForagingSeedBuilder.CornSeeds.foraging;
-                case 2: return ForagingSeedBuilder.EggplantSeeds.foraging;
-                case 3: return ForagingSeedBuilder.PumpkinSeeds.foraging;
-                case 4: return ForagingSeedBuilder.SunflowerSeeds.foraging;
-                case 5: return ForagingSeedBuilder.FairySeeds.foraging;
+                case 0:
+                    return ForagingSeedBuilder.ArtichokeSeeds.foraging;
+                case 1:
+                    return ForagingSeedBuilder.CornSeeds.foraging;
+                case 2:
+                    return ForagingSeedBuilder.EggplantSeeds.foraging;
+                case 3:
+                    return ForagingSeedBuilder.PumpkinSeeds.foraging;
+                case 4:
+                    return ForagingSeedBuilder.SunflowerSeeds.foraging;
+                case 5:
+                    return ForagingSeedBuilder.FairySeeds.foraging;
             }
         } else if (season == Seasons.Winter) {
             return ForagingSeedBuilder.PowdermelonSeeds.foraging;
