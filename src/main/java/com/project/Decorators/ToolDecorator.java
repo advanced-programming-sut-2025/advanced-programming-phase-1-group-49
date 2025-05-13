@@ -7,14 +7,16 @@ import static com.project.Models.Enums.ToolLevel.*;
 
 public class ToolDecorator extends Tool {
     Tool tool;
+
     public ToolDecorator(Tool tool) {
         this.tool = tool;
     }
+
     public Tool upgrade() {
         ToolLevel level = tool.getLevel();
 
         switch (level) {
-            case Basic :
+            case Basic:
                 tool.setLevel(Cu);
                 break;
 
@@ -22,11 +24,11 @@ public class ToolDecorator extends Tool {
                 tool.setLevel(Fe);
                 break;
 
-            case Fe :
+            case Fe:
                 tool.setLevel(Au);
                 break;
 
-            case Au :
+            case Au:
                 tool.setLevel(Ir);
                 break;
 
@@ -34,11 +36,11 @@ public class ToolDecorator extends Tool {
                 tool.setLevel(BambooFP);
                 break;
 
-            case BambooFP :
+            case BambooFP:
                 tool.setLevel(FiberGlassFP);
                 break;
 
-            case FiberGlassFP :
+            case FiberGlassFP:
                 tool.setLevel(IrFP);
                 break;
 
@@ -46,19 +48,19 @@ public class ToolDecorator extends Tool {
                 tool.setLevel(CuCan);
                 break;
 
-            case CuCan :
+            case CuCan:
                 tool.setLevel(FeCan);
                 break;
 
-            case FeCan :
+            case FeCan:
                 tool.setLevel(AuCan);
                 break;
 
-            case AuCan :
+            case AuCan:
                 tool.setLevel(IrCan);
                 break;
 
-            default :
+            default:
                 break;
         }
         tool.setEnergy(tool.getLevel().getEnergy());
