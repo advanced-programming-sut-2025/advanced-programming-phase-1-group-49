@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
 public class Game {
-    transient private final Map map;
+    private final Map map;
     private static int GameCounter = 0;
     private final int id;
     private final inventory inventory = new inventory();
