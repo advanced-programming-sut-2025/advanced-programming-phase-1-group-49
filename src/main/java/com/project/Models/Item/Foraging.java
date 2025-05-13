@@ -20,6 +20,7 @@ public class Foraging implements Item {
     private boolean winter = false;
     private boolean fall = false;
     private int stages;
+    private int level;
 
     public Foraging() { }
 
@@ -197,6 +198,15 @@ public class Foraging implements Item {
 
     public int getStages() {
         return stages;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public Foraging  setLevel(int level) {
+        this.level = level;
+        return this;
     }
 
     @Override
