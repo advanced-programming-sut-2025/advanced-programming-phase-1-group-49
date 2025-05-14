@@ -1,4 +1,4 @@
-package com.project.Builders.ForagingBuilderEnums;
+package com.project.Builders.BuilderEnums;
 
 import com.project.Models.Item.Foraging;
 
@@ -20,6 +20,11 @@ public enum MineralBuilder {
     Gold(new Foraging().setName("Gold").setBaseSellPrice(25)),
     Iridium(new Foraging().setName("Iridium").setBaseSellPrice(100)),
     Coal(new Foraging().setName("Coal").setBaseSellPrice(15)),
+
+    // some additional Foragings
+    Wood(new Foraging().setName("Wood")),
+    Fiber(new Foraging().setName("Fiber")),
+    Stone(new Foraging().setName("Stone")),
     ;
 
     public final Foraging foraging;

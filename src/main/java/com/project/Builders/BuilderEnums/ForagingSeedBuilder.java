@@ -1,4 +1,4 @@
-package com.project.Builders.ForagingBuilderEnums;
+package com.project.Builders.BuilderEnums;
 
 import com.project.Models.Item.Foraging;
 
@@ -44,7 +44,14 @@ public enum ForagingSeedBuilder {
     RareSeed(new Foraging().setName("Rare Seed").setSource("Fall").setBaseSellPrice(3000).setFall(true)),
     PowdermelonSeeds(new Foraging().setName("Powdermelon Seeds").setSource("Winter").setBaseSellPrice(60).setWinter(true)),
     AncientSeeds(new Foraging().setName("Ancient Seeds").setSource("Special").setBaseSellPrice(550).setSpring(true).setSummer(true).setFall(true)),
-    MixedSeeds(new Foraging().setName("Mixed Seeds").setSource("Special").setBaseSellPrice(0).setSpring(true).setSummer(true).setFall(true).setWinter(true));
+    MixedSeeds(new Foraging().setName("Mixed Seeds").setSource("Special").setBaseSellPrice(0).setSpring(true).setSummer(true).setFall(true).setWinter(true)),
+
+    //Additional foragings
+    Acorn(new Foraging().setName("Acorn")),
+    MapleSeed(new Foraging().setName("Maple Seed")),
+    PineCone(new Foraging().setName("Pine Cone")),
+    MahoganySeed(new Foraging().setName("Mahogany Seed")),
+    ;
 
     public final Foraging foraging;
 

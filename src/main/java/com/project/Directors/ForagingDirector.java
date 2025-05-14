@@ -1,6 +1,6 @@
 package com.project.Directors;
 
-import com.project.Builders.ForagingBuilderEnums.*;
+import com.project.Builders.BuilderEnums.*;
 import com.project.Models.Enums.Seasons;
 import com.project.Models.Item.Foraging;
 

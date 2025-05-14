@@ -1,4 +1,4 @@
-package com.project.Builders.ForagingBuilderEnums;
+package com.project.Builders.BuilderEnums;
 
 import com.project.Models.Item.Foraging;
 
@@ -11,7 +11,7 @@ public enum ForagingTreeBuilder {
     PeachTree(new Foraging().setName("Peach Tree").setSource("Peach Sapling").setStages(7777).setGrowthTime(28).setRegrowable(true).setRegrowInterval(1).setSummer(true)),
     AppleTree(new Foraging().setName("Apple Tree").setSource("Apple Sapling").setStages(7777).setGrowthTime(28).setRegrowable(true).setRegrowInterval(1).setFall(true)),
     PomegranateTree(new Foraging().setName("Pomegranate Tree").setSource("Pomegranate Sapling").setStages(7777).setGrowthTime(28).setRegrowable(true).setRegrowInterval(1).setFall(true)),
-    OakTree(new Foraging().setName("Oak Tree").setSource("Acorns").setStages(7777).setGrowthTime(28).setRegrowable(true).setRegrowInterval(7).setSpring(true).setSummer(true).setFall(true).setWinter(true)),
+    OakTree(new Foraging().setName("Oak Tree").setSource("Acorn").setStages(7777).setGrowthTime(28).setRegrowable(true).setRegrowInterval(7).setSpring(true).setSummer(true).setFall(true).setWinter(true)),
     MapleTree(new Foraging().setName("Maple Tree").setSource("Maple Seeds").setStages(7777).setGrowthTime(28).setRegrowable(true).setRegrowInterval(9).setSpring(true).setSummer(true).setFall(true).setWinter(true)),
     PineTree(new Foraging().setName("Pine Tree").setSource("Pine Cones").setStages(7777).setGrowthTime(28).setRegrowable(true).setRegrowInterval(5).setSpring(true).setSummer(true).setFall(true).setWinter(true)),
     MahoganyTree(new Foraging().setName("Mahogany Tree").setSource("Mahogany Seeds").setStages(7777).setGrowthTime(28).setRegrowable(true).setRegrowInterval(1).setSpring(true).setSummer(true).setFall(true).setWinter(true)),

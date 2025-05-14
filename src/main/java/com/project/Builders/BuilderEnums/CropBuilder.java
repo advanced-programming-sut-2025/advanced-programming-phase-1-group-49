@@ -1,4 +1,4 @@
-package com.project.Builders.ForagingBuilderEnums;
+package com.project.Builders.BuilderEnums;
 
 import com.project.Models.Item.Foraging;
 
