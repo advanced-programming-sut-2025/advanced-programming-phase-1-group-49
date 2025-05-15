@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class Ingredients {
     private Map<String, Integer> ingredients = new HashMap<>();
-    private String name;
+    private final String name;
 
     // Constructor
     public Ingredients(Map<String, Integer> ingredients, String name) {
