@@ -5,6 +5,7 @@ public enum Skills {
     Foraging,
     Farming,
     Cooking,
-    Mining
+    Mining,
+    Fishing
     ;
 }

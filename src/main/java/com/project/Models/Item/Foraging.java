@@ -1,26 +1,29 @@
 package com.project.Models.Item;
 
+import com.project.Models.Enums.Skills;
+
 public class Foraging implements Item {
 
-    private String name;
-    private String source;
-    private int growthStage;
-    private int growthTime; // days until harvest
-    private boolean regrowable = false;
-    private int regrowInterval; // days between harvests if regrowable
-    private int baseSellPrice;
-    private boolean edible = false;
-    private int energyGain;
-    private String season; // e.g., "Spring", "Summer", etc.
-    private boolean canBecomeGiant = false;
-    private boolean isGiant = false;
-    private int quality = 1;
-    private boolean spring = false;
-    private boolean summer = false;
-    private boolean winter = false;
-    private boolean fall = false;
-    private int stages;
-    private int level;
+    protected String name;
+    protected String source;
+    protected int growthStage;
+    protected int growthTime; // days until harvest
+    protected boolean regrowable = false;
+    protected int regrowInterval; // days between harvests if regrowable
+    protected int sellPrice;
+    protected boolean edible = false;
+    protected int energyGain;
+    protected String season; // e.g., "Spring", "Summer", etc.
+    protected boolean canBecomeGiant = false;
+    protected boolean isGiant = false;
+    protected int quality = 1;
+    protected boolean spring = false;
+    protected boolean summer = false;
+    protected boolean winter = false;
+    protected boolean fall = false;
+    protected int stages;
+    protected int level = 0;
+    protected Skills skill;
 
     public Foraging() { }
 
@@ -66,8 +69,8 @@ public class Foraging implements Item {
         return this;
     }
 
-    public Foraging setBaseSellPrice(int baseSellPrice) {
-        this.baseSellPrice = baseSellPrice;
+    public Foraging setSellPrice(int sellPrice) {
+        this.sellPrice = sellPrice;
         return this;
     }
 
@@ -105,6 +108,11 @@ public class Foraging implements Item {
         return this;
     }
 
+    public Foraging setSkill(Skills skill) {
+        this.skill = skill;
+        return this;
+    }
+
     // Getters
 
     public String getName() {
@@ -131,8 +139,8 @@ public class Foraging implements Item {
         return regrowInterval;
     }
 
-    public int getBaseSellPrice() {
-        return baseSellPrice;
+    public int getSellPrice() {
+        return sellPrice;
     }
 
     public boolean isEdible() {
@@ -157,6 +165,10 @@ public class Foraging implements Item {
 
     public boolean isSpring() {
         return spring;
+    }
+
+    public Skills getSkill() {
+        return skill;
     }
 
     public Foraging setSpring(boolean spring) {
