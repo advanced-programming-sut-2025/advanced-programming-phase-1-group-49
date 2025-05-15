@@ -1,14 +1,17 @@
 package com.project.Models.Houses;
 
 public class Home implements Building {
-    private final int homeX = 1;
-    private final int homeLength = 4;
-    private final int homeY = 80;
-    private final int homeWidth = 8;
+    private final String id;
+
+    public Home(int id) {
+        this.id = "Home" + id;
+    }
+
+    // Override
 
     @Override
     public String getID() {
-        return "Home";
+        return id;
     }
 
     @Override
@@ -16,19 +19,21 @@ public class Home implements Building {
         return "H";
     }
 
+    // getter
+
     public int getHomeX() {
-        return homeX;
+        return 1;
     }
 
     public int getHomeLength() {
-        return homeLength;
+        return 4;
     }
 
     public int getHomeY() {
-        return homeY;
+        return 80;
     }
 
     public int getHomeWidth() {
-        return homeWidth;
+        return 8;
     }
 }

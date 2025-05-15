@@ -3,6 +3,7 @@ package com.project.Models;
 import com.google.gson.Gson;
 import com.project.Builders.GameBuilder;
 import com.project.Controllers.AppController;
+import com.project.Gson.GsonFactory;
 import com.project.Models.LivingBeings.Player;
 import com.project.Models.Map.Map;
 
@@ -82,7 +83,7 @@ public class Game {
                 File player = new File("Data/" + username + "/PlayerInfo.json");
                 try {
                     FileReader reader = new FileReader(player);
-                    targetPlayer = new Gson().fromJson(reader, Player.class);
+                    targetPlayer = GsonFactory.create().fromJson(reader, Player.class);
                     App.addPlayer(targetPlayer);
                 } catch (FileNotFoundException e) {
                     throw new RuntimeException(e);
@@ -93,6 +94,7 @@ public class Game {
     }
 
     public void initializeMap() {
+        map.initialize();
     }
 
     //

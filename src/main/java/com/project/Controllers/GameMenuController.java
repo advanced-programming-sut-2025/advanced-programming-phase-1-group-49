@@ -2,6 +2,7 @@ package com.project.Controllers;
 
 import com.google.gson.Gson;
 import com.project.Builders.GameBuilder;
+import com.project.Gson.GsonFactory;
 import com.project.Models.App;
 import com.project.Models.Enums.Block;
 import com.project.Models.Enums.Menu;
@@ -18,7 +19,7 @@ public class GameMenuController {
     private boolean createNewGame = false;
 
     private GameBuilder builder;
-    private final Gson gson = new Gson();
+    private final Gson gson = GsonFactory.create();
     private int index = 0;
 
     private void resetFields() {
@@ -45,7 +46,7 @@ public class GameMenuController {
                 if (player.exists())
                     try {
                         FileReader reader = new FileReader(player);
-                        newPlayer = new Gson().fromJson(reader, Player.class);
+                        newPlayer = GsonFactory.create().fromJson(reader, Player.class);
                         App.addPlayer(newPlayer);
                     } catch (FileNotFoundException e) {
                         throw new RuntimeException(e);
@@ -122,8 +123,9 @@ public class GameMenuController {
         if (game == null) {
             try {
                 FileReader fileReader = new FileReader("Data/Games/" + gameID + "/game.json");
-                game = new Gson().fromJson(fileReader, Game.class);
+                game = GsonFactory.create().fromJson(fileReader, Game.class);
                 game.initializePlayers();
+                game.getMap().initialize();
                 App.addGame(game);
                 fileReader.close();
             } catch (IOException e) {

@@ -1,6 +1,8 @@
 package com.project.Controllers;
 
 import com.google.gson.Gson;
+import com.project.Builders.AccountBuilder;
+import com.project.Gson.GsonFactory;
 import com.project.Models.App;
 import com.project.Models.Enums.Gender;
 import com.project.Models.Enums.Menu;
@@ -21,13 +23,9 @@ public class RegisterMenuController {
     private boolean randomPassword = false;
     private boolean securityQ = false;
 
-    private String username;
-    private String password;
-    private String nickname;
-    private String email;
-    private Gender gender;
+    private AccountBuilder builder;
 
-    private final Gson gson = new Gson();
+    private final Gson gson = GsonFactory.create();
 
     private final ArrayList<String> SecurityQuestions = new ArrayList<>(Arrays.asList(
             "1. What was the name of your first pet?",
@@ -41,11 +39,7 @@ public class RegisterMenuController {
         checkPassword = false;
         randomPassword = false;
         securityQ = false;
-        username = null;
-        password = null;
-        nickname = null;
-        email = null;
-        gender = null;
+        builder = null;
     }
 
     private String generatePassword() {
@@ -55,7 +49,6 @@ public class RegisterMenuController {
         int upperCase = random.nextInt(2) + 3;
         int lowerCase = 7 - upperCase;
         int number = random.nextInt(3) + 1;
-        int special = length - 7 - number;
 
         ArrayList<Character> passwordBuilder = new ArrayList<>();
         for (int i = 0; i < length; i++)
@@ -92,8 +85,8 @@ public class RegisterMenuController {
             result.append(passwordBuilder.get(j));
         }
 
-        password = result.toString();
-        return password;
+        builder.setPassword(result.toString());
+        return builder.getPassword();
     }
 
     //
@@ -132,12 +125,14 @@ public class RegisterMenuController {
             return new Result(false, "Invalid gender. Try Again.\n");
 
         // Save Data :
-        username = usernameString;
-        nickname = nicknameString;
-        email = emailString;
-        gender = Gender.Male;
+        builder = new AccountBuilder();
+        builder.setUsername(usernameString);
+        builder.setNickname(nicknameString);
+        builder.setEmail(emailString);
+        Gender gender = (Gender.Male);
         if (genderString.equals("Female"))
-            this.gender = Gender.Female;
+            gender = Gender.Female;
+        builder.setGender(gender);
 
         if (passwordString.equals("Random")) {
             randomPassword = true;
@@ -151,7 +146,8 @@ public class RegisterMenuController {
             return new Result(false,
                     "Invalid password. enter another password or register again.\n");
         }
-        password = passwordString;
+
+        builder.setPassword(passwordString);
 
         for (String question : SecurityQuestions)
             System.out.println(question);
@@ -167,7 +163,7 @@ public class RegisterMenuController {
             return new Result(false,
                     "Invalid password. enter another password or register again.\n");
 
-        password = passwordString;
+        builder.setPassword(passwordString);
         for (String question : SecurityQuestions)
             System.out.println(question);
         checkPassword = false;
@@ -179,7 +175,7 @@ public class RegisterMenuController {
         accepted = accepted.trim().toLowerCase();
         if (!RegisterMenuCommands.accept.getMatcher(accepted).find())
             return new Result(false,
-                    String.format("if %s is good enter \"yes\"(y) else enter \"no\"(n)", password));
+                    String.format("if %s is good enter \"yes\"(y) else enter \"no\"(n)", builder.getPassword()));
 
         if (accepted.equals("y") || accepted.equals("yes")) {
             for (String question : SecurityQuestions)
@@ -214,8 +210,9 @@ public class RegisterMenuController {
         if (!answer.equals(answerConfirm))
             return new Result(false, "Answer did not match. try again");
 
+        builder.setSQ(questionID + ", " + answer);
         Player player = new
-                Player(username, password, nickname, email, gender, questionID + ", " + answer);
+                Player(builder);
         App.addPlayer(player);
         resetFields();
 

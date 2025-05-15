@@ -1,14 +1,17 @@
 package com.project.Models.Houses;
 
 public class GreenHouse implements Building {
-    private final int greenHouseX = 2;
-    private final int greenHouseY = 2;
-    private final int greenHouseLength = 9;
-    private final int greenHouseWidth = 4;
+    private final String id;
+
+    public GreenHouse(int id) {
+        this.id = "GreenHouse" + id;
+    }
+
+    // Override
 
     @Override
     public String getID() {
-        return "";
+        return id;
     }
 
     @Override
@@ -16,19 +19,21 @@ public class GreenHouse implements Building {
         return "G";
     }
 
+    // getter
+
     public int getGreenHouseX() {
-        return greenHouseX;
+        return 2;
     }
 
     public int getGreenHouseY() {
-        return greenHouseY;
+        return 2;
     }
 
     public int getGreenHouseLength() {
-        return greenHouseLength;
+        return 9;
     }
 
     public int getGreenHouseWidth() {
-        return greenHouseWidth;
+        return 4;
     }
 }

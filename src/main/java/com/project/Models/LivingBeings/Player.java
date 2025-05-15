@@ -1,10 +1,12 @@
 package com.project.Models.LivingBeings;
 
+import com.project.Builders.AccountBuilder;
 import com.project.Models.Enums.Gender;
 import com.project.Models.Game;
 import com.project.Models.inventory;
 
 public class Player extends Person {
+    private int energyLimit = 100;
     private String username;
     private String password;
     private String email;
@@ -22,13 +24,13 @@ public class Player extends Person {
     private int y = 84;
     private String securityQuestion = null;
 
-    public Player(String username, String password, String nickname, String email, Gender gender, String securityQuestion) {
-        this.username = username;
-        this.password = password;
-        this.nickname = nickname;
-        this.email = email;
-        this.gender = gender;
-        this.securityQuestion = securityQuestion;
+    public Player(AccountBuilder accountBuilder) {
+        this.username = accountBuilder.getUsername();
+        this.password = accountBuilder.getPassword();
+        this.nickname = accountBuilder.getNickname();
+        this.email = accountBuilder.getEmail();
+        this.gender = accountBuilder.getGender();
+        this.securityQuestion = accountBuilder.getSecurityQuestion();
     }
 
     // getter
@@ -89,6 +91,10 @@ public class Player extends Person {
         return gameID;
     }
 
+    public int getEnergyLimit() {
+        return energyLimit;
+    }
+
     // setter
 
     public void setUsername(String username) {
@@ -145,6 +151,10 @@ public class Player extends Person {
 
     public void setGameID(int gameID) {
         this.gameID = gameID;
+    }
+
+    public void setEnergyLimit(int energyLimit) {
+        this.energyLimit = energyLimit;
     }
 
     // increase
