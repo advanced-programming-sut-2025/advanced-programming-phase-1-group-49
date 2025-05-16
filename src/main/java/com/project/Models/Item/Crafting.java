@@ -1,11 +1,11 @@
 package com.project.Models.Item;
 
-import com.project.Compositors.Recipe;
+import com.project.Compositors.Ingredients;
 import com.project.Models.Enums.Skills;
 
 public class Crafting implements Item {
     private String name;
-    private Recipe recipe;
+    private Ingredients recipe;
     private Skills skill;
     private int level;
     private int sellPrice;
@@ -39,7 +39,7 @@ public class Crafting implements Item {
         return name;
     }
 
-    public Recipe getRecipe() {
+    public Ingredients getRecipe() {
         return recipe;
     }
 
@@ -66,7 +66,7 @@ public class Crafting implements Item {
         return this;
     }
 
-    public Crafting setRecipe(Recipe recipe) {
+    public Crafting setRecipe(Ingredients recipe) {
         this.recipe = recipe;
         return this;
     }

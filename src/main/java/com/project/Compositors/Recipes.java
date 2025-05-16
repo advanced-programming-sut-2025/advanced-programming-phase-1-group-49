@@ -1,4 +1,4 @@
-package com.project.Models.Enums;
+package com.project.Compositors;
 
 import com.project.Builders.BuilderEnums.ForagingSeedBuilder;
 import com.project.Builders.BuilderEnums.MineralBuilder;
@@ -30,7 +30,33 @@ public class Recipes {
     public static final Map<String, Integer> FishSmoker;
     public static final Map<String, Integer> MysticTreeSeed;
 
+    // Cooking recipes
+    public static final Map<String, Integer> FriedEgg;
+    public static final Map<String, Integer> BakedFish;
+    public static final Map<String, Integer> Salad;
+    public static final Map<String, Integer> Omelet;
+    public static final Map<String, Integer> PumpkinPie;
+    public static final Map<String, Integer> Spaghetti;
+    public static final Map<String, Integer> Pizza;
+    public static final Map<String, Integer> Tortilla;
+    public static final Map<String, Integer> MakiRoll;
+    public static final Map<String, Integer> TripleShotEspresso;
+    public static final Map<String, Integer> Cookie;
+    public static final Map<String, Integer> HashBrowns;
+    public static final Map<String, Integer> Pancakes;
+    public static final Map<String, Integer> FruitSalad;
+    public static final Map<String, Integer> RedPlate;
+    public static final Map<String, Integer> Bread;
+    public static final Map<String, Integer> SalmonDinner;
+    public static final Map<String, Integer> VegetableMedley;
+    public static final Map<String, Integer> FarmersLunch;
+    public static final Map<String, Integer> SurvivalBurger;
+    public static final Map<String, Integer> DishOTheSea;
+    public static final Map<String, Integer> SeafoamPudding;
+    public static final Map<String, Integer> MinersTreat;
+
     static {
+        // Crafting recipes
         CherryBomb = new HashMap<>();
         CherryBomb.put(MineralBuilder.Copper.foraging.getName(), 4);
         CherryBomb.put(MineralBuilder.Coal.foraging.getName(), 1);
@@ -127,5 +153,30 @@ public class Recipes {
         MysticTreeSeed.put(ForagingSeedBuilder.MapleSeed.foraging.getName(), 5);
         MysticTreeSeed.put(ForagingSeedBuilder.PineCone.foraging.getName(), 5);
         MysticTreeSeed.put(ForagingSeedBuilder.MahoganySeed.foraging.getName(), 5);
+
+        // Cooking recipes
+        FriedEgg = Map.of("egg", 1);
+        BakedFish = Map.of("sardine", 1, "salmon", 1, "wheat", 1);
+        Salad = Map.of("leek", 1, "dandelion", 1);
+        Omelet = Map.of("egg", 1, "milk", 1);
+        PumpkinPie = Map.of("pumpkin", 1, "wheat flour", 1, "milk", 1, "sugar", 1);
+        Spaghetti = Map.of("wheat flour", 1, "tomato", 1);
+        Pizza = Map.of("wheat flour", 1, "tomato", 1, "cheese", 1);
+        Tortilla = Map.of("corn", 1);
+        MakiRoll = Map.of("any fish", 1, "rice", 1, "fiber", 1);
+        TripleShotEspresso = Map.of("coffee", 3);
+        Cookie = Map.of("wheat flour", 1, "sugar", 1, "egg", 1);
+        HashBrowns = Map.of("potato", 1, "oil", 1);
+        Pancakes = Map.of("wheat flour", 1, "egg", 1);
+        FruitSalad = Map.of("blueberry", 1, "melon", 1, "apricot", 1);
+        RedPlate = Map.of("red cabbage", 1, "radish", 1);
+        Bread = Map.of("wheat flour", 1);
+        SalmonDinner = Map.of("salmon", 1, "amaranth", 1, "kale", 1);
+        VegetableMedley = Map.of("tomato", 1, "beet", 1);
+        FarmersLunch = Map.of("omelet", 1, "parsnip", 1);
+        SurvivalBurger = Map.of("bread", 1, "carrot", 1, "eggplant", 1);
+        DishOTheSea = Map.of("sardine", 2, "hash browns", 1);
+        SeafoamPudding = Map.of("flounder", 1, "midnight carp", 1);
+        MinersTreat = Map.of("carrot", 2, "sugar", 1, "milk", 1);
     }
 }

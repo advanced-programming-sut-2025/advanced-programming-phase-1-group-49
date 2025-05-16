@@ -1,17 +1,17 @@
 package com.project.Models.Item;
 
-import com.project.Compositors.Recipe;
+import com.project.Compositors.Ingredients;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class Machine extends Crafting {
     String shop;
-    Map<String, Recipe> recipes = new HashMap<String, Recipe>();
+    Map<String, Ingredients> recipes = new HashMap<String, Ingredients>();
     int processingTime = 0;
     int energy = 0;
 
-    public Crafting addRecipe(String name, Recipe recipe) {
+    public Crafting addRecipe(String name, Ingredients recipe) {
         return this;
     }
 
