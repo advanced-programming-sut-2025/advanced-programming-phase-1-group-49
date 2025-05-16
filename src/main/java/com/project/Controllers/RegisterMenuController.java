@@ -2,6 +2,7 @@ package com.project.Controllers;
 
 import com.google.gson.Gson;
 import com.project.Builders.AccountBuilder;
+import com.project.Gson.GsonProvider;
 import com.project.Models.App;
 import com.project.Models.Enums.Gender;
 import com.project.Models.Enums.Menu;
@@ -24,7 +25,7 @@ public class RegisterMenuController {
 
     private AccountBuilder builder;
 
-    private final Gson gson = new Gson();
+    private final Gson gson = GsonProvider.getGson();
 
     private final ArrayList<String> SecurityQuestions = new ArrayList<>(Arrays.asList(
             "1. What was the name of your first pet?",

@@ -8,7 +8,7 @@ import com.project.Models.Houses.Home;
 import java.util.ArrayList;
 
 public class Map {
-     static private final int mapLength = 20;
+    static private final int mapLength = 20;
     static private final int mapWidth = 100;
     private int homeCounter = 0;
     private int greenhouseCounter = 0;
@@ -21,11 +21,13 @@ public class Map {
 //    static private final ArrayList<Class<?>> forbiddenClasses = new ArrayList<>(List.of(Home.class));
 
     public Map() {
+        BlockWrapper basic = new BlockWrapper(Block.basic);
+        BlockWrapper water = new BlockWrapper(Block.water);
         // initialize
         for (int i = 0; i < blocks.length; i++)
             for (int j = 0; j < blocks[i].length; j++) {
                 blocks[i][j] = new ArrayList<>();
-                blocks[i][j].add(Block.basic);
+                blocks[i][j].add(basic);
 //                blocksID[i][j] = new ArrayList<>();
 //                blocksID[i][j].add(Block.basic.getID());
             }
@@ -53,7 +55,7 @@ public class Map {
         int LeakWidth = 7;
         for (int i = LeakX; i < LeakLength + LeakX; i++)
             for (int j = LeakY; j < LeakY + LeakWidth; j++) {
-                blocks[i][j].add(Block.water);
+                blocks[i][j].add(water);
 //                blocksID[i][j].add(Block.water.getID());
             }
 

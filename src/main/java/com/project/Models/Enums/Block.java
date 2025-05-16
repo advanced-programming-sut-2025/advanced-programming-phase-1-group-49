@@ -1,8 +1,7 @@
 package com.project.Models.Enums;
 
-import com.project.Models.Map.GameObject;
 
-public enum Block implements GameObject {
+public enum Block {
     basic(" ", "basic"),
     water("\u001B[34m█\u001B[0m", "water"),
     home("\u001B[32mH\u001B[0m", "home"),
@@ -20,12 +19,10 @@ public enum Block implements GameObject {
         this.id = id;
     }
 
-    @Override
     public String getID() {
         return id;
     }
 
-    @Override
     public String tooString() {
         return character;
     }

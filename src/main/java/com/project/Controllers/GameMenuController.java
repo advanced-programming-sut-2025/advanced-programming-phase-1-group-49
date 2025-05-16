@@ -2,6 +2,7 @@ package com.project.Controllers;
 
 import com.google.gson.Gson;
 import com.project.Builders.GameBuilder;
+import com.project.Gson.GsonProvider;
 import com.project.Models.App;
 import com.project.Models.Enums.Menu;
 import com.project.Models.Game;
@@ -16,7 +17,7 @@ public class GameMenuController {
     private boolean createNewGame = false;
 
     private GameBuilder builder;
-    private final Gson gson = new Gson();
+    private final Gson gson = GsonProvider.getGson();
     private int index = 0;
 
     private void resetFields() {
