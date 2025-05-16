@@ -61,6 +61,10 @@ public class Game {
         return inventory;
     }
 
+    public Player getPlayer() {
+        return players.get(turn);
+    }
+
     // setter
 
     public void setMainPlayer(Player player) {
