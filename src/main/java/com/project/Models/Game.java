@@ -91,7 +91,7 @@ public class Game {
             targetPlayer.initialize();
         }
 //        map.initialize();
-        map = new Map();
+//        map = new Map();
     }
 
     public void setMap(Map map) {

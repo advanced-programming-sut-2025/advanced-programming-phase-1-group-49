@@ -28,8 +28,8 @@ public class ActivityController {
         }
         if (x >= Map.getMapLength() || y >= Map.getMapWidth() || x < 0 || y < 0)
             return new Result(false, "Invalid x or y value");
-        if (Map.getForbiddenClasses().contains(map[x][y].get(map[x][y].size() - 1).getClass()))
-            return new Result(false, "You can't walk out of blocks");
+//        if (Map.getForbiddenClasses().contains(map[x][y].get(map[x][y].size() - 1).getClass()))
+//            return new Result(false, "You can't walk out of blocks");
 
         App.getPlayer().walk(x, y);
 

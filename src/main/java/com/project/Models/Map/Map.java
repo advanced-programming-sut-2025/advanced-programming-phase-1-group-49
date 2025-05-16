@@ -1,29 +1,24 @@
 package com.project.Models.Map;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.project.Models.App;
 import com.project.Models.Enums.Block;
 import com.project.Models.Houses.GreenHouse;
 import com.project.Models.Houses.Home;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class Map {
-    static private final int mapLength = 20;
+     static private final int mapLength = 20;
     static private final int mapWidth = 100;
     private int homeCounter = 0;
     private int greenhouseCounter = 0;
 
-    transient private final ArrayList<GameObject>[][] blocks = new ArrayList[mapLength][mapWidth];
-    private final ArrayList<String>[][] blocksID = new ArrayList[mapLength][mapWidth];
+    private final ArrayList<GameObject>[][] blocks = new ArrayList[mapLength][mapWidth];
+//    private final ArrayList<String>[][] blocksID = new ArrayList[mapLength][mapWidth];
 
 //    ArrayList<GameObject> objects = new ArrayList<>();
 
-    static private final ArrayList<Class<?>> forbiddenClasses = new ArrayList<>(List.of(Home.class));
+//    static private final ArrayList<Class<?>> forbiddenClasses = new ArrayList<>(List.of(Home.class));
 
     public Map() {
         // initialize
@@ -31,8 +26,8 @@ public class Map {
             for (int j = 0; j < blocks[i].length; j++) {
                 blocks[i][j] = new ArrayList<>();
                 blocks[i][j].add(Block.basic);
-                blocksID[i][j] = new ArrayList<>();
-                blocksID[i][j].add(Block.basic.getID());
+//                blocksID[i][j] = new ArrayList<>();
+//                blocksID[i][j].add(Block.basic.getID());
             }
 
         // home
@@ -40,7 +35,7 @@ public class Map {
         for (int i = home.getHomeX(); i < home.getHomeX() + home.getHomeLength(); i++)
             for (int j = home.getHomeY(); j < home.getHomeY() + home.getHomeWidth(); j++) {
                 blocks[i][j].add(home);
-                blocksID[i][j].add(home.getID());
+//                blocksID[i][j].add(home.getID());
             }
 
         // greenhouse
@@ -48,7 +43,7 @@ public class Map {
         for (int i = greenHouse.getGreenHouseX(); i < greenHouse.getGreenHouseX() + greenHouse.getGreenHouseWidth(); i++)
             for (int j = greenHouse.getGreenHouseY(); j < greenHouse.getGreenHouseY() + greenHouse.getGreenHouseLength(); j++) {
                 blocks[i][j].add(greenHouse);
-                blocksID[i][j].add(greenHouse.getID());
+//                blocksID[i][j].add(greenHouse.getID());
             }
 
         // leak
@@ -59,21 +54,14 @@ public class Map {
         for (int i = LeakX; i < LeakLength + LeakX; i++)
             for (int j = LeakY; j < LeakY + LeakWidth; j++) {
                 blocks[i][j].add(Block.water);
-                blocksID[i][j].add(Block.water.getID());
+//                blocksID[i][j].add(Block.water.getID());
             }
 
 
         // player
         blocks[App.getPlayer().getX()][App.getPlayer().getY()].add(App.getPlayer());
-        blocksID[App.getPlayer().getX()][App.getPlayer().getY()].add(App.getPlayer().getID());
+//        blocksID[App.getPlayer().getX()][App.getPlayer().getY()].add(App.getPlayer().getID());
 
-        // test
-        ObjectMapper mapper = new ObjectMapper();
-        try {
-            mapper.writeValue(new File("Data/Games/test1.json"), this);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
     }
 
     // getter
@@ -86,9 +74,9 @@ public class Map {
         return mapWidth;
     }
 
-    public static ArrayList<Class<?>> getForbiddenClasses() {
-        return forbiddenClasses;
-    }
+//    public static ArrayList<Class<?>> getForbiddenClasses() {
+//        return forbiddenClasses;
+//    }
 
     public ArrayList<GameObject>[][] getBlocks() {
         return blocks;

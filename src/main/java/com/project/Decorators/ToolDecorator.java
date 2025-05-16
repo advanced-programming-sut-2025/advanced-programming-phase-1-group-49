@@ -32,17 +32,17 @@ public class ToolDecorator extends Tool {
                 tool.setLevel(Ir);
                 break;
 
-            case TrainingFP:
-                tool.setLevel(BambooFP);
-                break;
-
-            case BambooFP:
-                tool.setLevel(FiberGlassFP);
-                break;
-
-            case FiberGlassFP:
-                tool.setLevel(IrFP);
-                break;
+//            case TrainingFP:
+//                tool.setLevel(BambooFP);
+//                break;
+//
+//            case BambooFP:
+//                tool.setLevel(FiberGlassFP);
+//                break;
+//
+//            case FiberGlassFP:
+//                tool.setLevel(IrFP);
+//                break;
 
             case BasicCan:
                 tool.setLevel(CuCan);
