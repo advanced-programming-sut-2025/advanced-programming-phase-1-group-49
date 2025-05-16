@@ -1,0 +1,9 @@
+register -u test1 -p Test!234 Test!234 -n test1 -e test1@gmail.com -g male
+pick question -q 1 -a answer -c answer
+register -u test2 -p Test!234 Test!234 -n test2 -e test2@gmail.com -g male
+pick question -q 1 -a answer -c answer
+register -u test3 -p Test!234 Test!234 -n test3 -e test3@gmail.com -g male
+pick question -q 1 -a answer -c answer
+register -u test4 -p Test!234 Test!234 -n test4 -e test4@gmail.com -g male
+pick question -q 1 -a answer -c answer
+

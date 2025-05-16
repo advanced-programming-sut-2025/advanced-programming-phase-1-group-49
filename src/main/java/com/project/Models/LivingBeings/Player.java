@@ -2,6 +2,7 @@ package com.project.Models.LivingBeings;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.project.Builders.AccountBuilder;
+import com.project.Models.App;
 import com.project.Models.Enums.Gender;
 import com.project.Models.Game;
 import com.project.Models.inventory;
@@ -33,9 +34,6 @@ public class Player extends Person {
         this.email = accountBuilder.getEmail();
         this.gender = accountBuilder.getGender();
         this.securityQuestion = accountBuilder.getSecurityQuestion();
-    }
-
-    public Player() {
     }
 
     // getter
@@ -205,7 +203,6 @@ public class Player extends Person {
 
     }
 
-
     @Override
     public void passByDay() {
 
@@ -223,10 +220,16 @@ public class Player extends Person {
 
     //
 
+    public void initialize() {
+        if (gameID == -1)
+            if (App.searchGame(gameID) != null)
+                currentGame = App.searchGame(gameID);
+    }
+
     public void walk(int x, int y) {
-        currentGame.getMap().getBlocks()[this.x][this.y].remove(this);
+        App.getGame().getMap().getBlocks()[this.x][this.y].remove(this);
         this.x = x;
         this.y = y;
-        currentGame.getMap().getBlocks()[x][y].set(currentGame.getMap().getBlocks()[x][y].size() - 1, this);
+        App.getGame().getMap().getBlocks()[x][y].add(this);
     }
 }

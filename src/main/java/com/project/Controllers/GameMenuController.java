@@ -16,7 +16,7 @@ public class GameMenuController {
     private boolean createNewGame = false;
 
     private GameBuilder builder;
-        private final Gson gson = new Gson();
+    private final Gson gson = new Gson();
     private int index = 0;
 
     private void resetFields() {
@@ -86,8 +86,13 @@ public class GameMenuController {
         builder.farm(id, index);
         index++;
         if (index > 3) {
+            // crate game
+
             Game game = builder.build();
             App.addGame(game);
+
+            // check folders :
+
             File checkGameFolder = new File("Data/Games");
             if (!checkGameFolder.exists()) {
                 if (!checkGameFolder.mkdir())
@@ -96,17 +101,21 @@ public class GameMenuController {
             File gameFolder = new File("Data/Games/" + game.getGameID());
             if (!gameFolder.mkdir())
                 return new Result(false, "Unable to create game.create game folder fail");
+
+            //
+
             saveGame(game);
             loadGame();
             resetFields();
 
             return new Result(true, "Game Created.");
         }
-        return new Result(true, String.format("%s, select your map :", builder.getPlayers()[index].getNickname()));
+        return new Result(false, String.format("%s, select your map :", builder.getPlayers()[index].getNickname()));
     }
 
     public Result exitGame() {
         saveGame(App.getGame());
+        App.setGame(null);
         App.setCurrentMenu(Menu.MainMenu);
         return new Result(true, "exit game");
     }

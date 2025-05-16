@@ -88,8 +88,10 @@ public class Game {
                 }
             }
             players.add(targetPlayer);
+            targetPlayer.initialize();
         }
-        map.initialize();
+//        map.initialize();
+        map = new Map();
     }
 
     public void setMap(Map map) {

@@ -9,17 +9,21 @@ import com.project.Models.Houses.Home;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Map {
-    final int mapLength = 20;
-    final int mapWidth = 100;
+    static private final int mapLength = 20;
+    static private final int mapWidth = 100;
     private int homeCounter = 0;
     private int greenhouseCounter = 0;
 
     transient private final ArrayList<GameObject>[][] blocks = new ArrayList[mapLength][mapWidth];
     private final ArrayList<String>[][] blocksID = new ArrayList[mapLength][mapWidth];
 
-    ArrayList<GameObject> objects = new ArrayList<>();
+//    ArrayList<GameObject> objects = new ArrayList<>();
+
+    static private final ArrayList<Class<?>> forbiddenClasses = new ArrayList<>(List.of(Home.class));
 
     public Map() {
         // initialize
@@ -58,8 +62,6 @@ public class Map {
                 blocksID[i][j].add(Block.water.getID());
             }
 
-        objects.add(home);
-        objects.add(greenHouse);
 
         // player
         blocks[App.getPlayer().getX()][App.getPlayer().getY()].add(App.getPlayer());
@@ -74,10 +76,25 @@ public class Map {
         }
     }
 
+    // getter
+
+    static public int getMapLength() {
+        return mapLength;
+    }
+
+    static public int getMapWidth() {
+        return mapWidth;
+    }
+
+    public static ArrayList<Class<?>> getForbiddenClasses() {
+        return forbiddenClasses;
+    }
+
     public ArrayList<GameObject>[][] getBlocks() {
         return blocks;
     }
 
+    /*
     public void initialize() {
         for (int i = 0; i < blocksID.length; i++)
             for (int j = 0; j < blocksID[i].length; j++) {
@@ -99,4 +116,5 @@ public class Map {
                 }
             }
     }
+     */
 }
