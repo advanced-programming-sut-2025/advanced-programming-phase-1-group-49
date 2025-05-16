@@ -1,7 +1,7 @@
 package com.project.Controllers;
 
 
-import com.project.Gson.GsonFactory;
+import com.google.gson.Gson;
 import com.project.Models.App;
 import com.project.Models.Enums.Menus.LoginMenuCommands;
 import com.project.Models.Enums.Menu;
@@ -48,7 +48,7 @@ public class LoginMenuController {
         if (targetPlayer == null)
             try {
                 FileReader fileReader = new FileReader("Data/" + username + "/PlayerInfo.json");
-                Player loadPlayer = GsonFactory.create().fromJson(fileReader, Player.class);
+                Player loadPlayer = new Gson().fromJson(fileReader, Player.class);
                 App.addPlayer(loadPlayer);
                 targetPlayer = loadPlayer;
                 fileReader.close();

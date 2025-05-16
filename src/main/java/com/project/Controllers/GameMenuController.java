@@ -1,14 +1,13 @@
 package com.project.Controllers;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.project.Builders.GameBuilder;
-import com.project.Gson.GsonFactory;
 import com.project.Models.App;
-import com.project.Models.Enums.Block;
 import com.project.Models.Enums.Menu;
 import com.project.Models.Game;
 import com.project.Models.LivingBeings.Player;
-import com.project.Models.Map.GameObject;
+import com.project.Models.Map.Map;
 import com.project.Models.Result;
 
 import java.io.*;
@@ -19,7 +18,8 @@ public class GameMenuController {
     private boolean createNewGame = false;
 
     private GameBuilder builder;
-    private final Gson gson = GsonFactory.create();
+    //    private final Gson gson = new Gson();
+    ObjectMapper mapper = new ObjectMapper();
     private int index = 0;
 
     private void resetFields() {
@@ -43,15 +43,18 @@ public class GameMenuController {
             Player newPlayer = App.searchPlayer(playerUserName);
             if (newPlayer == null) {
                 File player = new File("Data/" + playerUserName + "/PlayerInfo.json");
-                if (player.exists())
+                if (player.exists()) {
+//                        FileReader reader = new FileReader(player);
+//                        newPlayer = .fromJson(reader, Player.class);
+
                     try {
-                        FileReader reader = new FileReader(player);
-                        newPlayer = GsonFactory.create().fromJson(reader, Player.class);
-                        App.addPlayer(newPlayer);
-                    } catch (FileNotFoundException e) {
+                        newPlayer = mapper.readValue(player, Player.class);
+                    } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
-                else
+
+                    App.addPlayer(newPlayer);
+                } else
                     return new Result(false, "No Player Found with Name " + playerUserName);
             }
             if (App.getPlayer().equals(newPlayer))
@@ -123,9 +126,10 @@ public class GameMenuController {
         if (game == null) {
             try {
                 FileReader fileReader = new FileReader("Data/Games/" + gameID + "/game.json");
-                game = GsonFactory.create().fromJson(fileReader, Game.class);
+                game = mapper.readValue(fileReader, Game.class);
+//                game = .fromJson(fileReader, Game.class);
+                game.setMap(mapper.readValue(new File("Data/Games/test1.json"), Map.class));
                 game.initializePlayers();
-                game.getMap().initialize();
                 App.addGame(game);
                 fileReader.close();
             } catch (IOException e) {
@@ -139,11 +143,18 @@ public class GameMenuController {
     }
 
     private void saveGame(Game game) {
-        try (FileWriter writer = new FileWriter("Data/Games/" + game.getGameID() + "/game.json")) {
-            gson.toJson(game, writer);
+        try {
+            mapper.writeValue(new File("Data/Games/" + game.getGameID() + "/game.json"), game);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
+//        try (FileWriter writer = new FileWriter("Data/Games/" + game.getGameID() + "/game.json")) {
+//            gson.toJson(game, writer);
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
+
         App.setGame(null);
         resetFields();
     }

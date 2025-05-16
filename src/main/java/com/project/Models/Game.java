@@ -3,7 +3,6 @@ package com.project.Models;
 import com.google.gson.Gson;
 import com.project.Builders.GameBuilder;
 import com.project.Controllers.AppController;
-import com.project.Gson.GsonFactory;
 import com.project.Models.LivingBeings.Player;
 import com.project.Models.Map.Map;
 
@@ -11,10 +10,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 
 public class Game {
-    private final Map map;
+    private Map map;
     private static int GameCounter = 0;
     private final int id;
     private final inventory inventory = new inventory();
@@ -83,7 +81,7 @@ public class Game {
                 File player = new File("Data/" + username + "/PlayerInfo.json");
                 try {
                     FileReader reader = new FileReader(player);
-                    targetPlayer = GsonFactory.create().fromJson(reader, Player.class);
+                    targetPlayer = new Gson().fromJson(reader, Player.class);
                     App.addPlayer(targetPlayer);
                 } catch (FileNotFoundException e) {
                     throw new RuntimeException(e);
@@ -91,10 +89,11 @@ public class Game {
             }
             players.add(targetPlayer);
         }
+        map.initialize();
     }
 
-    public void initializeMap() {
-        map.initialize();
+    public void setMap(Map map) {
+        this.map = map;
     }
 
     //

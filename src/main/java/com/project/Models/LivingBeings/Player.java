@@ -1,5 +1,6 @@
 package com.project.Models.LivingBeings;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.project.Builders.AccountBuilder;
 import com.project.Models.Enums.Gender;
 import com.project.Models.Game;
@@ -17,6 +18,7 @@ public class Player extends Person {
     private Integer sightseeingXP = 0;
     private Integer fishingXP = 0;
     private Integer Energy = 100;
+    @JsonIgnore
     transient private Game currentGame = null;
     private int gameID = 0;
     private final inventory inventory = new inventory();
@@ -31,6 +33,9 @@ public class Player extends Person {
         this.email = accountBuilder.getEmail();
         this.gender = accountBuilder.getGender();
         this.securityQuestion = accountBuilder.getSecurityQuestion();
+    }
+
+    public Player() {
     }
 
     // getter

@@ -1,10 +1,13 @@
 package com.project.Models.Map;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.project.Models.App;
 import com.project.Models.Enums.Block;
 import com.project.Models.Houses.GreenHouse;
 import com.project.Models.Houses.Home;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Map {
@@ -61,6 +64,14 @@ public class Map {
         // player
         blocks[App.getPlayer().getX()][App.getPlayer().getY()].add(App.getPlayer());
         blocksID[App.getPlayer().getX()][App.getPlayer().getY()].add(App.getPlayer().getID());
+
+        // test
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            mapper.writeValue(new File("Data/Games/test1.json"), this);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public ArrayList<GameObject>[][] getBlocks() {
