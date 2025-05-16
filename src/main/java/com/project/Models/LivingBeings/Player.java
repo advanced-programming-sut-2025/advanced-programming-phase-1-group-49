@@ -5,6 +5,7 @@ import com.project.Builders.AccountBuilder;
 import com.project.Models.App;
 import com.project.Models.Enums.Gender;
 import com.project.Models.Game;
+import com.project.Models.Tools.Tool;
 import com.project.Models.inventory;
 
 public class Player extends Person {
@@ -26,6 +27,7 @@ public class Player extends Person {
     private int x = 5;
     private int y = 84;
     private String securityQuestion = null;
+    private int currentToolIndex = -1;
 
     public Player(AccountBuilder accountBuilder) {
         this.username = accountBuilder.getUsername();
@@ -98,6 +100,10 @@ public class Player extends Person {
         return energyLimit;
     }
 
+    public Tool getCurrentTool() {
+        return inventory.getTools().get(currentToolIndex);
+    }
+
     // setter
 
     public void setUsername(String username) {
@@ -158,6 +164,10 @@ public class Player extends Person {
 
     public void setEnergyLimit(int energyLimit) {
         this.energyLimit = energyLimit;
+    }
+
+    public void setCurrentToolIndex(int currentToolIndex) {
+        this.currentToolIndex = currentToolIndex;
     }
 
     // increase

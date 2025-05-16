@@ -20,6 +20,7 @@ public class GameActivity implements AppMenu {
                     - game info
                     - exit""");
             printMenuInfo = false;
+            controller.initialize();
         }
 
         String command = scanner.nextLine();

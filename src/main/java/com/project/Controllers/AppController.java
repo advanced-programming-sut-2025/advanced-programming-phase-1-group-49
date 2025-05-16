@@ -1,6 +1,7 @@
 package com.project.Controllers;
 
 import com.google.gson.Gson;
+import com.project.Gson.GsonProvider;
 import com.project.Models.App;
 import com.project.Models.Enums.Menu;
 import com.project.Models.Game;
@@ -23,7 +24,7 @@ public class AppController {
         AppData.txt
     */
 
-    private static final Gson gson = new Gson();
+    private static final Gson gson = GsonProvider.getGson();
 
     public static void loadData() {
         File folder = new File("Data");

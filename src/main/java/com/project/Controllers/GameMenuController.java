@@ -143,7 +143,7 @@ public class GameMenuController {
         return new Result(true, "load game");
     }
 
-    private void saveGame(Game game) {
+    public void saveGame(Game game) {
         try (FileWriter writer = new FileWriter("Data/Games/" + game.getGameID() + "/game.json")) {
             gson.toJson(game, writer);
         } catch (IOException e) {

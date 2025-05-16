@@ -1,7 +1,10 @@
 package com.project.Controllers.PlayerController;
 
+import com.project.Controllers.AppController;
+import com.project.Controllers.GameMenuController;
 import com.project.Models.App;
 import com.project.Models.Enums.Menu;
+import com.project.Models.Game;
 import com.project.Models.LivingBeings.Player;
 import com.project.Models.Map.GameObject;
 import com.project.Models.Map.Map;
@@ -12,6 +15,9 @@ import java.util.ArrayList;
 public class ActivityController {
 
     // we should work with game.getPlayer => return main player
+
+    private Game game;
+    private Player player;
 
     public Result walk(String xString, String yString) {
         ArrayList<GameObject>[][] map = App.getGame().getMap().getBlocks();
@@ -28,8 +34,12 @@ public class ActivityController {
         }
         if (x >= Map.getMapLength() || y >= Map.getMapWidth() || x < 0 || y < 0)
             return new Result(false, "Invalid x or y value");
-//        if (Map.getForbiddenClasses().contains(map[x][y].get(map[x][y].size() - 1).getClass()))
-//            return new Result(false, "You can't walk out of blocks");
+
+        for (GameObject g : map[x][y])
+            if (Map.getForbiddenClasses().contains(g.getClass()))
+                return new Result(false, "You can't walk out of blocks");
+
+        // dfs search
 
         App.getPlayer().walk(x, y);
 
@@ -49,12 +59,24 @@ public class ActivityController {
     }
 
     public Result exit() {
-        // exit from game
+        Game game = App.getGame();
+        for (Player p : game.getPlayers()) {
+            AppController.savePlayer(p);
+        }
+
+        (new GameMenuController()).saveGame(game);
 
         App.setCurrentMenu(Menu.GameMenu);
         App.setGame(null);
 
         return new Result(true, "exit");
+    }
+
+    //
+
+    public void initialize() {
+        game = App.getGame();
+        player = game.getPlayer();
     }
 
     // debugging
