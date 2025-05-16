@@ -211,6 +211,10 @@ public class Tool implements ObserveTime, GameObject {
         return this;
     }
 
+    //
+
+    //
+
     @Override
     public void passByHour() {
 
