@@ -64,7 +64,7 @@ public enum OrganicProductBuilder {
             .setSellPrice(350)
             .setEdible(false)
             .setName("DinosaurEgg")
-    )
+    ),
     ;
 
     public final Foraging product;
