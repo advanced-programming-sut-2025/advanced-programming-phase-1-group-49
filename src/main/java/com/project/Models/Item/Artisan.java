@@ -1,6 +1,7 @@
 package com.project.Models.Item;
 
 import com.project.Builders.ArtisanBuilder;
+import com.project.Compositors.Ingredients;
 
 import java.util.ArrayList;
 
@@ -9,8 +10,9 @@ public class Artisan implements Item {
     String description;
     int energy;
     int processingTime;
-    ArrayList<String> ingredients = new ArrayList<String>();
+
     int sellPrice;
+    Ingredients recipe;
 
     public Artisan(ArtisanBuilder builder) {
         this.name = builder.getName();
@@ -18,7 +20,31 @@ public class Artisan implements Item {
         this.energy = builder.getEnergy();
         this.processingTime = builder.getProcessingTime();
         this.sellPrice = builder.getSellPrice();
-        if (builder.getIngredients().size() != 0) this.ingredients = builder.getIngredients();
+        if (builder.getRecipe() != null) this.recipe = builder.getRecipe();
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public int getProcessingTime() {
+        return processingTime;
+    }
+
+    public int getEnergy() {
+        return energy;
+    }
+
+    public int getSellPrice() {
+        return sellPrice;
+    }
+
+    public Ingredients getRecipe() {
+        return recipe;
     }
 
     @Override

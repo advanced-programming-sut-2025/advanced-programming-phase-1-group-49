@@ -1,6 +1,7 @@
 package com.project.Builders.BuilderEnums;
 
 import com.project.Models.Item.Edible;
+import com.project.Models.Item.Foraging;
 import com.project.Models.Item.Item;
 
 public enum OrganicProductBuilder {
@@ -58,11 +59,17 @@ public enum OrganicProductBuilder {
             .setSellPrice(625)
             .setEdible(false)
             .setName("Truffle")
-    );
+    ),
+    DinosaurEgg(new Edible()
+            .setSellPrice(350)
+            .setEdible(false)
+            .setName("DinosaurEgg")
+    )
+    ;
 
-    public final Item product;
+    public final Foraging product;
 
-    OrganicProductBuilder(Item product) {
+    OrganicProductBuilder(Foraging product) {
         this.product = product;
     }
 }

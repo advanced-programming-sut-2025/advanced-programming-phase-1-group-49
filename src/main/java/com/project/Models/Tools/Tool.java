@@ -1,5 +1,6 @@
 package com.project.Models.Tools;
 
+import com.project.Models.Enums.FPLevel;
 import com.project.Models.Enums.ToolLevel;
 import com.project.Models.Map.GameObject;
 import com.project.Models.Time.ObserveTime;
@@ -10,8 +11,8 @@ public class Tool implements ObserveTime, GameObject {
     int energy;
     int complement = 0;
     ToolLevel level;
+    FPLevel fPLevel;
     int cost = 0;
-
 
     boolean digging = false;
     boolean breakStone = false;
