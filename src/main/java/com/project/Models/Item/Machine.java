@@ -2,6 +2,7 @@ package com.project.Models.Item;
 
 import com.project.Compositors.Ingredients;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,6 +11,7 @@ public class Machine extends Crafting {
     Map<String, Ingredients> recipes = new HashMap<String, Ingredients>();
     int processingTime = 0;
     int energy = 0;
+    Map<Item, Integer> products = new HashMap<>();
 
     public Crafting addRecipe(String name, Ingredients recipe) {
         return this;
@@ -33,5 +35,12 @@ public class Machine extends Crafting {
         return this;
     }
 
+    public Map<Item, Integer> getProducts() {
+        return products;
+    }
 
+    public Machine setProducts(Map<Item, Integer> products) {
+        this.products = products;
+        return this;
+    }
 }

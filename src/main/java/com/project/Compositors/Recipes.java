@@ -2,12 +2,14 @@ package com.project.Compositors;
 
 import com.project.Builders.BuilderEnums.ForagingSeedBuilder;
 import com.project.Builders.BuilderEnums.MineralBuilder;
+import com.project.Builders.BuilderEnums.OrganicProductBuilder;
+import com.project.Directors.ArtisanDirector;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class Recipes {
-
+    //Crafting recipes
     public static final Map<String, Integer> CherryBomb;
     public static final Map<String, Integer> Bomb;
     public static final Map<String, Integer> MegaBomb;
@@ -54,6 +56,10 @@ public class Recipes {
     public static final Map<String, Integer> DishOTheSea;
     public static final Map<String, Integer> SeafoamPudding;
     public static final Map<String, Integer> MinersTreat;
+
+    //Artisan goods
+    public static final Map<String, Integer> Honey;
+    public static final Map<String, Integer> Cheese;
 
     static {
         // Crafting recipes
@@ -178,5 +184,57 @@ public class Recipes {
         DishOTheSea = Map.of("sardine", 2, "hash browns", 1);
         SeafoamPudding = Map.of("flounder", 1, "midnight carp", 1);
         MinersTreat = Map.of("carrot", 2, "sugar", 1, "milk", 1);
+
+        // Artisan goods
+        Honey = new HashMap<>();
+        // No ingredients listed (produced passively by Bee House)
+
+        Cheese = new HashMap<>();
+        Cheese.put(OrganicProductBuilder.WhiteMilk.product.getName(), 1);
+        Cheese.put(OrganicProductBuilder.LargeWhiteMilk.product.getName(), 1);
+
+        Map<String, Integer> LargeCheese = new HashMap<>();
+        LargeCheese.put(OrganicProductBuilder.LargeWhiteMilk.product.getName(), 1);
+
+        Map<String, Integer> GoatCheese = new HashMap<>();
+        GoatCheese.put(OrganicProductBuilder.GoatMilk.product.getName(), 1);
+        GoatCheese.put(OrganicProductBuilder.LargeGoatMilk.product.getName(), 1);
+
+        Map<String, Integer> LargeGoatCheese = new HashMap<>();
+        LargeGoatCheese.put(OrganicProductBuilder.LargeGoatMilk.product.getName(), 1);
+
+        Map<String, Integer> Mayonnaise = new HashMap<>();
+        Mayonnaise.put(OrganicProductBuilder.Egg.product.getName(), 1);
+        Mayonnaise.put(OrganicProductBuilder.LargeEgg.product.getName(), 1);
+
+        Map<String, Integer> LargeMayonnaise = new HashMap<>();
+        LargeMayonnaise.put(OrganicProductBuilder.LargeEgg.product.getName(), 1);
+
+        Map<String, Integer> DuckMayonnaise = new HashMap<>();
+        DuckMayonnaise.put(OrganicProductBuilder.DuckEgg.product.getName(), 1);
+
+        Map<String, Integer> DinoMayonnaise = new HashMap<>();
+        DinoMayonnaise.put(OrganicProductBuilder.DinosaurEgg.product.getName(), 1);
+
+        Map<String, Integer> Beer = new HashMap<>();
+        Beer.put("Wheat", 1);
+
+        Map<String, Integer> PaleAle = new HashMap<>();
+        PaleAle.put("Hops", 1);
+
+        Map<String, Integer> Mead = new HashMap<>();
+        Mead.put(new ArtisanDirector().buildHoney().getName(), 1);
+
+        Map<String, Integer> Vinegar = new HashMap<>();
+        Vinegar.put("Rice", 1);
+
+        Map<String, Integer> TruffleOil = new HashMap<>();
+        TruffleOil.put(OrganicProductBuilder.PigTruffle.product.getName(), 1);
+
+        Map<String, Integer> Coffee = new HashMap<>();
+        Coffee.put("CoffeeBean", 5);
+
+        Map<String, Integer> Cloth = new HashMap<>();
+        Cloth.put(OrganicProductBuilder.LambWool.product.getName(), 1);
     }
 }

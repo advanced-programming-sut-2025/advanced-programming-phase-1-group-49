@@ -1,5 +1,6 @@
 package com.project.Builders;
 
+import com.project.Compositors.Ingredients;
 import com.project.Models.Item.Artisan;
 import com.project.Models.Item.Item;
 
@@ -11,30 +12,39 @@ public class ArtisanBuilder extends Builder {
     int energy;
     int sellPrice;
     int processingTime;
-    ArrayList<String> ingredients = new ArrayList<>();
+    Ingredients recipe = null;
 
-    public ArtisanBuilder (String name, String description, int energy, int sellPrice, int processingTime, ArrayList<String> ingredients) {
+    public ArtisanBuilder setName(String name) {
         this.name = name;
-        this.description = description;
-        this.energy = energy;
-        this.sellPrice = sellPrice;
-        this.processingTime = processingTime;
-        this.ingredients = ingredients;
+        return this;
     }
-    public ArtisanBuilder (String name, String description, int energy, int sellPrice, int processingTime) {
-        this.name = name;
-        this.description = description;
-        this.energy = energy;
-        this.sellPrice = sellPrice;
+
+    public ArtisanBuilder setProcessingTime(int processingTime) {
         this.processingTime = processingTime;
+        return this;
+    }
+
+    public ArtisanBuilder setEnergy(int energy) {
+        this.energy = energy;
+        return this;
+    }
+
+    public ArtisanBuilder setSellPrice(int sellPrice) {
+        this.sellPrice = sellPrice;
+        return this;
+    }
+
+    public ArtisanBuilder setDescription(String description) {
+        this.description = description;
+        return this;
+    }
+    public ArtisanBuilder setRecipe(Ingredients recipe) {
+        this.recipe = recipe;
+        return this;
     }
 
     public String getName() {
         return name;
-    }
-
-    public ArrayList<String> getIngredients() {
-        return ingredients;
     }
 
     public int getProcessingTime() {
@@ -52,6 +62,12 @@ public class ArtisanBuilder extends Builder {
     public int getSellPrice() {
         return sellPrice;
     }
+
+    public Ingredients getRecipe() {
+        return recipe;
+    }
+
+
 
     @Override
     public Item build() {

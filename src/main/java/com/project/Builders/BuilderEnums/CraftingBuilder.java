@@ -1,9 +1,11 @@
 package com.project.Builders.BuilderEnums;
 
 import com.project.Compositors.Ingredients;
+import com.project.Compositors.MachineProducts;
 import com.project.Compositors.Recipes;
 import com.project.Models.Enums.Skills;
 import com.project.Models.Item.Crafting;
+import com.project.Models.Item.Machine;
 
 public enum CraftingBuilder {
     CherryBomb(
@@ -58,7 +60,8 @@ public enum CraftingBuilder {
                     .setComplement(24)
     ),
     CharcoalKlin(
-            new Crafting()
+            new Machine()
+                    .setProducts(MachineProducts.charcoalKlin)
                     .setName("Charcoal Klin")
                     .setRecipe(new Ingredients(Recipes.CharcoalKlin, "Charcoal Klin"))
                     .setSkill(Skills.Foraging)
@@ -82,64 +85,73 @@ public enum CraftingBuilder {
                     .setLevel(2)
     ),
     BeeHouse(
-            new Crafting()
+            new Machine()
+                    .setProducts(MachineProducts.beeHouse)
                     .setName("Bee House")
                     .setRecipe(new Ingredients(Recipes.BeeHouse, "Bee House"))
                     .setSkill(Skills.Farming)
                     .setLevel(1)
     ),
     CheesePress(
-            new Crafting()
+            new Machine()
+                    .setProducts(MachineProducts.cheesePress)
                     .setName("Cheese Press")
                     .setRecipe(new Ingredients(Recipes.CheesePress, "Cheese Press"))
                     .setSkill(Skills.Farming)
                     .setLevel(2)
     ),
     Keg(
-            new Crafting()
+            new Machine()
+                    .setProducts(MachineProducts.keg)
                     .setName("Keg")
                     .setRecipe(new Ingredients(Recipes.Keg, "Keg"))
                     .setSkill(Skills.Farming)
                     .setLevel(3)
     ),
     Loom(
-            new Crafting()
+            new Machine()
+                    .setProducts(MachineProducts.loom)
                     .setName("Loom")
                     .setRecipe(new Ingredients(Recipes.Loom, "Loom"))
                     .setSkill(Skills.Farming)
                     .setLevel(3)
     ),
     MayonnaiseMachine(
-            new Crafting()
+            new Machine()
+                    .setProducts(MachineProducts.mayonnaiseMachine)
                     .setName("Mayonnaise Machine")
                     .setRecipe(new Ingredients(Recipes.MayonnaiseMachine, "Mayonnaise Machine"))
     ),
     OilMaker(
-            new Crafting()
+            new Machine()
+                    .setProducts(MachineProducts.oilMaker)
                     .setName("Oil Maker")
                     .setRecipe(new Ingredients(Recipes.OilMaker, "Oil Maker"))
                     .setSkill(Skills.Farming)
                     .setLevel(3)
     ),
     PreservesJar(
-            new Crafting()
+            new Machine()
+                    .setProducts(MachineProducts.preservesJar)
                     .setName("Preserves Jar")
                     .setRecipe(new Ingredients(Recipes.PreservesJar, "Preserves Jar"))
                     .setSkill(Skills.Farming)
                     .setLevel(2)
     ),
-    Dehydrator(
-            new Crafting()
+    Dehydrator( //What does this machine do?
+            new Machine()
+                    .setProducts(MachineProducts.dehydrator)
                     .setName("Dehydrator")
                     .setRecipe(new Ingredients(Recipes.Dehydrator, "Dehydrator"))
     ),
     GrassStarter(
-            new Crafting()
+            new Machine()
                     .setName("Grass Starter")
                     .setRecipe(new Ingredients(Recipes.GrassStarter, "Grass Starter"))
     ),
     FishSmoker(
-            new Crafting()
+            new Machine()
+                    .setProducts(MachineProducts.fishSmoker)
                     .setName("Fish Smoker")
                     .setRecipe(new Ingredients(Recipes.FishSmoker, "Fish Smoker"))
     ),
@@ -150,7 +162,9 @@ public enum CraftingBuilder {
                     .setSkill(Skills.Foraging)
                     .setLevel(4)
                     .setSellPrice(100)
-    );
+    ),
+
+    ;
 
     public final Crafting crafting;
 
