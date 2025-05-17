@@ -3,16 +3,16 @@ package com.project.Models.Item;
 import com.project.Models.Enums.Skills;
 
 public class Foraging implements Item {
-    protected String name;
-    protected String source;
-    protected int growthStage;
-    protected int growthTime; // days until harvest
+    protected String name = "";
+    protected String source = "";
+    protected int growthStage = -1;
+    protected int growthTime = -1; // days until harvest
     protected boolean regrowable = false;
-    protected int regrowInterval; // days between harvests if regrowable
-    protected int sellPrice;
+    protected int regrowInterval = -1; // days between harvests if regrowable
+    protected int sellPrice = -1;
     protected boolean edible = false;
-    protected int energyGain;
-    protected String season; // e.g., "Spring", "Summer", etc.
+    protected int energyGain = -1;
+    protected String season = null; // e.g., "Spring", "Summer", etc.
     protected boolean canBecomeGiant = false;
     protected boolean isGiant = false;
     protected int quality = 1;
@@ -20,7 +20,7 @@ public class Foraging implements Item {
     protected boolean summer = false;
     protected boolean winter = false;
     protected boolean fall = false;
-    protected int stages;
+    protected int stages = -1;
     protected int level = 0;
     protected Skills skill;
 

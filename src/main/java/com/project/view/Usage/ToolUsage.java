@@ -1,8 +1,8 @@
-package com.project.view;
+package com.project.view.Usage;
 
 import com.project.Controllers.ToolController;
-import com.project.Models.App;
 import com.project.Models.Enums.Commands.ToolCommands;
+import com.project.view.AppMenu;
 
 import java.util.Scanner;
 import java.util.regex.Matcher;
