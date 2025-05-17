@@ -1,5 +1,7 @@
 package com.project.Models.Enums.Menus;
 
+import com.project.Models.Enums.Commands.Commands;
+
 import java.util.regex.Matcher;
 
 public enum ProfileMenuCommands implements Commands {

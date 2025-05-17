@@ -1,11 +1,15 @@
 package com.project.Controllers;
 
+import com.project.Builders.BuilderEnums.ForagingCropBuilder;
 import com.project.Decorators.ToolDecorator;
+import com.project.Directors.ForagingDirector;
 import com.project.Models.App;
 import com.project.Models.Enums.Skills;
+import com.project.Models.Item.Foraging;
 import com.project.Models.LivingBeings.Player;
 import com.project.Models.Tools.Tool;
 
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 
 public class ToolController {
@@ -122,5 +126,55 @@ public class ToolController {
             return (App.getGame().getMainPlayer().getFishingXP() >= level*Player.levelConstant);
         }
         return false;
+    }
+
+    public static void randomInfo(Matcher matcher) {
+        for (int i = 0; i < 5; i++) {
+            Foraging crop = new ForagingDirector().randomCropsAndSeeds(App.getGame().getTime().getCurrentSeason());
+
+            System.out.println(
+                    "Name: " + crop.getName() +
+                    "\nSource: " + crop.getSource() +
+                    "\nStages: " + crop.getStages() +
+                    "\nTotal Harvest Time: " + crop.getGrowthTime() +
+                    "\nOne Time: " + !crop.isRegrowable() +
+                    "\nRegrowth Time:" + (crop.isRegrowable()? crop.getRegrowInterval() + "":"-") +
+                    "\nBase Sell Price: " + crop.getSellPrice() +
+                    "\nIs Edible: " + crop.isEdible() +
+                    "\nBase Energy: " + crop.getEnergyGain() +
+                    "\nBase Health: " + //؟؟؟؟؟؟؟؟؟
+                    "\nSeason: " + (crop.isSpring()? "spring ": "")
+                                 + (crop.isSummer()? "summer ": "")
+                                 + (crop.isFall()? "fall ": "")
+                                 + (crop.isWinter()? "winter ": "") +
+                    "\nCan Become Giant: " + crop.getCanBecomeGiant()
+            );
+        }
+
+    }
+
+    public static void craftInfo(Matcher matcher) {
+        for (ForagingCropBuilder cropBuilder : ForagingCropBuilder.values()) {
+            Foraging crop = cropBuilder.foraging;
+            if (crop.getName().equalsIgnoreCase(matcher.group(1))) {
+                System.out.println(
+                        "Name: " + crop.getName() +
+                                "\nSource: " + crop.getSource() +
+                                "\nStages: " + crop.getStages() +
+                                "\nTotal Harvest Time: " + crop.getGrowthTime() +
+                                "\nOne Time: " + !crop.isRegrowable() +
+                                "\nRegrowth Time:" + (crop.isRegrowable()? crop.getRegrowInterval() + "":"-") +
+                                "\nBase Sell Price: " + crop.getSellPrice() +
+                                "\nIs Edible: " + crop.isEdible() +
+                                "\nBase Energy: " + crop.getEnergyGain() +
+                                "\nBase Health: " + //؟؟؟؟؟؟؟؟؟
+                                "\nSeason: " + (crop.isSpring()? "spring ": "")
+                                             + (crop.isSummer()? "summer ": "")
+                                             + (crop.isFall()? "fall ": "")
+                                             + (crop.isWinter()? "winter ": "") +
+                                "\nCan Become Giant: " + crop.getCanBecomeGiant()
+                );
+            }
+        }
     }
 }
