@@ -11,6 +11,7 @@ public class Tool implements ObserveTime, GameObject {
     String name;
     int energy;
     int complement = 0;
+    int anotherComplement = -1;
     ToolLevel level = ToolLevel.Basic;
     FPLevel fPLevel = null;
     int cost = 0;
@@ -63,6 +64,19 @@ public class Tool implements ObserveTime, GameObject {
 
     public Tool setComplement(int complement) {
         this.complement = complement;
+        return this;
+    }
+
+    public void addComplement(int complement) {
+        this.complement += complement;
+    }
+
+    public int getAnotherComplement() {
+        return anotherComplement;
+    }
+
+    public Tool setAnotherComplement(int anotherComplement) {
+        this.anotherComplement = anotherComplement;
         return this;
     }
 

@@ -10,6 +10,7 @@ import com.project.Models.Item.Item;
 import com.project.Models.Map.BlockWrapper;
 import com.project.Models.Map.GameObject;
 import com.project.Models.Map.Map;
+import com.project.Models.Tools.Tool;
 
 import java.util.regex.Matcher;
 
@@ -405,5 +406,18 @@ public class ForagingController {
             return;
         }
 
+    }
+
+    public static void HowMuchWater(Matcher matcher) {
+        for (Tool tool : App.getGame().getMainPlayer().getInventory().getTools()) {
+            if (tool.isWatering()) {
+                System.out.println(
+                        "Water supply: " + tool.getAnotherComplement()
+                        + " out of " + tool.getComplement()
+                );
+                break;
+            }
+        }
+        System.out.println("Somehow you don't have a watering can!");
     }
 }
