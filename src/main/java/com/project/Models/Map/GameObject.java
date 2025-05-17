@@ -6,7 +6,7 @@ public interface GameObject {
     String tooString();
 
     // Reset
-     String RESET = "\u001B[0m";
+    String RESET = "\u001B[0m";
 
     // Foreground (text) colors
     String BLACK_TEXT = "\u001B[30m";
@@ -17,6 +17,7 @@ public interface GameObject {
     String PURPLE_TEXT = "\u001B[35m";
     String CYAN_TEXT = "\u001B[36m";
     String WHITE_TEXT = "\u001B[37m";
+    String BRIGHT_YELLOW_TEXT = "\u001B[93m";
 
     // Background colors
     String BLACK_BG = "\u001B[40m";
