@@ -6,8 +6,8 @@ import java.util.regex.Pattern;
 public enum ForagingCommands implements Commands {
     RandomInfo("^info\\s+$"),
     CraftInfo("^craftinfo\\s+-n\\s+([a-zA-Z0-9_-]+)$"),
-    Plant("^plant\\s+-s\\s+([a-zA-Z0-9_-]+)\\s+-d\\s+([a-zA-Z0-9_-]+)$")
-
+    Plant("^plant\\s+-s\\s+([a-zA-Z0-9_-]+)\\s+-d\\s+([a-zA-Z0-9_-]+)$"),
+    ShowPlant("^showplant\\s+-l\\s+(-?\\d+)\\s*,\\s*(-?\\d+)$"),
     ;
     private final String pattern;
 

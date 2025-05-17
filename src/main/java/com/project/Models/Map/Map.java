@@ -23,13 +23,13 @@ public class Map {
 
     public Map(Player[] players) {
         BlockWrapper basic = new BlockWrapper(Block.basic);
-        BlockWrapper dust = new BlockWrapper(Block.dust);
+        BlockWrapper soil = new BlockWrapper(Block.soil);
         // initialize
         for (int i = 0; i < blocks.length; i++) {
             for (int j = 0; j < blocks[i].length; j++) {
                 blocks[i][j] = new ArrayList<>();
                 blocks[i][j].add(basic);
-                blocks[i][j].add(dust);
+                blocks[i][j].add(soil);
             }
         }
 
@@ -39,7 +39,7 @@ public class Map {
         }
 
         objects.add(basic);
-        objects.add(dust);
+        objects.add(soil);
     }
 
     // getter
