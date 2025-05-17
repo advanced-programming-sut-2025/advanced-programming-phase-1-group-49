@@ -82,7 +82,6 @@ public class GameMenuController {
             return new Result(false, "Not a valid map id");
         if (builder.getFarm()[id - 1] != -1)
             return new Result(false, "already selected farm");
-
         builder.farm(id - 1, index);
         index++;
         if (index > 3) {
