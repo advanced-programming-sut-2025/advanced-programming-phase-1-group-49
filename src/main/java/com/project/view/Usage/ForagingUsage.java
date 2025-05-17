@@ -28,9 +28,9 @@ public class ForagingUsage implements AppMenu {
         Matcher matcher;
 
         if ((matcher = ForagingCommands.RandomInfo.getMatcher(command)).find()) {
-            ToolController.randomInfo(matcher);
+            ForagingController.randomCrop(matcher);
         } else if ((matcher = ForagingCommands.CraftInfo.getMatcher(command)).find()) {
-            ToolController.craftInfo(matcher);
+            ForagingController.craftInfo(matcher);
         }
     }
 }
