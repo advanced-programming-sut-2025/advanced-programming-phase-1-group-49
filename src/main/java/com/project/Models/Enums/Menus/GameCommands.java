@@ -15,13 +15,13 @@ public enum GameCommands implements Commands {
     weather("^\\s*weather\\s*$"),
     weatherForecast("^\\s*weather\\s+forecast\\s*$"),
     greenHouse("^\\s*greenhouse\\s+build\\s*$"),
-    printMap(""),
-    helpMap(""),
+    printMap("^\\s*print\\s+map\\s+(?<x>\\d+)\\s+(?<y>\\d+)\\s+-s\\s+(?<size>\\d+)\\s*$"),
+    helpMap("^\\s*help\\s+reading\\s+map\\s*$"),
     // cheat codes :
-    increaseTime(""),
-    increaseDate(""),
-    changeWeather(""),
-    thor(""),
+    increaseTime("^\\s*cheat\\s+time\\s+(?<time>\\d+)\\s*$"),
+    increaseDate("^\\s*cheat\\s+date\\s+(?<date>\\d+)\\s*$"),
+    changeWeather("^\\s*cheat\\s+weather\\s+set\\s+(?<Type>\\S+)\\s*$"),
+    thor("^\\s*cheat\\s+Thor\\s+(?<x>\\d+)\\s+(?<y>\\d+)\\s*$"),
     // for debugging :
     gameInfo("^\\s*game\\s+info\\s*$"),
     printAllMap("^\\s*print\\s+map\\s*$");

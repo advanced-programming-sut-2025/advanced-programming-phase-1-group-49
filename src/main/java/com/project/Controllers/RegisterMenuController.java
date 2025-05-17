@@ -13,6 +13,8 @@ import com.project.Models.Result;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
@@ -34,6 +36,22 @@ public class RegisterMenuController {
             "4. What was the name of your elementary school?",
             "5. What is the name of your best friend in childhood?"
     ));
+
+    private String hashWithSHA256(String password) {
+        try {
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            byte[] hash = digest.digest(password.getBytes(StandardCharsets.UTF_8));
+            StringBuilder hexString = new StringBuilder();
+            for (byte b : hash) {
+                String hex = Integer.toHexString(0xff & b);
+                if (hex.length() == 1) hexString.append('0');
+                hexString.append(hex);
+            }
+            return hexString.toString();
+        } catch (Exception ex) {
+            throw new RuntimeException(ex);
+        }
+    }
 
     private void resetFields() {
         checkPassword = false;
@@ -211,8 +229,8 @@ public class RegisterMenuController {
             return new Result(false, "Answer did not match. try again");
 
         builder.setSQ(questionID + ", " + answer);
-        Player player = new
-                Player(builder);
+        builder.setPassword(hashWithSHA256(builder.getPassword()));
+        Player player = builder.build();
         App.addPlayer(player);
         resetFields();
 

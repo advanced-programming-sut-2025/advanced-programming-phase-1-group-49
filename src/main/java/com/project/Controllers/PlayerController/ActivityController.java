@@ -15,7 +15,10 @@ import java.util.*;
 
 public class ActivityController {
 
-    // we should work with game.getPlayer => return main player
+    /*
+     * Ghash Kardan ro kamel konam
+     * mohasebeh pichideh tar walk
+     */
 
     private Game game;
     private Player player;
@@ -63,9 +66,7 @@ public class ActivityController {
     public Result walk(String xString, String yString) {
         xString = xString.trim();
         yString = yString.trim();
-
-        int x;
-        int y;
+        int x, y;
         try {
             x = Integer.parseInt(xString);
             y = Integer.parseInt(yString);
@@ -82,6 +83,7 @@ public class ActivityController {
             return new Result(false, "You can't walk there");
         player.decreaseEnergy(length / 20);
         player.walk(x, y);
+        player.increaseXP(length / 20);
         return new Result(true, "player is in " + x + ", " + y);
     }
 
@@ -108,6 +110,71 @@ public class ActivityController {
         return new Result(true, "exit");
     }
 
+    public Result nextTurn() {
+        game.nextTurn();
+        initialize();
+        return new Result(true, game.getPlayer() + ", its your turn.");
+    }
+
+    public Result time() {
+        String result = game.getTime().getCurrentHour() + ":00 ";
+        if (game.getTime().getCurrentHour() < 12)
+            result += "(AM)";
+        else
+            result += "(PM)";
+        return new Result(true, result);
+    }
+
+    public Result date() {
+        return new Result(true, (game.getTime().getSpentMonth()) + "/" + (game.getTime().getSpentDays()));
+    }
+
+    public Result dateTime() {
+        return new Result(true, game.getTime().getSpentMonth() + "/" + (game.getTime().getSpentDays()) + "-" + game.getTime().getCurrentHour() + ":00");
+    }
+
+    public Result weather() {
+        return new Result(true, "Today : " + game.getTime().getCurrentWeather());
+    }
+
+    public Result weatherForecast() {
+        return new Result(true, "Weather Forecast for tomorrow : " + game.getTime().getWeatherForecast());
+    }
+
+    public Result day() {
+        return new Result(true, "Day : " + game.getTime().getCurrentDay());
+    }
+
+    public Result season() {
+        return new Result(true, "Season : " + game.getTime().getCurrentSeason());
+    }
+
+    public Result greenHouse() {
+//        if (player.getCoin() >= 1000 && player.getInventory().)
+        return null;
+    }
+
+    public Result printMap(String xString, String yString, String sizeString) {
+        return null;
+    }
+
+    public Result mapGuid() {
+        return null;
+    }
+
+    // cheat codes :
+
+    public Result increaseTime(String amountString) {
+        return null;
+    }
+
+    public Result increaseDate(String amountString) {
+        return null;
+    }
+
+    public Result changeWeather(String amountString) {
+        return null;
+    }
 
     //
 
@@ -130,7 +197,7 @@ public class ActivityController {
     }
 
     public void printMap() {
-        System.out.printf("Player : %s, Level : %d, Energy : %d%n", player.getUsername(), player.getLevel(), player.getEnergy());
+        System.out.printf("Player : %s(%d), XP : %d, Energy : %d", player.getUsername(), player.getLevel(), player.getXP(), player.getEnergy());
         for (ArrayList<GameObject>[] i : App.getGame().getMap().getBlocks()) {
             for (ArrayList<GameObject> b : i) {
                 GameObject gameObject = b.get(b.size() - 1);
@@ -138,11 +205,5 @@ public class ActivityController {
             }
             System.out.println();
         }
-    }
-
-    public Result nextTurn() {
-        game.nextTurn();
-        initialize();
-        return new Result(true, game.getPlayer() + ", its your turn.");
     }
 }

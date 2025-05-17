@@ -1,37 +1,37 @@
 package com.project.Directors;
 
 import com.project.Builders.BuilderEnums.*;
-import com.project.Models.Enums.Seasons;
+import com.project.Models.Enums.Season;
 import com.project.Models.Item.Foraging;
 
 import java.util.ArrayList;
 
 public class ForagingDirector {
-    public Foraging randomForagingTree(Seasons season) {
+    public Foraging randomForagingTree(Season season) {
         int i = 0;
         ArrayList<Foraging> foragings = new ArrayList<Foraging>();
-        if (season == Seasons.Spring) {
+        if (season == Season.Spring) {
             for (FruitTreeBuilder fruitTreeBuilder : FruitTreeBuilder.values()) {
                 if (fruitTreeBuilder.foraging.isSpring()) {
                     foragings.add(fruitTreeBuilder.foraging);
                     i++;
                 }
             }
-        } else if (season == Seasons.Summer) {
+        } else if (season == Season.Summer) {
             for (FruitTreeBuilder fruitTreeBuilder : FruitTreeBuilder.values()) {
                 if (fruitTreeBuilder.foraging.isSummer()) {
                     foragings.add(fruitTreeBuilder.foraging);
                     i++;
                 }
             }
-        } else if (season == Seasons.Fall) {
+        } else if (season == Season.Fall) {
             for (FruitTreeBuilder fruitTreeBuilder : FruitTreeBuilder.values()) {
                 if (fruitTreeBuilder.foraging.isFall()) {
                     foragings.add(fruitTreeBuilder.foraging);
                     i++;
                 }
             }
-        } else if (season == Seasons.Winter) {
+        } else if (season == Season.Winter) {
             for (FruitTreeBuilder fruitTreeBuilder : FruitTreeBuilder.values()) {
                 if (fruitTreeBuilder.foraging.isWinter()) {
                     foragings.add(fruitTreeBuilder.foraging);
@@ -43,10 +43,10 @@ public class ForagingDirector {
         return foragings.get(randomFactor);
     }
 
-    public Foraging randomCropsAndSeeds(Seasons season) {
+    public Foraging randomCropsAndSeeds(Season season) {
         int i = 0;
         ArrayList<Foraging> foragings = new ArrayList<Foraging>();
-        if (season == Seasons.Spring) {
+        if (season == Season.Spring) {
             for (ForagingCropBuilder foragingCropBuilder : ForagingCropBuilder.values()) {
                 if (foragingCropBuilder.foraging.isSpring()) {
                     foragings.add(foragingCropBuilder.foraging);
@@ -59,7 +59,7 @@ public class ForagingDirector {
                     i++;
                 }
             }
-        } else if (season == Seasons.Summer) {
+        } else if (season == Season.Summer) {
             for (ForagingCropBuilder foragingCropBuilder : ForagingCropBuilder.values()) {
                 if (foragingCropBuilder.foraging.isSummer()) {
                     foragings.add(foragingCropBuilder.foraging);
@@ -72,7 +72,7 @@ public class ForagingDirector {
                     i++;
                 }
             }
-        } else if (season == Seasons.Fall) {
+        } else if (season == Season.Fall) {
             for (ForagingCropBuilder foragingCropBuilder : ForagingCropBuilder.values()) {
                 if (foragingCropBuilder.foraging.isFall()) {
                     foragings.add(foragingCropBuilder.foraging);
@@ -85,7 +85,7 @@ public class ForagingDirector {
                     i++;
                 }
             }
-        } else if (season == Seasons.Winter) {
+        } else if (season == Season.Winter) {
             for (ForagingCropBuilder foragingCropBuilder : ForagingCropBuilder.values()) {
                 if (foragingCropBuilder.foraging.isWinter()) {
                     foragings.add(foragingCropBuilder.foraging);
@@ -104,10 +104,10 @@ public class ForagingDirector {
         return foragings.get(randomFactor);
     }
 
-    public Foraging randomMineral(Seasons season) {
+    public Foraging randomMineral(Season season) {
         int i = 0;
         ArrayList<Foraging> foragings = new ArrayList<Foraging>();
-        if (season == Seasons.Spring) {
+        if (season == Season.Spring) {
             for (MineralBuilder mineralBuilder : MineralBuilder.values()) {
                 if (mineralBuilder.foraging.isSpring()) {
 //                    System.Fuck(you);
@@ -115,7 +115,7 @@ public class ForagingDirector {
                     i++;
                 }
             }
-        } else if (season == Seasons.Summer) {
+        } else if (season == Season.Summer) {
             for (MineralBuilder mineralBuilder : MineralBuilder.values()) {
                 if (mineralBuilder.foraging.isSummer()) {
 //                    System.Fuck(you);
@@ -123,7 +123,7 @@ public class ForagingDirector {
                     i++;
                 }
             }
-        } else if (season == Seasons.Fall) {
+        } else if (season == Season.Fall) {
             for (MineralBuilder mineralBuilder : MineralBuilder.values()) {
                 if (mineralBuilder.foraging.isFall()) {
 //                    System.Fuck(you);
@@ -131,7 +131,7 @@ public class ForagingDirector {
                     i++;
                 }
             }
-        } else if (season == Seasons.Winter) {
+        } else if (season == Season.Winter) {
             for (MineralBuilder mineralBuilder : MineralBuilder.values()) {
                 if (mineralBuilder.foraging.isWinter()) {
 //                    System.Fuck(you);
@@ -144,8 +144,8 @@ public class ForagingDirector {
         return foragings.get(randomFactor);
     }
 
-    public Foraging randomMixedSeed(Seasons season) {
-        if (season == Seasons.Spring) {
+    public Foraging randomMixedSeed(Season season) {
+        if (season == Season.Spring) {
             int randomFactor = (int) (Math.random() * 1000 % 5);
             switch (randomFactor) {
                 case 0:
@@ -159,7 +159,7 @@ public class ForagingDirector {
                 case 4:
                     return ForagingSeedBuilder.TulipBulb.foraging;
             }
-        } else if (season == Seasons.Summer) {
+        } else if (season == Season.Summer) {
             int randomFactor = (int) (Math.random() * 1000 % 7);
             switch (randomFactor) {
                 case 0:
@@ -177,7 +177,7 @@ public class ForagingDirector {
                 case 6:
                     return ForagingSeedBuilder.SpangleSeeds.foraging;
             }
-        } else if (season == Seasons.Fall) {
+        } else if (season == Season.Fall) {
             int randomFactor = (int) (Math.random() * 1000 % 6);
             switch (randomFactor) {
                 case 0:
@@ -193,7 +193,7 @@ public class ForagingDirector {
                 case 5:
                     return ForagingSeedBuilder.FairySeeds.foraging;
             }
-        } else if (season == Seasons.Winter) {
+        } else if (season == Season.Winter) {
             return ForagingSeedBuilder.PowdermelonSeeds.foraging;
         }
 

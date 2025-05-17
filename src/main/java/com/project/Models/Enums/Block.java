@@ -1,13 +1,8 @@
 package com.project.Models.Enums;
 
-
 public enum Block {
     basic(" ", "basic"),
-    water("\u001B[34m█\u001B[0m", "water"),
-    home("\u001B[32mH\u001B[0m", "home"),
-    homeWall("\u001B[31m|\u001B[0m", "homeWall"),
-    greenhouse("\u001B[32mG\u001B[0m", "greenhouse"),
-    greenhouseWall("\u001B[31m|\u001B[0m", "greenhouseWall"),
+    water("\u001B[44m" + "\u001B[30m" + "L\u001B[0m" + "\u001B[0m", "water"),
     rock("R", "rock"),
     ;
 

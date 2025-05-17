@@ -10,6 +10,8 @@ import com.project.Models.LivingBeings.Player;
 import com.project.Models.Result;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.regex.Matcher;
@@ -34,6 +36,29 @@ public class LoginMenuController {
         enterNewPassword = false;
     }
 
+    private String hashWithSHA256(String password) {
+        try {
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            byte[] hash = digest.digest(password.getBytes(StandardCharsets.UTF_8));
+            StringBuilder hexString = new StringBuilder();
+            for (byte b : hash) {
+                String hex = Integer.toHexString(0xff & b);
+                if (hex.length() == 1) hexString.append('0');
+                hexString.append(hex);
+            }
+            return hexString.toString();
+        } catch (Exception ex) {
+            throw new RuntimeException(ex);
+        }
+    }
+
+    private boolean verifySHA256(String password, String expectedHash) {
+        String calculatedHash = hashWithSHA256(password);
+        return calculatedHash.equalsIgnoreCase(expectedHash);
+    }
+
+    //
+
     public Result Login(String username, String password, String stayLoggedIn) {
         username = username.trim();
         password = password.trim();
@@ -55,12 +80,8 @@ public class LoginMenuController {
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-        if (!password.equals(targetPlayer.getPassword()))
+        if (!verifySHA256(password, targetPlayer.getPassword()))
             return new Result(false, "Wrong password");
-
-        if (targetPlayer.getGameID() != 0) {
-
-        }
 
         if (stayLoggedInCheck)
             try (BufferedWriter writer = new BufferedWriter(new FileWriter("Data/AppData.txt"))) {
@@ -124,9 +145,9 @@ public class LoginMenuController {
         newPass = newPass.trim();
         if (!RegisterMenuCommands.PASSWORD_PATTERN.getMatcher(newPass).find())
             return new Result(false, "Please enter better password");
-        if (newPass.equals(targetPlayer.getPassword()))
+        if (verifySHA256(newPass, targetPlayer.getPassword()))
             return new Result(false, "Please enter new password");
-        targetPlayer.setPassword(newPass);
+        targetPlayer.setPassword(hashWithSHA256(newPass));
         resetFields();
         return new Result(true, "new password set");
     }

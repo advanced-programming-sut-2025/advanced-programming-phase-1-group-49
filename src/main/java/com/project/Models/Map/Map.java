@@ -10,10 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Map {
-    static private final int mapLength = 20;
-    static private final int mapWidth = 100;
-    private int homeCounter = 0;
-    private int greenhouseCounter = 0;
+    static private final int mapLength = 70;
+    static private final int mapWidth = 400;
 
     private final ArrayList<GameObject>[][] blocks = new ArrayList[mapLength][mapWidth];
 
@@ -33,16 +31,22 @@ public class Map {
             }
 
         // home
-        Home home = new Home(homeCounter++);
-        for (int i = home.getHomeX(); i < home.getHomeX() + home.getHomeLength(); i++)
-            for (int j = home.getHomeY(); j < home.getHomeY() + home.getHomeWidth(); j++)
-                blocks[i][j].add(home);
+        for (int k = 0; k < 4; k++) {
+            Home home = new Home(k);
+            for (int i = home.getHomeX(); i < home.getHomeX() + home.getHomeLength(); i++)
+                for (int j = home.getHomeY(); j < home.getHomeY() + home.getHomeWidth(); j++)
+                    blocks[i][j].add(home);
+            objects.add(home);
+        }
 
         // greenhouse
-        GreenHouse greenHouse = new GreenHouse(greenhouseCounter++);
-        for (int i = greenHouse.getGreenHouseX(); i < greenHouse.getGreenHouseX() + greenHouse.getGreenHouseWidth(); i++)
-            for (int j = greenHouse.getGreenHouseY(); j < greenHouse.getGreenHouseY() + greenHouse.getGreenHouseLength(); j++)
-                blocks[i][j].add(greenHouse);
+        for (int k = 0; k < 4; k++) {
+            GreenHouse greenHouse = new GreenHouse(k);
+            for (int i = greenHouse.getGreenHouseX(); i < greenHouse.getGreenHouseX() + greenHouse.getGreenHouseWidth(); i++)
+                for (int j = greenHouse.getGreenHouseY(); j < greenHouse.getGreenHouseY() + greenHouse.getGreenHouseLength(); j++)
+                    blocks[i][j].add(greenHouse);
+            objects.add(greenHouse);
+        }
 
         // leak
         int LeakX = 12;
@@ -57,8 +61,6 @@ public class Map {
         // player
         blocks[App.getPlayer().getX()][App.getPlayer().getY()].add(App.getPlayer());
 
-        objects.add(home);
-        objects.add(greenHouse);
         objects.add(basic);
         objects.add(water);
     }
@@ -84,14 +86,15 @@ public class Map {
     //
 
     public void initialize() {
-        for (int i = 0; i < blocks.length; i++) {
-            for (int j = 0; j < blocks[i].length; j++) {
-                for (GameObject g : blocks[i][j]) {
+        // convert to fori
+        for (ArrayList<GameObject>[] block : blocks) {
+            for (ArrayList<GameObject> gameObjects : block) {
+                for (GameObject g : gameObjects) {
                     if (g.getClass().equals(Player.class)) {
                         objects.add(App.searchPlayer(((Player) g).getUsername()));
-                        blocks[i][j].set(blocks[i][j].indexOf(g), App.searchPlayer(((Player) g).getUsername()));
+                        gameObjects.set(gameObjects.indexOf(g), App.searchPlayer(((Player) g).getUsername()));
                     } else if (objects.contains(g)) {
-                        blocks[i][j].set(blocks[i][j].indexOf(g), objects.get(objects.indexOf(g)));
+                        gameObjects.set(gameObjects.indexOf(g), objects.get(objects.indexOf(g)));
                     } else {
                         objects.add(g);
                     }

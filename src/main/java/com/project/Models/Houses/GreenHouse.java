@@ -2,6 +2,7 @@ package com.project.Models.Houses;
 
 public class GreenHouse implements Building {
     private final String id;
+    private boolean statement = false;
 
     public GreenHouse(int id) {
         this.id = "GreenHouse" + id;
@@ -16,7 +17,10 @@ public class GreenHouse implements Building {
 
     @Override
     public String tooString() {
-        return "G";
+        if (statement)
+            return GREEN_BG + RED_TEXT + "G" + RESET;
+        else
+            return RED_BG + BLACK_TEXT + "G" + RESET;
     }
 
     // getter
@@ -35,5 +39,11 @@ public class GreenHouse implements Building {
 
     public int getGreenHouseWidth() {
         return 4;
+    }
+
+    //
+
+    public void switchStatement() {
+        statement = !statement;
     }
 }

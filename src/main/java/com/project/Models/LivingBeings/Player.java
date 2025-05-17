@@ -1,6 +1,5 @@
 package com.project.Models.LivingBeings;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.project.Builders.AccountBuilder;
 import com.project.Models.App;
 import com.project.Models.Enums.Gender;
@@ -10,24 +9,29 @@ import com.project.Models.inventory;
 
 public class Player extends Person {
     private int energyLimit = 200;
+    private Integer Energy = 200;
+    private Integer Coin = 1000;
+
     private String username;
     private String password;
     private String email;
+    private String securityQuestion;
+
     private Integer level = 0;
     private Integer XP = 0;
     private Integer farmingXP = 0;
     private Integer miningXP = 0;
     private Integer sightseeingXP = 0;
     private Integer fishingXP = 0;
-    private Integer Energy = 200;
-    @JsonIgnore
+
     transient private Game currentGame = null;
     private int gameID = 0;
+
     private final inventory inventory = new inventory();
+    private int currentToolIndex = -1;
+
     private int x = 5;
     private int y = 84;
-    private String securityQuestion = null;
-    private int currentToolIndex = -1;
 
     public Player(AccountBuilder accountBuilder) {
         this.username = accountBuilder.getUsername();
@@ -105,6 +109,10 @@ public class Player extends Person {
             return null;
         }
         return inventory.getTools().get(currentToolIndex);
+    }
+
+    public Integer getCoin() {
+        return Coin;
     }
 
     // setter
@@ -193,6 +201,7 @@ public class Player extends Person {
 
     public void increaseXP(Integer XP) {
         this.XP += XP;
+        level = updateLevel(this.XP);
     }
 
     public Integer increaseFarmingXP() {
@@ -207,10 +216,18 @@ public class Player extends Person {
         Energy += energy;
     }
 
+    public void increaseCoin(Integer coin) {
+        Coin += coin;
+    }
+
     // decrease
 
     public void decreaseEnergy(Integer energy) {
         Energy -= energy;
+    }
+
+    public void decreaseCoin(Integer coin) {
+        Coin -= coin;
     }
 
     // Override
@@ -232,10 +249,21 @@ public class Player extends Person {
 
     @Override
     public String tooString() {
-        return "Y";
+        return CYAN_TEXT + "Y" + RESET;
     }
 
     //
+
+    public int updateLevel(int XP) {
+        int result = 0;
+        while (true) {
+            int xpNeeded = 50 * result * result;
+            if (XP < xpNeeded)
+                return result - 1;
+            XP -= xpNeeded;
+            result++;
+        }
+    }
 
     public void initialize() {
         if (gameID == -1)

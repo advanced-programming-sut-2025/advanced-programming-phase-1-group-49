@@ -3,7 +3,6 @@ package com.project.Models.Item;
 import com.project.Models.Enums.Skills;
 
 public class Foraging implements Item {
-
     protected String name;
     protected String source;
     protected int growthStage;
@@ -25,16 +24,7 @@ public class Foraging implements Item {
     protected int level = 0;
     protected Skills skill;
 
-    public Foraging() { }
-
-    @Override
-    public void passByHour() {
-        // Implementation if needed
-    }
-
-    @Override
-    public void passByDay() {
-        // Implementation if needed
+    public Foraging() {
     }
 
     // Fluent Setters
@@ -113,6 +103,36 @@ public class Foraging implements Item {
         return this;
     }
 
+    public Foraging setSpring(boolean spring) {
+        this.spring = spring;
+        return this;
+    }
+
+    public Foraging setSummer(boolean summer) {
+        this.summer = summer;
+        return this;
+    }
+
+    public Foraging setWinter(boolean winter) {
+        this.winter = winter;
+        return this;
+    }
+
+    public Foraging setLevel(int level) {
+        this.level = level;
+        return this;
+    }
+
+    public Foraging setFall(boolean fall) {
+        this.fall = fall;
+        return this;
+    }
+
+    public Foraging setStages(int stages) {
+        this.stages = stages;
+        return this;
+    }
+
     // Getters
 
     public String getName() {
@@ -143,10 +163,6 @@ public class Foraging implements Item {
         return sellPrice;
     }
 
-    public boolean isEdible() {
-        return edible;
-    }
-
     public int getEnergyGain() {
         return energyGain;
     }
@@ -163,49 +179,8 @@ public class Foraging implements Item {
         return quality;
     }
 
-    public boolean isSpring() {
-        return spring;
-    }
-
     public Skills getSkill() {
         return skill;
-    }
-
-    public Foraging setSpring(boolean spring) {
-        this.spring = spring;
-        return this;
-    }
-
-    public boolean isSummer() {
-        return summer;
-    }
-
-    public Foraging setSummer(boolean summer) {
-        this.summer = summer;
-        return this;
-    }
-
-    public boolean isWinter() {
-        return winter;
-    }
-
-    public Foraging setWinter(boolean winter) {
-        this.winter = winter;
-        return this;
-    }
-
-    public boolean isFall() {
-        return fall;
-    }
-
-    public Foraging setFall(boolean fall) {
-        this.fall = fall;
-        return this;
-    }
-
-    public Foraging setStages(int stages) {
-        this.stages = stages;
-        return this;
     }
 
     public int getStages() {
@@ -216,9 +191,38 @@ public class Foraging implements Item {
         return level;
     }
 
-    public Foraging  setLevel(int level) {
-        this.level = level;
-        return this;
+    // check
+
+    public boolean isEdible() {
+        return edible;
+    }
+
+    public boolean isSpring() {
+        return spring;
+    }
+
+    public boolean isSummer() {
+        return summer;
+    }
+
+    public boolean isWinter() {
+        return winter;
+    }
+
+    public boolean isFall() {
+        return fall;
+    }
+
+    // Override
+
+    @Override
+    public void passByHour() {
+        // Implementation if needed
+    }
+
+    @Override
+    public void passByDay() {
+        // Implementation if needed
     }
 
     @Override

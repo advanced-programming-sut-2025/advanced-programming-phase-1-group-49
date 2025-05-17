@@ -1,9 +1,8 @@
 package com.project.Models.Enums;
 
-public enum Seasons {
+public enum Season {
     Spring(),
     Summer(),
     Fall(),
-    Winter(),
-    ;
+    Winter();
 }

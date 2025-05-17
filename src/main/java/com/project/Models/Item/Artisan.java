@@ -10,7 +10,6 @@ public class Artisan implements Item {
     String description;
     int energy;
     int processingTime;
-
     int sellPrice;
     Ingredients recipe;
 
@@ -22,6 +21,8 @@ public class Artisan implements Item {
         this.sellPrice = builder.getSellPrice();
         if (builder.getRecipe() != null) this.recipe = builder.getRecipe();
     }
+
+    // getter
 
     public String getName() {
         return name;
@@ -46,6 +47,8 @@ public class Artisan implements Item {
     public Ingredients getRecipe() {
         return recipe;
     }
+
+    // Override
 
     @Override
     public void passByHour() {
