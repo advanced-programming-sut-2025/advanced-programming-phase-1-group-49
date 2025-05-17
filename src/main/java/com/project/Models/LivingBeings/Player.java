@@ -101,6 +101,9 @@ public class Player extends Person {
     }
 
     public Tool getCurrentTool() {
+        if (currentToolIndex == -1) {
+            return null;
+        }
         return inventory.getTools().get(currentToolIndex);
     }
 
@@ -168,6 +171,10 @@ public class Player extends Person {
 
     public void setCurrentToolIndex(int currentToolIndex) {
         this.currentToolIndex = currentToolIndex;
+    }
+
+    public void resetCurrentTool(Tool tool) {
+        this.inventory.change(tool, currentToolIndex);
     }
 
     // increase

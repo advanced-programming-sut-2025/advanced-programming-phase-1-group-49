@@ -50,4 +50,18 @@ public class inventory {
         } else
             itemQuantity.set(items.indexOf(item), quantity);
     }
+
+    //remove
+    public void removeTool(int i) {
+        toolQuantity.set(i, toolQuantity.get(i) -1);
+    }
+
+    public void removeItem(int i) {
+        itemQuantity.set(i, itemQuantity.get(i) -1);
+    }
+
+    //change
+    public void change(Tool newTool, int i) {
+        tools.set(i, newTool);
+    }
 }

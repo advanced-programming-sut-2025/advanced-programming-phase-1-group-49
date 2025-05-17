@@ -10,7 +10,7 @@ public enum ToolCommands implements Commands {
     ToolsShowCurrent("^tools\\s+show\\s+current$"),
     ToolsShowAvailable("^tools\\s+show\\s+available$"),
     ToolsUpgrade("^tools\\s+upgrade\\s+([a-zA-Z0-9_-]+)$"),
-    ToolsDirection("^tools\\s+direction\\s+([a-zA-Z0-9_-]+)$"),
+    ToolsUse("^tools\\s+direction\\s+([a-zA-Z0-9_-]+)$"),
 
         ;
     private final String pattern;

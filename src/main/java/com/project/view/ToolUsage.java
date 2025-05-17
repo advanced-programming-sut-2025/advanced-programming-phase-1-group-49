@@ -1,6 +1,7 @@
 package com.project.view;
 
 import com.project.Controllers.ToolController;
+import com.project.Models.App;
 import com.project.Models.Enums.Commands.ToolCommands;
 
 import java.util.Scanner;
@@ -18,8 +19,8 @@ public class ToolUsage implements AppMenu {
                     - tools equip <tool_name>
                     - tools show current
                     - tools show available
-                    -tools upgrade <tool_name>
-                    - tools tools use -d <direction>
+                    - tools upgrade <tool_name>
+                    - tools use -d <direction>
                     - exit""");
             printMenuInfo = !printMenuInfo;
         }
@@ -28,7 +29,15 @@ public class ToolUsage implements AppMenu {
         Matcher matcher;
 
         if ((matcher = ToolCommands.ToolsEquip.getMatcher(command)).find()) {
-
+            ToolController.equip(matcher);
+        } else if ((matcher = ToolCommands.ToolsShowCurrent.getMatcher(command)).find()) {
+            ToolController.showCurrent();
+        } else if ((matcher = ToolCommands.ToolsShowAvailable.getMatcher(command)).find()) {
+            ToolController.showAvailable(matcher);
+        } else if ((matcher = ToolCommands.ToolsUpgrade.getMatcher(command)).find()) {
+            ToolController.upgrade(matcher);
+        } else if ((matcher = ToolCommands.ToolsUse.getMatcher(command)).find()) {
+            ToolController.use(matcher);
         }
     }
 }
