@@ -14,7 +14,7 @@ public enum GameCommands implements Commands {
     season("^\\s*season\\s*$"),
     weather("^\\s*weather\\s*$"),
     weatherForecast("^\\s*weather\\s+forecast\\s*$"),
-    greenHouse(""),
+    greenHouse("^\\s*greenhouse\\s+build\\s*$"),
     printMap(""),
     helpMap(""),
     // cheat codes :
