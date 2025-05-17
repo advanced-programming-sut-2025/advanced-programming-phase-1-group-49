@@ -14,7 +14,6 @@ import java.util.ArrayList;
 
 public class Game {
     private final Time time = new Time();
-    private Map map;
     private static int GameCounter = 0;
     private final int id;
     private final inventory inventory = new inventory();
@@ -23,14 +22,13 @@ public class Game {
     private final ArrayList<String> playerUserNames = new ArrayList<>();
     private final ArrayList<Integer> farmsOwner = new ArrayList<>(); // farmOwners[farmID] = PlayerIndex
     private int turn = 0;
+    private Map map;
 
     public Game(GameBuilder builder) {
-        this.map = new Map();
         this.mainPlayer = 0;
         turn = 0;
         GameCounter++;
         id = GameCounter;
-
         for (int i = 0; i < 4; i++) {
             players.add(builder.getPlayers()[i]);
             playerUserNames.add(players.get(i).getUsername());
@@ -39,6 +37,11 @@ public class Game {
             players.get(i).setGameID(id);
             AppController.savePlayer(players.get(i));
         }
+
+        Player[] playerArray = new Player[players.size()];
+        for (int i = 0; i < playerArray.length; i++)
+            playerArray[i] = players.get(farmsOwner.get(i));
+        this.map = new Map(playerArray);
     }
 
     // getter

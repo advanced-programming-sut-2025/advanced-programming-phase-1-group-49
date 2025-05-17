@@ -19,9 +19,9 @@ public class Map {
 
     private static final ArrayList<Class<?>> forbiddenClasses = new ArrayList<>(List.of(Home.class));
 
-    final transient private ArrayList<GameObject> objects = new ArrayList<>();
+    transient private ArrayList<GameObject> objects = new ArrayList<>();
 
-    public Map() {
+    public Map(Player[] players) {
         BlockWrapper basic = new BlockWrapper(Block.basic);
         BlockWrapper dust = new BlockWrapper(Block.dust);
         // initialize
@@ -35,38 +35,11 @@ public class Map {
 
         int[][] positions = new int[][]{{3, 5}, {49, 5}, {3, 155}, {49, 155}};
         for (int i = 0; i < 4; i++) {
-            initFarm(i, positions[i]);
+            initFarm(i, positions[i], players[i]);
         }
 
         objects.add(basic);
         objects.add(dust);
-    }
-
-    private void initFarm(int id, int[] position) {
-        Home home = new Home(id);
-        for (int i = home.getHomeX() + position[0]; i < home.getHomeX() + position[0] + home.getHomeLength(); i++)
-            for (int j = home.getHomeY() + position[1]; j < home.getHomeY() + position[1] + home.getHomeWidth(); j++)
-                blocks[i][j].add(home);
-        objects.add(home);
-
-        GreenHouse greenHouse = new GreenHouse(id);
-        for (int i = greenHouse.getGreenHouseX() + position[0]; i < greenHouse.getGreenHouseX() + position[0] + greenHouse.getGreenHouseWidth(); i++)
-            for (int j = greenHouse.getGreenHouseY() + position[1]; j < greenHouse.getGreenHouseY() + position[1] + greenHouse.getGreenHouseLength(); j++)
-                blocks[i][j].add(greenHouse);
-        objects.add(greenHouse);
-
-        int LeakX = 12 + position[0];
-        int LeakY = 48 + position[1];
-        int LeakLength = 3;
-        int LeakWidth = 7;
-        BlockWrapper water = new BlockWrapper(Block.water);
-        for (int i = LeakX; i < LeakLength + LeakX; i++)
-            for (int j = LeakY; j < LeakY + LeakWidth; j++)
-                blocks[i][j].add(water);
-        objects.add(water);
-
-        Player target = game.getPlayers().get(game.getFarmsOwner().get(id));
-        blocks[target.getX()][target.getY()].add(target);
     }
 
     // getter
@@ -89,7 +62,36 @@ public class Map {
 
     //
 
+    private void initFarm(int id, int[] position, Player player) {
+        Home home = new Home(id);
+        for (int i = home.getHomeX() + position[0]; i < home.getHomeX() + position[0] + home.getHomeLength(); i++)
+            for (int j = home.getHomeY() + position[1]; j < home.getHomeY() + position[1] + home.getHomeWidth(); j++)
+                blocks[i][j].add(home);
+        objects.add(home);
+
+        GreenHouse greenHouse = new GreenHouse(id);
+        for (int i = greenHouse.getGreenHouseX() + position[0]; i < greenHouse.getGreenHouseX() + position[0] + greenHouse.getGreenHouseWidth(); i++)
+            for (int j = greenHouse.getGreenHouseY() + position[1]; j < greenHouse.getGreenHouseY() + position[1] + greenHouse.getGreenHouseLength(); j++)
+                blocks[i][j].add(greenHouse);
+        objects.add(greenHouse);
+
+        int LeakX = 12 + position[0];
+        int LeakY = 48 + position[1];
+        int LeakLength = 3;
+        int LeakWidth = 7;
+        BlockWrapper water = new BlockWrapper(Block.water);
+        for (int i = LeakX; i < LeakLength + LeakX; i++)
+            for (int j = LeakY; j < LeakY + LeakWidth; j++)
+                blocks[i][j].add(water);
+        objects.add(water);
+
+        player.setX(player.getX() + position[0]);
+        player.setY(player.getY() + position[1]);
+        blocks[player.getX()][player.getY()].add(player);
+    }
+
     public void initialize() {
+        objects = new ArrayList<>();
         game = App.getGame();
         for (ArrayList<GameObject>[] block : blocks) {
             for (ArrayList<GameObject> gameObjects : block) {
