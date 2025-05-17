@@ -3,6 +3,8 @@ package com.project.Builders;
 import com.project.Models.Game;
 import com.project.Models.LivingBeings.Player;
 
+import java.util.Arrays;
+
 public class GameBuilder {
     private final Player[] players = new Player[4];
     private final int[] farm = new int[4];
@@ -14,7 +16,9 @@ public class GameBuilder {
     }
 
     public void farm(int id, int player) {
-        farm[player] = id;
+        farm[id] = player;
+        System.out.printf("farm[%d] = %d\n", id, player);
+        System.out.println(Arrays.toString(farm));
     }
 
     // getter

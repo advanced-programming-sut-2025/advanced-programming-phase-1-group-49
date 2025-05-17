@@ -84,7 +84,7 @@ public class GameMenuController {
             if (i == id)
                 return new Result(false, "already selected farm");
 
-        builder.farm(id, index);
+        builder.farm(id - 1, index);
         index++;
         if (index > 3) {
             // crate game
@@ -130,16 +130,15 @@ public class GameMenuController {
             try {
                 FileReader fileReader = new FileReader("Data/Games/" + gameID + "/game.json");
                 game = gson.fromJson(fileReader, Game.class);
-                game.initializePlayers();
                 App.addGame(game);
                 fileReader.close();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         }
-        App.addGame(game);
         App.setGame(game);
         App.setCurrentMenu(Menu.GameActivity);
+        game.initializePlayers();
         return new Result(true, "load game");
     }
 
