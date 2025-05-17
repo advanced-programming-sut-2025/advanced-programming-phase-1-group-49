@@ -84,10 +84,6 @@ public class Foraging implements Item {
         return this;
     }
 
-    public boolean getCanBecomeGiant() {
-        return canBecomeGiant;
-    }
-
     public Foraging setCanBecomeGiant(boolean canBecomeGiant) {
         this.canBecomeGiant = canBecomeGiant;
         return this;
@@ -141,6 +137,10 @@ public class Foraging implements Item {
 
     public String getSource() {
         return source;
+    }
+
+    public boolean getCanBecomeGiant() {
+        return canBecomeGiant;
     }
 
     public int getGrowthStage() {

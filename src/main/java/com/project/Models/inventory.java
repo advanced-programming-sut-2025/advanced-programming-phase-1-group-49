@@ -52,16 +52,37 @@ public class inventory {
     }
 
     //remove
+
     public void removeTool(int i) {
-        toolQuantity.set(i, toolQuantity.get(i) -1);
+        toolQuantity.set(i, toolQuantity.get(i) - 1);
     }
 
     public void removeItem(int i) {
-        itemQuantity.set(i, itemQuantity.get(i) -1);
+        itemQuantity.set(i, itemQuantity.get(i) - 1);
     }
 
     //change
+
     public void change(Tool newTool, int i) {
         tools.set(i, newTool);
     }
+
+    // search
+
+    public Item searchItem(String itemName) {
+        for (Item item : items) {
+            if (item.getName().equals(itemName))
+                return item;
+        }
+        return null;
+    }
+
+    public Tool searchTool(String toolName) {
+        for (Tool tool : tools) {
+            if (tool.getName().equals(toolName))
+                return tool;
+        }
+        return null;
+    }
+
 }

@@ -60,6 +60,17 @@ public class Map {
         return forbiddenClasses;
     }
 
+    // search
+
+    public GameObject searchObject(String id) {
+        for (GameObject object : objects) {
+            if (object.getID().equals(id)) {
+                return object;
+            }
+        }
+        return null;
+    }
+
     //
 
     private void initFarm(int id, int[] position, Player player) {

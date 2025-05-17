@@ -7,7 +7,7 @@ import java.util.Arrays;
 
 public class GameBuilder {
     private final Player[] players = new Player[4];
-    private final int[] farm = new int[4];
+    private final int[] farm = new int[]{-1, -1, -1, -1};
 
     // builder
 
