@@ -1,9 +1,9 @@
 package com.project.Models.Enums;
 
 public enum Block {
-    basic(" ", "basic"),
+    basic("\u001B[103m" + "." + "\u001B[0m", "basic"),
     water("\u001B[44m" + "\u001B[30m" + "L" + "\u001B[0m", "water"),
-    dust("\u001B[103m" + " " + "\u001B[0m", "dust"),
+    dust(" ", "dust"),
     rock("R", "rock"),
     ;
 
