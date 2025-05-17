@@ -92,9 +92,8 @@ public class ActivityController {
         if (!game.getPlayer().equals(game.getMainPlayer()))
             return new Result(false, "You are not the main player");
 
-        for (Player p : game.getPlayers()) {
+        for (Player p : game.getPlayers())
             AppController.savePlayer(p);
-        }
 
         (new GameMenuController()).saveGame(game);
 

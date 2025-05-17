@@ -1,13 +1,14 @@
 package com.project.Directors;
 
 import com.project.Builders.BuilderEnums.*;
+import com.project.Controllers.ForagingController;
 import com.project.Models.Enums.Season;
 import com.project.Models.Item.Foraging;
 
 import java.util.ArrayList;
 
 public class ForagingDirector {
-    public Foraging randomForagingTree(Season season) {
+    public Foraging randomTree(Season season) {
         int i = 0;
         ArrayList<Foraging> foragings = new ArrayList<Foraging>();
         if (season == Season.Spring) {
@@ -33,6 +34,42 @@ public class ForagingDirector {
             }
         } else if (season == Season.Winter) {
             for (FruitTreeBuilder fruitTreeBuilder : FruitTreeBuilder.values()) {
+                if (fruitTreeBuilder.foraging.isWinter()) {
+                    foragings.add(fruitTreeBuilder.foraging);
+                    i++;
+                }
+            }
+        }
+        int randomFactor = (int) (Math.random() * 1000 % i);
+        return foragings.get(randomFactor);
+    }
+
+    public Foraging randomForagingTree(Season season) {
+        int i = 0;
+        ArrayList<Foraging> foragings = new ArrayList<Foraging>();
+        if (season == Season.Spring) {
+            for (ForagingTreeBuilder fruitTreeBuilder : ForagingTreeBuilder.values()) {
+                if (fruitTreeBuilder.foraging.isSpring()) {
+                    foragings.add(fruitTreeBuilder.foraging);
+                    i++;
+                }
+            }
+        } else if (season == Season.Summer) {
+            for (ForagingTreeBuilder fruitTreeBuilder : ForagingTreeBuilder.values()) {
+                if (fruitTreeBuilder.foraging.isSummer()) {
+                    foragings.add(fruitTreeBuilder.foraging);
+                    i++;
+                }
+            }
+        } else if (season == Season.Fall) {
+            for (ForagingTreeBuilder fruitTreeBuilder : ForagingTreeBuilder.values()) {
+                if (fruitTreeBuilder.foraging.isFall()) {
+                    foragings.add(fruitTreeBuilder.foraging);
+                    i++;
+                }
+            }
+        } else if (season == Season.Winter) {
+            for (ForagingTreeBuilder fruitTreeBuilder : ForagingTreeBuilder.values()) {
                 if (fruitTreeBuilder.foraging.isWinter()) {
                     foragings.add(fruitTreeBuilder.foraging);
                     i++;
