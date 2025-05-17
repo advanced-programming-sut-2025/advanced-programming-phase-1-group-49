@@ -1,11 +1,11 @@
 package com.project.Models.Houses;
 
-import com.project.Models.inventory;
+import com.project.Models.Inventory;
 
 public class Shop implements Building {
-    private final inventory inventory = new inventory();
+    private final Inventory inventory = new Inventory();
 
-    public inventory getInventory() {
+    public Inventory getInventory() {
         return inventory;
     }
 

@@ -12,7 +12,7 @@ import java.util.regex.Pattern;
 
 public class CraftingUsage implements AppMenu {
     ForagingController controller;
-    private boolean printMenuInfo = false;
+    private boolean printMenuInfo = 1 < 0;
 
     @Override
     public void check(Scanner scanner) {
@@ -20,6 +20,8 @@ public class CraftingUsage implements AppMenu {
             System.out.println("""
                     >>> Crafting Commands:
                     - crafting show recipes
+                    - crafting craft <item_name>
+                    - place item -n <item_name> -d <direction>
                     - exit""");
             printMenuInfo = !printMenuInfo;
         }
@@ -29,6 +31,9 @@ public class CraftingUsage implements AppMenu {
 
         if ((matcher = CraftingCommands.ShowRecipes.getMatcher(command)).find()) {
             CraftingController.showRecipes(matcher);
+        }
+        else if ((matcher = CraftingCommands.Craft.getMatcher(command)).find()) {
+            CraftingController.craft(matcher);
         }
     }
 }

@@ -6,7 +6,7 @@ import com.project.Models.App;
 import com.project.Models.Enums.Gender;
 import com.project.Models.Game;
 import com.project.Models.Tools.Tool;
-import com.project.Models.inventory;
+import com.project.Models.Inventory;
 
 import java.util.ArrayList;
 
@@ -30,7 +30,7 @@ public class Player extends Person {
     transient private Game currentGame = null;
     private int gameID = 0;
 
-    private final inventory inventory = new inventory();
+    private final Inventory inventory = new Inventory();
     private int currentToolIndex = -1;
     private final ArrayList<Ingredients> recipes = new ArrayList<Ingredients>();
 
@@ -87,7 +87,7 @@ public class Player extends Person {
         return currentGame;
     }
 
-    public inventory getInventory() {
+    public Inventory getInventory() {
         return inventory;
     }
 
