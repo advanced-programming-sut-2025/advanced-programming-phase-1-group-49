@@ -10,16 +10,9 @@ import com.project.Models.Map.GameObject;
 import com.project.Models.Map.Map;
 import com.project.Models.Result;
 
-import javax.swing.*;
 import java.util.*;
 
 public class ActivityController {
-
-    /*
-     * Ghash Kardan ro kamel konam
-     * mohasebeh pichideh tar walk
-     */
-
     private Game game;
     private Player player;
 
@@ -30,23 +23,23 @@ public class ActivityController {
         return true;
     }
 
-    private int bfsSearch(int playerX, int playerY, int x, int y) {
+    private int[] bfsSearch(int playerX, int playerY, int x, int y) {
         Queue<int[]> queue = new LinkedList<>();
         Set<String> visited = new HashSet<>();
-        queue.add(new int[]{playerX, playerY, 0});
+        queue.add(new int[]{playerX, playerY, 0, 0});
         visited.add(playerX + "-" + playerY);
 
         while (!queue.isEmpty()) {
             int[] current = queue.remove();
             visited.add(current[0] + "-" + current[1]);
-
             if (current[0] == x && current[1] == y)
-                return current[2];
-
+                return new int[]{current[2], current[3]};
             int[][] neighbors = new int[][]{{1, 0}, {-1, 0}, {0, 1}, {0, -1}, {1, 1}, {-1, -1}, {-1, 1}, {1, -1}};
-
             for (int[] neighbor : neighbors) {
-                int[] target = new int[]{current[0] + neighbor[0], current[1] + neighbor[1], current[2] + 1};
+                int add = current[3];
+                if (neighbor[0] != 0 && neighbor[1] != 0)
+                    add += 1;
+                int[] target = new int[]{current[0] + neighbor[0], current[1] + neighbor[1], current[2] + 1, add};
                 if (target[0] >= 0 && target[1] >= 0
                         && target[0] < Map.getMapLength() && target[1] < Map.getMapWidth()
                         && forbiddenBlock(target[0], target[1]) && !visited.contains(target[0] + "-" + target[1])) {
@@ -54,13 +47,12 @@ public class ActivityController {
                     visited.add(target[0] + "-" + target[1]);
                 }
             }
-
-            if (player.getEnergy() - (current[2] / 20) <= 0) {
+            if (player.getEnergy() - (current[2] + (current[3] + 10) / 20) <= 0) {
                 GhashKardan(current[0], current[1]);
-                return 0;
+                return new int[]{0, 0};
             }
         }
-        return 0;
+        return new int[]{0, 0};
     }
 
     public Result walk(String xString, String yString) {
@@ -78,20 +70,19 @@ public class ActivityController {
         for (GameObject g : App.getGame().getMap().getBlocks()[x][y])
             if (Map.getForbiddenClasses().contains(g.getClass()))
                 return new Result(false, "You can't walk out of blocks");
-        int length = bfsSearch(player.getX(), player.getY(), x, y);
-        if (length == 0)
+        int[] length = bfsSearch(player.getX(), player.getY(), x, y);
+        if (length[0] == 0)
             return new Result(false, "You can't walk there");
-        player.decreaseEnergy(length / 20);
+        player.decreaseEnergy(length[0] + (length[1] + 10) / 20);
         player.walk(x, y);
-        player.increaseXP(length / 20);
+        player.increaseXP(length[0] + (length[1] + 10) / 20);
         return new Result(true, "player is in " + x + ", " + y);
     }
 
     public void GhashKardan(int x, int y) {
-        System.out.println("Ghash kardi");
+        nextTurn();
         player.walk(x, y);
         player.decreaseEnergy(player.getEnergy());
-        // Switch Turn
     }
 
     public Result exit() {
@@ -111,6 +102,7 @@ public class ActivityController {
     }
 
     public Result nextTurn() {
+        AppController.savePlayer(player);
         game.nextTurn();
         initialize();
         return new Result(true, game.getPlayer() + ", its your turn.");
@@ -155,11 +147,57 @@ public class ActivityController {
     }
 
     public Result printMap(String xString, String yString, String sizeString) {
-        return null;
+        xString = xString.trim();
+        yString = yString.trim();
+        sizeString = sizeString.trim();
+
+        int x, y, size;
+        try {
+            x = Integer.parseInt(xString);
+            y = Integer.parseInt(yString);
+            size = Integer.parseInt(sizeString);
+        } catch (NumberFormatException e) {
+            return new Result(false, "Invalid x or y value");
+        }
+
+        ArrayList<GameObject>[][] map = game.getMap().getBlocks();
+
+        if (size >= 60)
+            size = 60;
+        int startX = x - (size / 2);
+        int endX = x + (size / 2);
+        int startY = y - size;
+        int endY = y + size + size;
+        if (startX < 0)
+            startX = 0;
+        if (endX >= map.length)
+            endX = map.length - 1;
+        if (startY < 0)
+            startY = 0;
+        else if (endY >= map[0].length)
+            endY = map[0].length - 1;
+
+        System.out.printf("Player : %s(%d), XP : %d, Energy : %d\nprint map from <%d,%d> -> <%d,%d>\n",
+                player.getUsername(), player.getLevel(), player.getXP(), player.getEnergy(),
+                x - (size / 4), y - size, x + (size / 4), y + (2 * size));
+        for (int i = startX; i < endX; i++) {
+            for (int j = startY; j < endY; j++) {
+                GameObject gameObject = map[i][j].get(map[i][j].size() - 1);
+                System.out.print(gameObject.tooString());
+            }
+            System.out.println();
+        }
+        return new Result(true, "");
     }
 
     public Result mapGuid() {
-        return null;
+        String result = ("""
+                Y   :   Player
+                H   :   Home
+                G   :   Green House
+                L   :   Leak
+                """);
+        return new Result(true, result);
     }
 
     // cheat codes :
@@ -197,7 +235,7 @@ public class ActivityController {
     }
 
     public void printMap() {
-        System.out.printf("Player : %s(%d), XP : %d, Energy : %d", player.getUsername(), player.getLevel(), player.getXP(), player.getEnergy());
+        System.out.printf("Player : %s(%d), XP : %d, Energy : %d\n", player.getUsername(), player.getLevel(), player.getXP(), player.getEnergy());
         for (ArrayList<GameObject>[] i : App.getGame().getMap().getBlocks()) {
             for (ArrayList<GameObject> b : i) {
                 GameObject gameObject = b.get(b.size() - 1);
