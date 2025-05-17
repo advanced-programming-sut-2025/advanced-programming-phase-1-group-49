@@ -21,8 +21,8 @@ public class ForagingUsage implements AppMenu {
                     - info
                     - craftinfo -n <craft_name>
                     - plant -s <seed> -d <direction>
-                    
                     - showplant -l <x, y>
+                    - fertilize -f <fertilizer> -d <direction>
                     - exit""");
             printMenuInfo = !printMenuInfo;
         }
@@ -38,6 +38,8 @@ public class ForagingUsage implements AppMenu {
             ForagingController.plant(matcher);
         } else if ((matcher = ForagingCommands.ShowPlant.getMatcher(command)).find()) {
             ForagingController.ShowPlant(matcher);
+        } else if ((matcher = ForagingCommands.Fertilize.getMatcher(command)).find()) {
+            ForagingController.Fertilize(matcher);
         }
     }
 }
