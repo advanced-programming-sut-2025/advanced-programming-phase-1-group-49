@@ -113,7 +113,6 @@ public class GameMenuController {
     }
 
     public Result exitGame() {
-        saveGame(App.getGame());
         App.setGame(null);
         App.setCurrentMenu(Menu.MainMenu);
         return new Result(true, "exit game");
@@ -146,7 +145,6 @@ public class GameMenuController {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
         App.setGame(null);
         resetFields();
     }

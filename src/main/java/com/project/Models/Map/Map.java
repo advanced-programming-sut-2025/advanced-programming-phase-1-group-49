@@ -9,21 +9,22 @@ import com.project.Models.LivingBeings.Player;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Map {
     transient private Game game;
     static private final int mapLength = 72;
     static private final int mapWidth = 300;
 
+    private final int[][] positions = new int[][]{{3, 5}, {49, 5}, {3, 155}, {49, 155}};
     private final ArrayList<GameObject>[][] blocks = new ArrayList[mapLength][mapWidth];
-
     private static final ArrayList<Class<?>> forbiddenClasses = new ArrayList<>(List.of(Home.class));
 
     transient private ArrayList<GameObject> objects = new ArrayList<>();
 
     public Map(Player[] players) {
         BlockWrapper basic = new BlockWrapper(Block.basic);
-        BlockWrapper dust = new BlockWrapper(Block.dust);
+        BlockWrapper dust = new BlockWrapper(Block.soil);
         // initialize
         for (int i = 0; i < blocks.length; i++) {
             for (int j = 0; j < blocks[i].length; j++) {
@@ -33,7 +34,6 @@ public class Map {
             }
         }
 
-        int[][] positions = new int[][]{{3, 5}, {49, 5}, {3, 155}, {49, 155}};
         for (int i = 0; i < 4; i++) {
             initFarm(i, positions[i], players[i]);
         }
@@ -43,6 +43,10 @@ public class Map {
     }
 
     // getter
+
+    public int[][] getPositions() {
+        return positions;
+    }
 
     static public int getMapLength() {
         return mapLength;
@@ -86,8 +90,8 @@ public class Map {
                 blocks[i][j].add(greenHouse);
         objects.add(greenHouse);
 
-        int LeakX = 12 + position[0];
-        int LeakY = 48 + position[1];
+        int LeakX = 8 + position[0];
+        int LeakY = 30 + position[1];
         int LeakLength = 3;
         int LeakWidth = 7;
         BlockWrapper water = new BlockWrapper(Block.water);
@@ -95,6 +99,20 @@ public class Map {
             for (int j = LeakY; j < LeakY + LeakWidth; j++)
                 blocks[i][j].add(water);
         objects.add(water);
+
+        int mineX = 18 + position[0];
+        int mineY = 10 + position[1];
+        int mineLength = 5;
+        int mineWidth = 7;
+        BlockWrapper mine = new BlockWrapper(Block.mineBlock);
+        for (int i = mineX; i < mineX + mineLength; i++)
+            for (int j = mineY; j < mineY + mineWidth; j++)
+                blocks[i][j].add(mine);
+        objects.add(mine);
+
+        Random rand = new Random();
+        int rockCount;
+        int treeCount = rand.nextInt();
 
         player.setX(player.getX() + position[0]);
         player.setY(player.getY() + position[1]);

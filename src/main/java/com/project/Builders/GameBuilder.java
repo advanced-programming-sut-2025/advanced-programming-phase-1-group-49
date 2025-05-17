@@ -17,8 +17,6 @@ public class GameBuilder {
 
     public void farm(int id, int player) {
         farm[id] = player;
-        System.out.printf("farm[%d] = %d\n", id, player);
-        System.out.println(Arrays.toString(farm));
     }
 
     // getter

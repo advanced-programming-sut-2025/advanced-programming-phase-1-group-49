@@ -73,6 +73,13 @@ public class ActivityController {
         for (GameObject g : App.getGame().getMap().getBlocks()[x][y])
             if (Map.getForbiddenClasses().contains(g.getClass()))
                 return new Result(false, "You can't walk out of blocks");
+        int[][] position = game.getMap().getPositions();
+        for (int i = 0; i < 4; i++) {
+            if (i == game.getFarmID(player)) continue;
+            int[] j = position[i];
+            if (x >= j[0] && x <= j[0] + 20 && y >= j[1] && y <= j[1] + 100)
+                return new Result(false, "You can't walk into the others farm");
+        }
         int[] length = bfsSearch(player.getX(), player.getY(), x, y);
         if (length[0] == 0)
             return new Result(false, "You can't walk there");
@@ -98,7 +105,6 @@ public class ActivityController {
         (new GameMenuController()).saveGame(game);
 
         App.setCurrentMenu(Menu.GameMenu);
-        App.setGame(null);
 
         return new Result(true, "exit");
     }
@@ -154,23 +160,28 @@ public class ActivityController {
 
         if (size > 72)
             size = 72;
-        int startX = x - (size / 2);
-        int endX = x + (size / 2);
-        int startY = y - size;
-        int endY = y + size + size;
-        if (startX < 0)
-            startX = 0;
-        if (endX >= map.length)
-            endX = map.length - 1;
-        if (startY < 0)
-            startY = 0;
-        else if (endY >= map[0].length)
-            endY = map[0].length - 1;
+        int startX = x - (size / 4), startY = y - size;
+        int endX = x + (size / 4), endY = y + size;
 
+        if (startX < 0) {
+            startX = 3;
+            endX = startX + size / 2;
+        } else if (endX >= map.length) {
+            startX = map.length - (size / 2) - 3;
+            endX = map.length - 3;
+        }
+
+        if (startY < 0) {
+            startY = 0;
+            endY = startY + size + size;
+        } else if (endY >= map[0].length) {
+            endY = map[0].length - 5;
+            startY = map[0].length - 5 - size - size;
+        }
 
         System.out.printf("Player : %s(%d), XP : %d, Energy : %d, Farm ID : %d\nprint map from <%d,%d> -> <%d,%d>, your position : <%d,%d>\n",
-                player.getUsername(), player.getLevel(), player.getXP(), player.getEnergy(), game.getFarmID(player),
-                startX, startY, endX, endY, player.getX(), player.getY());
+                player.getUsername(), player.getLevel(), player.getXP(), player.getEnergy(), game.getFarmID(player) + 1,
+                startX, endX, startY, endY, player.getX(), player.getY());
 
         System.out.print("┌");
         for (int i = startY + 1; i < endY; i++)
@@ -282,10 +293,6 @@ public class ActivityController {
     }
 
     public void printMap() {
-        for (int i = 0; i < 4; i++) {
-            System.out.println(game.getPlayers().get(i).getUsername());
-        }
-        System.out.println(game.getFarmsOwner());
         printMap(player.getX() + "", player.getY() + "", "60");
     }
 }

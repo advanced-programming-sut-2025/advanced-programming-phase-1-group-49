@@ -6,6 +6,7 @@ public enum Block {
     soil(" ", "soil"),
     rock("R", "rock"),
     diggedSoil("D", "diggedSoil"),
+    mineBlock("\u001B[40m" + "." + "\u001B[0m", "mineBlock"),
     ;
 
     private final String character;

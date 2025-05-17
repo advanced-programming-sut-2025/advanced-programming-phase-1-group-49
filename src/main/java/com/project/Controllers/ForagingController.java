@@ -202,6 +202,6 @@ public class ForagingController {
     }
 
     public static void plant(Matcher matcher) {
-        if (matcher.group().equalsIgnoreCase()) {}
+//        if (matcher.group().equalsIgnoreCase()) {}
     }
 }
