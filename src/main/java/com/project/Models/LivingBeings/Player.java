@@ -9,7 +9,7 @@ import com.project.Models.Tools.Tool;
 import com.project.Models.inventory;
 
 public class Player extends Person {
-    private int energyLimit = 100;
+    private int energyLimit = 200;
     private String username;
     private String password;
     private String email;
@@ -19,7 +19,7 @@ public class Player extends Person {
     private Integer miningXP = 0;
     private Integer sightseeingXP = 0;
     private Integer fishingXP = 0;
-    private Integer Energy = 100;
+    private Integer Energy = 200;
     @JsonIgnore
     transient private Game currentGame = null;
     private int gameID = 0;

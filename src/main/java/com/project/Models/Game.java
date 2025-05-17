@@ -5,6 +5,7 @@ import com.project.Builders.GameBuilder;
 import com.project.Controllers.AppController;
 import com.project.Models.LivingBeings.Player;
 import com.project.Models.Map.Map;
+import com.project.Models.Time.Time;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -12,11 +13,12 @@ import java.io.FileReader;
 import java.util.ArrayList;
 
 public class Game {
+    private final Time time = new Time();
     private Map map;
     private static int GameCounter = 0;
     private final int id;
     private final inventory inventory = new inventory();
-    private int mainPlayer = -1;
+    private int mainPlayer = -1; // game creator
     transient private ArrayList<Player> players = new ArrayList<>();
     private final ArrayList<String> playerUserNames = new ArrayList<>();
     private final ArrayList<Integer> farmsOwner = new ArrayList<>();
@@ -65,6 +67,10 @@ public class Game {
         return players.get(turn);
     }
 
+    public Time getTime() {
+        return time;
+    }
+
     // setter
 
     public void setMainPlayer(Player player) {
@@ -105,8 +111,10 @@ public class Game {
 
     public void nextTurn() {
         turn++;
-        if (turn > 3)
+        if (turn > 3) {
+            time.changeTime(1);
             turn = 0;
+        }
     }
 
 }

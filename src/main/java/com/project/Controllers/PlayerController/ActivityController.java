@@ -28,27 +28,23 @@ public class ActivityController {
     }
 
     private int bfsSearch(int playerX, int playerY, int x, int y) {
-        int length = 0;
-
         Queue<int[]> queue = new LinkedList<>();
         Set<String> visited = new HashSet<>();
-        queue.add(new int[]{playerX, playerY});
+        queue.add(new int[]{playerX, playerY, 0});
         visited.add(playerX + "-" + playerY);
 
         while (!queue.isEmpty()) {
             int[] current = queue.remove();
             visited.add(current[0] + "-" + current[1]);
-            length++;
 
             if (current[0] == x && current[1] == y)
-                return length;
+                return current[2];
 
-            int[][] neighbors = new int[][]{{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
-            // age mostaghim beshe orib raft bayad inja add konam
+            int[][] neighbors = new int[][]{{1, 0}, {-1, 0}, {0, 1}, {0, -1}, {1, 1}, {-1, -1}, {-1, 1}, {1, -1}};
 
             for (int[] neighbor : neighbors) {
-                int[] target = new int[]{current[0] + neighbor[0], current[1] + neighbor[1]};
-                if (target[0] > 0 && target[1] > 0
+                int[] target = new int[]{current[0] + neighbor[0], current[1] + neighbor[1], current[2] + 1};
+                if (target[0] >= 0 && target[1] >= 0
                         && target[0] < Map.getMapLength() && target[1] < Map.getMapWidth()
                         && forbiddenBlock(target[0], target[1]) && !visited.contains(target[0] + "-" + target[1])) {
                     queue.add(target);
@@ -56,13 +52,15 @@ public class ActivityController {
                 }
             }
 
-            // shart Energy inja add mikonam, age energy tamoom shod haminja miofte
+            if (player.getEnergy() - (current[2] / 20) <= 0) {
+                GhashKardan(current[0], current[1]);
+                return 0;
+            }
         }
         return 0;
     }
 
     public Result walk(String xString, String yString) {
-        ArrayList<GameObject>[][] map = App.getGame().getMap().getBlocks();
         xString = xString.trim();
         yString = yString.trim();
 
@@ -76,26 +74,28 @@ public class ActivityController {
         }
         if (x >= Map.getMapLength() || y >= Map.getMapWidth() || x < 0 || y < 0)
             return new Result(false, "Invalid x or y value");
-
-        for (GameObject g : map[x][y])
+        for (GameObject g : App.getGame().getMap().getBlocks()[x][y])
             if (Map.getForbiddenClasses().contains(g.getClass()))
                 return new Result(false, "You can't walk out of blocks");
-
         int length = bfsSearch(player.getX(), player.getY(), x, y);
         if (length == 0)
             return new Result(false, "You can't walk there");
-
         player.decreaseEnergy(length / 20);
         player.walk(x, y);
-
         return new Result(true, "player is in " + x + ", " + y);
     }
 
-    public void GhashKardan() {
-
+    public void GhashKardan(int x, int y) {
+        System.out.println("Ghash kardi");
+        player.walk(x, y);
+        player.decreaseEnergy(player.getEnergy());
+        // Switch Turn
     }
 
     public Result exit() {
+        if (!game.getPlayer().equals(game.getMainPlayer()))
+            return new Result(false, "You are not the main player");
+
         for (Player p : game.getPlayers()) {
             AppController.savePlayer(p);
         }
@@ -107,6 +107,7 @@ public class ActivityController {
 
         return new Result(true, "exit");
     }
+
 
     //
 
@@ -137,5 +138,11 @@ public class ActivityController {
             }
             System.out.println();
         }
+    }
+
+    public Result nextTurn() {
+        game.nextTurn();
+        initialize();
+        return new Result(true, game.getPlayer() + ", its your turn.");
     }
 }

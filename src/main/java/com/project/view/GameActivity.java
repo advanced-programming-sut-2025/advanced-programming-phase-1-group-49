@@ -28,7 +28,9 @@ public class GameActivity implements AppMenu {
 
         if ((matcher = GameCommands.walk.getMatcher(command)).find())
             System.out.println(controller.walk(matcher.group(1), matcher.group(2)));
-        else if (GameCommands.printMap.getMatcher(command).find())
+        else if (GameCommands.nextTurn.getMatcher(command).find())
+            System.out.println(controller.nextTurn());
+        else if (GameCommands.printAllMap.getMatcher(command).find())
             controller.printMap();
         else if (GameCommands.gameInfo.getMatcher(command).find())
             controller.gameInfo();
