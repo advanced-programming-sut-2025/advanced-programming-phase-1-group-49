@@ -2,6 +2,8 @@ package com.project.Controllers;
 
 import com.project.Decorators.ToolDecorator;
 import com.project.Models.App;
+import com.project.Models.Enums.Skills;
+import com.project.Models.LivingBeings.Player;
 import com.project.Models.Tools.Tool;
 
 import java.util.regex.Matcher;
@@ -43,12 +45,6 @@ public class ToolController {
         boolean found = false;
         for (Tool tool : App.getGame().getMainPlayer().getInventory().getTools()) {
             if (App.getGame().getMainPlayer().getInventory().getQuantity(tool) < 1) {
-                if (App.getGame().getMainPlayer().getInventory().getTools().get(
-                        App.getGame().getMainPlayer().getInventory().getTools().size() - 1
-                ).equals(tool)) {
-                    System.out.println("⚠ Tool not found or not in inventory.");
-                    return;
-                }
                 continue;
             }
 
@@ -68,7 +64,12 @@ public class ToolController {
     }
 
     public static void upgrade(Matcher matcher) {
-        Tool current = App.getGame().getMainPlayer().getCurrentTool();
+        Tool current = null;
+        for (Tool tool : App.getGame().getMainPlayer().getInventory().getTools()) {
+            if (tool.getName().equalsIgnoreCase(matcher.group(1))) {
+                current = tool;
+            }
+        }
         if (current == null) {
             System.out.println("⚠ No tool is currently equipped.");
             return;
@@ -86,11 +87,40 @@ public class ToolController {
         }
 
         String direction = matcher.group(1).toLowerCase();
-        boolean success = true; //I have to check the type of the tool and then use it  !!!!
+        boolean success = usageStatus(); //I have to check the type of the tool and then use it  !!!!
         if (success) {
             System.out.println("✅ Used " + current.getName() + " to the " + direction + ".");
         } else {
             System.out.println("⚠ Cannot use " + current.getName() + " in direction: " + direction);
         }
+    }
+
+    private static boolean usageStatus() {
+        Tool current = App.getGame().getMainPlayer().getCurrentTool();
+        int usage = current.getEnergy();
+        if (current.getFPLevel() == null) {
+            usage += current.getLevel().getEnergy();
+        } else {
+            usage += current.getFPLevel().getEnergy();
+        }
+        if (allowedLevel(current, Player.levelMax) && usage > 0) {
+            usage--;
+        }
+
+        App.getGame().getMainPlayer().decreaseEnergy(usage);
+        return true;
+    }
+
+    private static boolean allowedLevel(Tool tool, int level) {
+        if (tool.getSkill().equals(Skills.Farming)) {
+            return (App.getGame().getMainPlayer().getFarmingXP() >= level);
+        }
+        else if (tool.getSkill().equals(Skills.Mining)) {
+            return (App.getGame().getMainPlayer().getMiningXP() >= level);
+        }
+        else if (tool.getSkill().equals(Skills.Fishing)) {
+            return (App.getGame().getMainPlayer().getFishingXP() >= level);
+        }
+        return false;
     }
 }

@@ -1,6 +1,7 @@
 package com.project.Models.Tools;
 
 import com.project.Models.Enums.FPLevel;
+import com.project.Models.Enums.Skills;
 import com.project.Models.Enums.ToolLevel;
 import com.project.Models.Map.GameObject;
 import com.project.Models.Time.ObserveTime;
@@ -10,9 +11,10 @@ public class Tool implements ObserveTime, GameObject {
     String name;
     int energy;
     int complement = 0;
-    ToolLevel level;
-    FPLevel fPLevel;
+    ToolLevel level = ToolLevel.Basic;
+    FPLevel fPLevel = null;
     int cost = 0;
+    Skills skill = null;
 
     boolean digging = false;
     boolean breakStone = false;
@@ -187,6 +189,24 @@ public class Tool implements ObserveTime, GameObject {
 
     public Tool setMilking(boolean milking) {
         this.milking = milking;
+        return this;
+    }
+
+    public FPLevel getFPLevel() {
+        return fPLevel;
+    }
+
+    public Tool setFPLevel(FPLevel fPLevel) {
+        this.fPLevel = fPLevel;
+        return this;
+    }
+
+    public Skills getSkill() {
+        return skill;
+    }
+
+    public Tool setSkill(Skills skill) {
+        this.skill = skill;
         return this;
     }
 

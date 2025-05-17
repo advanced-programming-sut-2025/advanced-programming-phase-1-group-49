@@ -33,6 +33,9 @@ public class Player extends Person {
     private int x = 5;
     private int y = 84;
 
+    public static final int levelConstant = 32;
+    public static final int levelMax = 4;
+
     public Player(AccountBuilder accountBuilder) {
         this.username = accountBuilder.getUsername();
         this.password = accountBuilder.getPassword();
@@ -187,7 +190,7 @@ public class Player extends Person {
 
     // increase
 
-    public Integer increaseMiningXP() {
+    public Integer getMiningXP() {
         return miningXP;
     }
 
@@ -204,11 +207,11 @@ public class Player extends Person {
         level = updateLevel(this.XP);
     }
 
-    public Integer increaseFarmingXP() {
+    public Integer getFarmingXP() {
         return farmingXP;
     }
 
-    public Integer increaseFishingXP() {
+    public Integer getFishingXP() {
         return fishingXP;
     }
 
