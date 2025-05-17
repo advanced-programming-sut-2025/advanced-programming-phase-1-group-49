@@ -28,4 +28,5 @@ public interface GameObject {
     String PURPLE_BG = "\u001B[45m";
     String CYAN_BG = "\u001B[46m";
     String WHITE_BG = "\u001B[47m";
+    String BRIGHT_YELLOW_BG = "\u001B[103m";
 }

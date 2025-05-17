@@ -2,7 +2,6 @@ package com.project.Models.Houses;
 
 public class Home implements Building {
     private final String idString;
-    private final int[][] homePositions = new int[][]{{1, 80}, {1, 220}, {50, 80}, {50, 220}};
     private final int id;
 
     public Home(int id) {
@@ -27,11 +26,11 @@ public class Home implements Building {
     // getter
 
     public int getHomeX() {
-        return homePositions[id][0];
+        return ;
     }
 
     public int getHomeY() {
-        return homePositions[id][0];
+        return ;
     }
 
     public int getHomeLength() {

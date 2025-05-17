@@ -10,8 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Map {
-    static private final int mapLength = 70;
-    static private final int mapWidth = 400;
+    static private final int mapLength = 72;
+    static private final int mapWidth = 300;
 
     private final ArrayList<GameObject>[][] blocks = new ArrayList[mapLength][mapWidth];
 
@@ -30,13 +30,14 @@ public class Map {
                 blocks[i][j].add(basic);
             }
 
+        int[][] positions = new int[][]{{3, 5}, {49, 5}, {3, 155}, {49, 155}};
+
+        for (int i = 0; i < 4; i++) {
+            initFarm(i, positions[i]);
+        }
+
         // home
         for (int k = 0; k < 4; k++) {
-            Home home = new Home(k);
-            for (int i = home.getHomeX(); i < home.getHomeX() + home.getHomeLength(); i++)
-                for (int j = home.getHomeY(); j < home.getHomeY() + home.getHomeWidth(); j++)
-                    blocks[i][j].add(home);
-            objects.add(home);
         }
 
         // greenhouse
@@ -63,6 +64,14 @@ public class Map {
 
         objects.add(basic);
         objects.add(water);
+    }
+
+    private void initFarm(int id, int[] position) {
+        Home home = new Home(id);
+        for (int i = home.getHomeX(); i < home.getHomeX() + home.getHomeLength(); i++)
+            for (int j = home.getHomeY(); j < home.getHomeY() + home.getHomeWidth(); j++)
+                blocks[i][j].add(home);
+        objects.add(home);
     }
 
     // getter
