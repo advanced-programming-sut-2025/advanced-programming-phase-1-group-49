@@ -14,7 +14,7 @@ public class GameBuilder {
     }
 
     public void farm(int id, int player) {
-        farm[player] = id;
+        farm[id] = player;
     }
 
     // getter

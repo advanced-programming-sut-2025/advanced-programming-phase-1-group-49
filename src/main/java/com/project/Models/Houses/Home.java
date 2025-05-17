@@ -26,11 +26,11 @@ public class Home implements Building {
     // getter
 
     public int getHomeX() {
-        return ;
+        return 1;
     }
 
     public int getHomeY() {
-        return ;
+        return 80;
     }
 
     public int getHomeLength() {

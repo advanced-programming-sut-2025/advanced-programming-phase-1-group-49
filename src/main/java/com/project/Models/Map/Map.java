@@ -2,6 +2,7 @@ package com.project.Models.Map;
 
 import com.project.Models.App;
 import com.project.Models.Enums.Block;
+import com.project.Models.Game;
 import com.project.Models.Houses.GreenHouse;
 import com.project.Models.Houses.Home;
 import com.project.Models.LivingBeings.Player;
@@ -10,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Map {
+    transient private Game game;
     static private final int mapLength = 72;
     static private final int mapWidth = 300;
 
@@ -17,61 +19,54 @@ public class Map {
 
     private static final ArrayList<Class<?>> forbiddenClasses = new ArrayList<>(List.of(Home.class));
 
-    // we should have a list from objects of game for initialize the map
     final transient private ArrayList<GameObject> objects = new ArrayList<>();
 
     public Map() {
         BlockWrapper basic = new BlockWrapper(Block.basic);
-        BlockWrapper water = new BlockWrapper(Block.water);
+        BlockWrapper dust = new BlockWrapper(Block.dust);
         // initialize
-        for (int i = 0; i < blocks.length; i++)
+        for (int i = 0; i < blocks.length; i++) {
             for (int j = 0; j < blocks[i].length; j++) {
                 blocks[i][j] = new ArrayList<>();
                 blocks[i][j].add(basic);
+                blocks[i][j].add(dust);
             }
+        }
 
         int[][] positions = new int[][]{{3, 5}, {49, 5}, {3, 155}, {49, 155}};
-
         for (int i = 0; i < 4; i++) {
             initFarm(i, positions[i]);
         }
 
-        // home
-        for (int k = 0; k < 4; k++) {
-        }
-
-        // greenhouse
-        for (int k = 0; k < 4; k++) {
-            GreenHouse greenHouse = new GreenHouse(k);
-            for (int i = greenHouse.getGreenHouseX(); i < greenHouse.getGreenHouseX() + greenHouse.getGreenHouseWidth(); i++)
-                for (int j = greenHouse.getGreenHouseY(); j < greenHouse.getGreenHouseY() + greenHouse.getGreenHouseLength(); j++)
-                    blocks[i][j].add(greenHouse);
-            objects.add(greenHouse);
-        }
-
-        // leak
-        int LeakX = 12;
-        int LeakY = 48;
-        int LeakLength = 3;
-        int LeakWidth = 7;
-        for (int i = LeakX; i < LeakLength + LeakX; i++)
-            for (int j = LeakY; j < LeakY + LeakWidth; j++)
-                blocks[i][j].add(water);
-
-
-        // player
-        blocks[App.getPlayer().getX()][App.getPlayer().getY()].add(App.getPlayer());
-
         objects.add(basic);
-        objects.add(water);
+        objects.add(dust);
     }
 
     private void initFarm(int id, int[] position) {
         Home home = new Home(id);
-        for (int i = home.getHomeX(); i < home.getHomeX() + home.getHomeLength(); i++)
-            for (int j = home.getHomeY(); j < home.getHomeY() + home.getHomeWidth(); j++)
+        for (int i = home.getHomeX() + position[0]; i < home.getHomeX() + position[0] + home.getHomeLength(); i++)
+            for (int j = home.getHomeY() + position[1]; j < home.getHomeY() + position[1] + home.getHomeWidth(); j++)
                 blocks[i][j].add(home);
         objects.add(home);
+
+        GreenHouse greenHouse = new GreenHouse(id);
+        for (int i = greenHouse.getGreenHouseX() + position[0]; i < greenHouse.getGreenHouseX() + position[0] + greenHouse.getGreenHouseWidth(); i++)
+            for (int j = greenHouse.getGreenHouseY() + position[1]; j < greenHouse.getGreenHouseY() + position[1] + greenHouse.getGreenHouseLength(); j++)
+                blocks[i][j].add(greenHouse);
+        objects.add(greenHouse);
+
+        int LeakX = 12 + position[0];
+        int LeakY = 48 + position[1];
+        int LeakLength = 3;
+        int LeakWidth = 7;
+        BlockWrapper water = new BlockWrapper(Block.water);
+        for (int i = LeakX; i < LeakLength + LeakX; i++)
+            for (int j = LeakY; j < LeakY + LeakWidth; j++)
+                blocks[i][j].add(water);
+        objects.add(water);
+
+        Player target = game.getPlayers().get(game.getFarmsOwner().get(id));
+        blocks[target.getX()][target.getY()].add(target);
     }
 
     // getter
@@ -95,7 +90,7 @@ public class Map {
     //
 
     public void initialize() {
-        // convert to fori
+        game = App.getGame();
         for (ArrayList<GameObject>[] block : blocks) {
             for (ArrayList<GameObject> gameObjects : block) {
                 for (GameObject g : gameObjects) {

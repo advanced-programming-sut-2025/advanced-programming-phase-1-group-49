@@ -21,7 +21,7 @@ public class Game {
     private int mainPlayer = -1; // game creator
     transient private ArrayList<Player> players = new ArrayList<>();
     private final ArrayList<String> playerUserNames = new ArrayList<>();
-    private final ArrayList<Integer> farmsOwner = new ArrayList<>();
+    private final ArrayList<Integer> farmsOwner = new ArrayList<>(); // farmOwners[farmID] = PlayerIndex
     private int turn = 0;
 
     public Game(GameBuilder builder) {
@@ -71,6 +71,10 @@ public class Game {
         return time;
     }
 
+    public ArrayList<Integer> getFarmsOwner() {
+        return farmsOwner;
+    }
+
     // setter
 
     public void setMainPlayer(Player player) {
@@ -81,6 +85,10 @@ public class Game {
 
     public static void setGameCounter(int gameCounter) {
         GameCounter = gameCounter;
+    }
+
+    public void setMap(Map map) {
+        this.map = map;
     }
 
     public void initializePlayers() {
@@ -103,10 +111,6 @@ public class Game {
         map.initialize();
     }
 
-    public void setMap(Map map) {
-        this.map = map;
-    }
-
     //
 
     public void nextTurn() {
@@ -116,5 +120,4 @@ public class Game {
             turn = 0;
         }
     }
-
 }

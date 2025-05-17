@@ -19,10 +19,10 @@ public class Player extends Person {
 
     private Integer level = 0;
     private Integer XP = 0;
-    private Integer farmingXP = 0;
-    private Integer miningXP = 0;
-    private Integer sightseeingXP = 0;
-    private Integer fishingXP = 0;
+    private Integer farmingXP = 1;
+    private Integer miningXP = 1;
+    private Integer sightseeingXP = 1;
+    private Integer fishingXP = 1;
 
     transient private Game currentGame = null;
     private int gameID = 0;
