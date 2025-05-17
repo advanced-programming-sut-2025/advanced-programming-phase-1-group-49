@@ -23,11 +23,11 @@ public enum GameCommands implements Commands {
     increaseTime("^\\s*cheat\\s+time\\s+(?<time>\\d+)\\s*$"),
     increaseDate("^\\s*cheat\\s+date\\s+(?<date>\\d+)\\s*$"),
     changeWeather("^\\s*cheat\\s+weather\\s+set\\s+(?<Type>\\S+)\\s*$"),
+    weathers("^(sunny|storm|rain|snow)$"),
     thor("^\\s*cheat\\s+Thor\\s+(?<x>\\d+)\\s+(?<y>\\d+)\\s*$"),
     // for debugging :
     gameInfo("^\\s*game\\s+info\\s*$"),
     printAllMap("^\\s*print\\s+map\\s*$");
-
     private final String pattern;
 
     GameCommands(String pattern) {

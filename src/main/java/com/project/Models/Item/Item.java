@@ -6,5 +6,8 @@ import com.project.Models.Time.ObserveTime;
 
 public interface Item extends GameObject, ObserveTime {
     String Name = new String();
+
+    String getName();
+
     Ingredients recipe = null;
 }
