@@ -46,6 +46,10 @@ public class Game {
 
     // getter
 
+    public Integer getTurn() {
+        return turn;
+    }
+
     public int getGameID() {
         return id;
     }
@@ -76,6 +80,13 @@ public class Game {
 
     public ArrayList<Integer> getFarmsOwner() {
         return farmsOwner;
+    }
+
+    public int getFarmID(Player player) {
+        for (int i = 0; i < farmsOwner.size(); i++)
+            if (farmsOwner.get(i).equals(players.indexOf(player)))
+                return i;
+        return -1;
     }
 
     // setter

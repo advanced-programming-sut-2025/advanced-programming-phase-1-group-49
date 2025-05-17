@@ -4,7 +4,10 @@ import com.project.Controllers.AppController;
 import com.project.Controllers.GameMenuController;
 import com.project.Models.App;
 import com.project.Models.Enums.Menu;
+import com.project.Models.Enums.Menus.GameCommands;
+import com.project.Models.Enums.Weathers;
 import com.project.Models.Game;
+import com.project.Models.Houses.GreenHouse;
 import com.project.Models.LivingBeings.Player;
 import com.project.Models.Map.GameObject;
 import com.project.Models.Map.Map;
@@ -101,13 +104,6 @@ public class ActivityController {
         return new Result(true, "exit");
     }
 
-    public Result nextTurn() {
-        AppController.savePlayer(player);
-        game.nextTurn();
-        initialize();
-        return new Result(true, game.getPlayer() + ", its your turn.");
-    }
-
     public Result time() {
         String result = game.getTime().getCurrentHour() + ":00 ";
         if (game.getTime().getCurrentHour() < 12)
@@ -141,11 +137,6 @@ public class ActivityController {
         return new Result(true, "Season : " + game.getTime().getCurrentSeason());
     }
 
-    public Result greenHouse() {
-//        if (player.getCoin() >= 1000 && player.getInventory().)
-        return null;
-    }
-
     public Result printMap(String xString, String yString, String sizeString) {
         xString = xString.trim();
         yString = yString.trim();
@@ -162,8 +153,8 @@ public class ActivityController {
 
         ArrayList<GameObject>[][] map = game.getMap().getBlocks();
 
-        if (size >= 60)
-            size = 60;
+        if (size > 72)
+            size = 72;
         int startX = x - (size / 2);
         int endX = x + (size / 2);
         int startY = y - size;
@@ -177,17 +168,48 @@ public class ActivityController {
         else if (endY >= map[0].length)
             endY = map[0].length - 1;
 
-        System.out.printf("Player : %s(%d), XP : %d, Energy : %d\nprint map from <%d,%d> -> <%d,%d>\n",
-                player.getUsername(), player.getLevel(), player.getXP(), player.getEnergy(),
-                x - (size / 4), y - size, x + (size / 4), y + (2 * size));
+
+        System.out.printf("Player : %s(%d), XP : %d, Energy : %d, Farm ID : %d\nprint map from <%d,%d> -> <%d,%d>, your position : <%d,%d>\n",
+                player.getUsername(), player.getLevel(), player.getXP(), player.getEnergy(), game.getFarmID(player),
+                startX, startY, endX, endY, player.getX(), player.getY());
+
+        System.out.print("┌");
+        for (int i = startY + 1; i < endY; i++)
+            System.out.print("─");
+        System.out.print("┐");
+        System.out.println();
+
         for (int i = startX; i < endX; i++) {
+            System.out.print("│");
             for (int j = startY; j < endY; j++) {
-                GameObject gameObject = map[i][j].get(map[i][j].size() - 1);
-                System.out.print(gameObject.tooString());
+                System.out.print(map[i][j].get(map[i][j].size() - 1).tooString());
             }
+            System.out.print("│");
             System.out.println();
         }
+
+        System.out.print("└");
+        for (int i = startY + 1; i < endY; i++)
+            System.out.print("─");
+        System.out.print("┘");
+        System.out.println();
         return new Result(true, "");
+    }
+
+    public Result nextTurn() {
+        AppController.savePlayer(player);
+        game.nextTurn();
+        initialize();
+        return new Result(true, game.getPlayer() + ", its your turn.");
+    }
+
+    public Result greenHouse() {
+        if (player.getCoin() < 1000 || player.getInventory().searchItem("wood") == null
+                || player.getInventory().getQuantity(player.getInventory().searchItem("wood")) <= 0)
+            return new Result(false, "You don't have enough resource");
+        String id = "GreenHouse" + game.getFarmID(player);
+        ((GreenHouse) game.getMap().searchObject(id)).switchStatement();
+        return new Result(true, "GreenHouse created successfully!");
     }
 
     public Result mapGuid() {
@@ -203,15 +225,41 @@ public class ActivityController {
     // cheat codes :
 
     public Result increaseTime(String amountString) {
-        return null;
+        amountString = amountString.trim();
+        int amount;
+        try {
+            amount = Integer.parseInt(amountString);
+        } catch (NumberFormatException e) {
+            return new Result(false, "Invalid amount value");
+        }
+        game.getTime().changeTime(amount);
+        return new Result(true, "new time :" + game.getTime().getCurrentHour() + ":00");
     }
 
     public Result increaseDate(String amountString) {
-        return null;
+        amountString = amountString.trim();
+        int amount;
+        try {
+            amount = Integer.parseInt(amountString);
+        } catch (NumberFormatException e) {
+            return new Result(false, "Invalid amount value");
+        }
+        game.getTime().changeTime(amount * 13);
+        return new Result(true, "new date :" + game.getTime().getCurrentDay());
     }
 
     public Result changeWeather(String amountString) {
-        return null;
+        amountString = amountString.trim().toLowerCase();
+        if (!GameCommands.weathers.getMatcher(amountString).find())
+            return new Result(false, "Invalid weather value");
+        game.getTime().setCurrentWeather(switch (amountString) {
+            case "sunny" -> Weathers.SUNNY;
+            case "storm" -> Weathers.STORM;
+            case "rain" -> Weathers.RAIN;
+            case "snow" -> Weathers.SNOW;
+            default -> game.getTime().getCurrentWeather();
+        });
+        return new Result(true, "current weather :" + game.getTime().getCurrentWeather());
     }
 
     //
@@ -235,13 +283,10 @@ public class ActivityController {
     }
 
     public void printMap() {
-        System.out.printf("Player : %s(%d), XP : %d, Energy : %d\n", player.getUsername(), player.getLevel(), player.getXP(), player.getEnergy());
-        for (ArrayList<GameObject>[] i : App.getGame().getMap().getBlocks()) {
-            for (ArrayList<GameObject> b : i) {
-                GameObject gameObject = b.get(b.size() - 1);
-                System.out.print(gameObject.tooString());
-            }
-            System.out.println();
+        for (int i = 0; i < 4; i++) {
+            System.out.println(game.getPlayers().get(i).getUsername());
         }
+        System.out.println(game.getFarmsOwner());
+        printMap(player.getX() + "", player.getY() + "", "60");
     }
 }

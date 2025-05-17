@@ -154,5 +154,4 @@ public class Time {
     public void setCurrentWeather(Weathers currentWeather) {
         this.currentWeather = currentWeather;
     }
-
 }
