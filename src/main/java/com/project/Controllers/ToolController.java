@@ -113,13 +113,13 @@ public class ToolController {
 
     private static boolean allowedLevel(Tool tool, int level) {
         if (tool.getSkill().equals(Skills.Farming)) {
-            return (App.getGame().getMainPlayer().getFarmingXP() >= level*Player.levelMax);
+            return (App.getGame().getMainPlayer().getFarmingXP() >= level*Player.levelConstant);
         }
         else if (tool.getSkill().equals(Skills.Mining)) {
-            return (App.getGame().getMainPlayer().getMiningXP() >= level*Player.levelMax);
+            return (App.getGame().getMainPlayer().getMiningXP() >= level*Player.levelConstant);
         }
         else if (tool.getSkill().equals(Skills.Fishing)) {
-            return (App.getGame().getMainPlayer().getFishingXP() >= level*Player.levelMax);
+            return (App.getGame().getMainPlayer().getFishingXP() >= level*Player.levelConstant);
         }
         return false;
     }
