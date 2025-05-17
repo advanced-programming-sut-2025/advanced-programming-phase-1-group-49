@@ -20,6 +20,7 @@ public class ForagingUsage implements AppMenu {
                     >>> Tool Commands:
                     - info
                     - craftinfo -n <craft_name>
+                    - plant -s <seed> -d <direction>
                     - exit""");
             printMenuInfo = !printMenuInfo;
         }
@@ -31,6 +32,8 @@ public class ForagingUsage implements AppMenu {
             ForagingController.randomCrop(matcher);
         } else if ((matcher = ForagingCommands.CraftInfo.getMatcher(command)).find()) {
             ForagingController.craftInfo(matcher);
+        } else if ((matcher = ForagingCommands.Plant.getMatcher(command)).find()) {
+            ForagingController.plant(matcher);
         }
     }
 }
