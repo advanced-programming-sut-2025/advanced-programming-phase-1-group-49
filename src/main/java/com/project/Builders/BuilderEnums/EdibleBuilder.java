@@ -195,7 +195,12 @@ public enum EdibleBuilder {
             .setLevel(1)
             .setName("MinersTreat")
             .setSellPrice(200)
-    );
+    ),
+    Alfalfa(new Edible()
+            .setEdible(false)
+            .setName("Alfalfa")
+    ),
+    ;
 
     Foraging edible;
 
