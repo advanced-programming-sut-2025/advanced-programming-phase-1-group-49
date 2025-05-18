@@ -13,6 +13,8 @@ public enum MainMenuCommands implements Commands {
     craftingMenu("^\\s*crafting\\s+menu\\s*$"),
     foragingMenu("^\\s*foraging\\s+menu\\s*$"),
     toolsMenu("^\\s*tools\\s+menu\\s*$"),
+    cheatingMenu("^\\s*cheating\\s+menu\\s*$"),
+    cookingMenu("^\\s*cooking\\s+menu\\s*$"),
     ;
 
     private final String pattern;
