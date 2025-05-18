@@ -10,6 +10,9 @@ public enum MainMenuCommands implements Commands {
     switchMenu("^\\s*menu\\s+(?<menu>gamemenu|profilemenu|game|profile)\\s*$"),
     ShowCurrentMenu("^\\s*show\\s+current\\s+menu\\s*$"),
     exit("^\\s*exit\\s*$"),
+    craftingMenu("^\\s*crafting\\s+menu\\s*$"),
+    foragingMenu("^\\s*foraging\\s+menu\\s*$"),
+    toolsMenu("^\\s*tools\\s+menu\\s*$"),
     ;
 
     private final String pattern;
