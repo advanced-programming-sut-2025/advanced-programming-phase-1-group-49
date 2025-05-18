@@ -35,5 +35,8 @@ public class CraftingUsage implements AppMenu {
         else if ((matcher = CraftingCommands.Craft.getMatcher(command)).find()) {
             CraftingController.craft(matcher);
         }
+        else if ((matcher = CraftingCommands.Place.getMatcher(command)).find()) {
+            CraftingController.place(matcher);
+        }
     }
 }

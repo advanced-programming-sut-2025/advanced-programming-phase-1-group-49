@@ -3,7 +3,10 @@ package com.project.Controllers;
 import com.project.Builders.BuilderEnums.CraftingBuilder;
 import com.project.Compositors.Ingredients;
 import com.project.Models.App;
+import com.project.Models.Enums.Block;
+import com.project.Models.Enums.Directions;
 import com.project.Models.Item.Item;
+import com.project.Models.Map.BlockWrapper;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -84,5 +87,61 @@ public class CraftingController {
         }
 
         System.out.println("the name in recipes is not equal to the name in crafting builder enum!");
+    }
+
+    public static boolean place(Matcher matcher) {
+        int x = App.getGame().getMainPlayer().getX();
+        int y = App.getGame().getMainPlayer().getY();
+        boolean valid = false;
+
+        for (Directions direction : Directions.values()) {
+            if (direction.direction.equals(matcher.group(2))) {
+                x += direction.x;
+                y += direction.y;
+                valid = true;
+                break;
+            }
+        }
+        if (!valid) {
+            System.out.println(
+                    "Invalid direction: "
+                            + matcher.group(2)
+            );
+            for (Directions direction : Directions.values()) {
+                System.out.println("Valid directions: " + direction.direction);
+            }
+            return false;
+        }
+        valid = false;
+
+        if (x < 0 || y < 0
+                || x >= com.project.Models.Map.Map.getMapLength()
+                || y >= com.project.Models.Map.Map.getMapWidth()
+                || !App.getGame().getMap().getBlocks()[x][y]
+                .get(App.getGame().getMap().getBlocks()[x][y].size())
+                .equals(new BlockWrapper(Block.soil))
+        ) {
+            System.out.println("Incompatible blocks!");
+            return false;
+        }
+
+        Item item = null;
+        for (Item item1 : App.getGame().getMainPlayer().getInventory().getItems()) {
+            if (item1.getName().equals(matcher.group(1))) {
+                item = item1;
+                valid = true;
+            }
+        }
+        if (!valid) {
+            System.out.println("Item not found!");
+            return false;
+        }
+
+        App.getGame().getMainPlayer().getInventory().add(item, -1);
+        App.getGame().getMap().getBlocks()[x][y].add(item);
+
+        System.out.println("Added one " + item.getName() + " to the map!");
+
+        return true;
     }
 }
