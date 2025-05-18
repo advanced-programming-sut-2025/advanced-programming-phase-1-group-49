@@ -1,20 +1,25 @@
 package com.project.Controllers;
 
 import com.project.Builders.BuilderEnums.CraftingBuilder;
+import com.project.Builders.BuilderEnums.ToolBuilder;
+import com.project.Directors.AnimalDirector;
 import com.project.Models.App;
 import com.project.Models.Item.Crafting;
 import com.project.Models.Item.Item;
 import com.project.Models.Item.Machine;
+import com.project.Models.LivingBeings.Animal;
+import com.project.Models.Map.Map;
+import com.project.Models.Tools.Tool;
 
 import java.util.ArrayList;
-import java.util.Map;
 import java.util.regex.Matcher;
 
 public class CheatingController {
 
     public static void addItem(Matcher matcher) {
-        Item item = null;
-        for (Item item1 : App.getGame().getMainPlayer().getInventory().getItems()) {
+        Tool item = null;
+        for (ToolBuilder toolBuilder : ToolBuilder.values()) {
+            Tool item1 = toolBuilder.getTool();
             if (item1.getName().equals(matcher.group(1))) {
                 item = item1;
                 break;
@@ -62,6 +67,16 @@ public class CheatingController {
 
         for (int i = 0; i < machine.getProducts().size(); i++) {
 
+        }
+    }
+
+    public static void randomAnimal(Matcher matcher) {
+        for (int i = 0; i < 5; i++) {
+            int x = (int) (Math.random() * 1000 % Map.getMapLength());
+            int y = (int) (Math.random() * 1000 % Map.getMapWidth());
+            Animal animal = (Animal) AnimalDirector.randomAnimal();
+            App.getGame().getMap().getBlocks()[x][y].add(animal);
+            System.out.println("Added one " + animal.getName() + " to x " + x + " y " + y);
         }
     }
 }

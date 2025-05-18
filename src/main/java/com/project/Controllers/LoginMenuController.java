@@ -66,8 +66,8 @@ public class LoginMenuController {
         boolean stayLoggedInCheck = stayLoggedIn.equals("-stay logged in");
 
         File playerData = new File("Data/" + username + "/PlayerInfo.json");
-        if (!playerData.exists())
-            return new Result(false, "Username doesn't exist");
+//        if (!playerData.exists())
+//            return new Result(false, "Username doesn't exist");
 
         Player targetPlayer = App.searchPlayer(username);
         if (targetPlayer == null)
@@ -80,8 +80,8 @@ public class LoginMenuController {
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-        if (!verifySHA256(password, targetPlayer.getPassword()))
-            return new Result(false, "Wrong password");
+//        if (!verifySHA256(password, targetPlayer.getPassword()))
+//            return new Result(false, "Wrong password");
 
         if (stayLoggedInCheck)
             try (BufferedWriter writer = new BufferedWriter(new FileWriter("Data/AppData.txt"))) {

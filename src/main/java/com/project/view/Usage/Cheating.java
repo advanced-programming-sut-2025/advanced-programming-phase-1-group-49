@@ -23,6 +23,7 @@ public class Cheating implements AppMenu {
                     - cheat add item -n <item_name> -c <count>
                     - cheat random machines
                     - use machine -m <machine-name>
+                    - creat random animal
                     - exit""");
             printMenuInfo = !printMenuInfo;
         }
@@ -38,6 +39,9 @@ public class Cheating implements AppMenu {
         }
         else if ((matcher = CheatCodes.RandomMachine.getMatcher(command)).find()) {
             CheatingController.useMachine(matcher);
+        }
+        else if ((matcher = CheatCodes.RandomAnimal.getMatcher(command)).find()) {
+            CheatingController.randomAnimal(matcher);
         }
     }
 }
