@@ -3,9 +3,11 @@ package com.project.view.Usage;
 import com.project.Controllers.CheatingController;
 import com.project.Controllers.CraftingController;
 import com.project.Controllers.ForagingController;
+import com.project.Models.App;
 import com.project.Models.Enums.Commands.CheatCodes;
 import com.project.Models.Enums.Commands.Commands;
 import com.project.Models.Enums.Commands.CraftingCommands;
+import com.project.Models.Enums.Menu;
 import com.project.view.AppMenu;
 
 import java.util.Scanner;
@@ -33,15 +35,13 @@ public class Cheating implements AppMenu {
 
         if ((matcher = CheatCodes.AddItems.getMatcher(command)).find()) {
             CheatingController.addItem(matcher);
-        }
-        else if ((matcher = CheatCodes.RandomMachine.getMatcher(command)).find()) {
+        } else if ((matcher = CheatCodes.RandomMachine.getMatcher(command)).find()) {
             CheatingController.randomMachines(matcher);
-        }
-        else if ((matcher = CheatCodes.RandomMachine.getMatcher(command)).find()) {
+        } else if ((matcher = CheatCodes.RandomMachine.getMatcher(command)).find()) {
             CheatingController.useMachine(matcher);
-        }
-        else if ((matcher = CheatCodes.RandomAnimal.getMatcher(command)).find()) {
+        } else if ((matcher = CheatCodes.RandomAnimal.getMatcher(command)).find()) {
             CheatingController.randomAnimal(matcher);
-        }
+        } else
+            App.setCurrentMenu(Menu.MainMenu);
     }
 }
