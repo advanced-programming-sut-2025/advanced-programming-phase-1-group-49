@@ -1,5 +1,6 @@
 package com.project.Controllers;
 
+import com.project.Builders.BuilderEnums.FishBuilder;
 import com.project.Builders.BuilderEnums.ForagingCropBuilder;
 import com.project.Builders.BuilderEnums.MineralBuilder;
 import com.project.Decorators.ToolDecorator;
@@ -7,10 +8,13 @@ import com.project.Directors.ForagingDirector;
 import com.project.Models.App;
 import com.project.Models.Enums.Block;
 import com.project.Models.Enums.Directions;
+import com.project.Models.Enums.Season;
 import com.project.Models.Enums.Skills;
 import com.project.Models.Item.Foraging;
+import com.project.Models.LivingBeings.Fish;
 import com.project.Models.LivingBeings.Player;
 import com.project.Models.Map.BlockWrapper;
+import com.project.Models.Map.GameObject;
 import com.project.Models.Map.Map;
 import com.project.Models.Tools.Tool;
 
@@ -131,26 +135,100 @@ public class ToolController {
             return;
         }
 
-        if (current.isCutTree()) {
-
+        if (current.isCutTree() && current.isDeleteBranches()) {
+            success = useAxe(x, y);
         }
+        else if (current.isFishing()) {
+            success = usePF(x, y);
+        }
+//        else if ()
+
+        usageStatus();
         if (success) {
             System.out.println("✅ Used " + current.getName() + " to the " + direction + ".");
         } else {
+            if (!current.isWatering()) {
+                App.getGame().getMainPlayer().increaseEnergy(
+                        current.getComplement()
+                );
+            }
             System.out.println("⚠ Cannot use " + current.getName() + " in direction: " + direction);
         }
     }
 
-    public boolean useAxe(int x, int y) {
-        if (App.getGame().getMap().getBlocks()[x][y]
+    private static boolean useAxe(int x, int y) {
+        boolean success = false;
+        if ((App.getGame().getMap().getBlocks()[x][y]
                 .get(App.getGame().getMap().getBlocks()[x][y].size() -1)
-                .equals(MineralBuilder.Wood.foraging)
+                instanceof Foraging) &&
+                ((Foraging) App.getGame().getMap().getBlocks()[x][y]
+                .get(App.getGame().getMap().getBlocks()[x][y].size() -1))
+                .getName().toLowerCase().contains("tree")
         ) {
-            App.getGame().getMainPlayer().getInventory().add(MineralBuilder.Wood.foraging, 1);
+            App.getGame().getMainPlayer().getInventory().add(MineralBuilder.Wood.foraging, 5);
             System.out.println("Added a wood to the inventory.");
-            return true;
+            success = true;
         }
-        return false;
+        else if ((App.getGame().getMap().getBlocks()[x][y]
+                .get(App.getGame().getMap().getBlocks()[x][y].size() -1)
+                instanceof Foraging) &&
+                ((Foraging) App.getGame().getMap().getBlocks()[x][y]
+                .get(App.getGame().getMap().getBlocks()[x][y].size() -1))
+                .getName().toLowerCase().contains("branch")
+        ) {
+            App.getGame().getMap().getBlocks()[x][y]
+                    .remove(App.getGame().getMap().getBlocks()[x][y].size() -1);
+            System.out.println("Removed branch from the map.");
+            success = true;
+        }
+        return success;
+    }
+
+    private static boolean usePF(int x, int y) {
+        boolean success = false;
+        boolean fishAvailable = false;
+        GameObject fish = App.getGame().getMap().getBlocks()[x][y]
+                .get(App.getGame().getMap().getBlocks()[x][y].size() -1);
+        Tool currentTool = App.getGame().getMainPlayer().getCurrentTool();
+
+        if (fish instanceof Fish) {
+            success = true;
+        }
+        else {
+            System.out.println("No fish here!");
+            return false;
+        }
+        Season currentSeason = App.getGame().getTime().getCurrentSeason();
+
+        if (!((((Fish) fish).isSpring() && currentSeason.equals(Season.Spring))
+                || (((Fish) fish).isSummer() && currentSeason.equals(Season.Summer))
+                || (((Fish) fish).isFall() && currentSeason.equals(Season.Fall))
+                || (((Fish) fish).isWinter() && currentSeason.equals(Season.Winter)))
+        ) {
+            System.out.println("The fish here is not available in this season.");
+            return false;
+        }
+        else if ((App.getGame().getTime().getCurrentSeason().toString().equals("Spring")
+            && currentTool.getFPLevel().level == 0
+            && !fish.equals(FishBuilder.Sunfish))
+            || (App.getGame().getTime().getCurrentSeason().toString().equals("Summer")
+            && currentTool.getFPLevel().level == 0
+            && !fish.equals(FishBuilder.Herring))
+            || (App.getGame().getTime().getCurrentSeason().toString().equals("Fall")
+            && currentTool.getFPLevel().level == 0
+            && !fish.equals(FishBuilder.Salmon))
+            || (App.getGame().getTime().getCurrentSeason().toString().equals("Winter")
+            && currentTool.getFPLevel().level == 0
+            && !fish.equals(FishBuilder.Perch))
+        ) {
+            System.out.println("You only can hunt the least valuable fish of the season.");
+            return false;
+        }
+
+        App.getGame().getMainPlayer().getInventory().add((Fish)fish, 1);
+        System.out.println("Added fish " + ((Fish) fish).getName() + " to the inventory.");
+
+        return success;
     }
 
     private static boolean usageStatus() {

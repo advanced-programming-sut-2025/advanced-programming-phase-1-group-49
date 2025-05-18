@@ -7,8 +7,8 @@ public enum FPLevel {
     IrFP(4, 3, 1.2),
     ;
 
-    private final int energy;
-    private final int level;
+    public final int energy;
+    public final int level;
     public final double amount;
 
     FPLevel(int energy, int level, double amount) {

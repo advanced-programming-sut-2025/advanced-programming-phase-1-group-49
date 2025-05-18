@@ -130,9 +130,9 @@ public enum FishBuilder {
     ),
     ;
 
-    public final LivingBeings fish;
+    public final Fish fish;
 
-    FishBuilder(LivingBeings fish) {
+    FishBuilder(Fish fish) {
         this.fish = fish;
     }
 }
