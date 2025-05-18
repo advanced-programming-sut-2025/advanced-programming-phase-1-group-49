@@ -232,6 +232,6 @@ public class Foraging implements Item {
 
     @Override
     public String tooString() {
-        return "";
+        return name;
     }
 }

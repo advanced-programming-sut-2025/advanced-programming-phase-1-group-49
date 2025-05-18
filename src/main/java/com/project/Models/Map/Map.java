@@ -11,6 +11,7 @@ import com.project.Models.LivingBeings.Player;
 import com.project.Models.Time.Time;
 
 
+import java.sql.Wrapper;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -117,14 +118,19 @@ public class Map {
         BlockWrapper soil = new BlockWrapper(Block.soil);
         Random rand = new Random();
         ForagingDirector director = new ForagingDirector();
-        int treeCount = rand.nextInt(10) + 30;
-        while (treeCount > 0) {
+        int treeCount = rand.nextInt(5) + 15;
+        for (int i = 0; i < treeCount; i++) {
             Foraging foraging = director.randomForagingTree(time.getCurrentSeason());
-            int x = rand.nextInt(20) + position[0];
-            int y = rand.nextInt(100) + position[1];
-            if (blocks[x][y].get(blocks[x][y].size() - 1).equals(soil)) {
-                blocks[x][y].add(foraging);
-                treeCount--;
+            System.out.println(foraging.tooString());
+            while (true) {
+                int x = rand.nextInt(20) + position[0];
+                int y = rand.nextInt(100) + position[1];
+                System.out.println(x + " " + y);
+                if (blocks[x][y].get(blocks[x][y].size() - 1).getClass().equals(BlockWrapper.class)
+                        && ((BlockWrapper) blocks[x][y].get(blocks[x][y].size() - 1)).getBlock() == Block.soil) {
+                    blocks[x][y].add(foraging);
+                    break;
+                }
             }
         }
 
