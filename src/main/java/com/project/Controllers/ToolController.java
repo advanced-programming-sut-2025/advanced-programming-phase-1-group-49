@@ -1,12 +1,17 @@
 package com.project.Controllers;
 
 import com.project.Builders.BuilderEnums.ForagingCropBuilder;
+import com.project.Builders.BuilderEnums.MineralBuilder;
 import com.project.Decorators.ToolDecorator;
 import com.project.Directors.ForagingDirector;
 import com.project.Models.App;
+import com.project.Models.Enums.Block;
+import com.project.Models.Enums.Directions;
 import com.project.Models.Enums.Skills;
 import com.project.Models.Item.Foraging;
 import com.project.Models.LivingBeings.Player;
+import com.project.Models.Map.BlockWrapper;
+import com.project.Models.Map.Map;
 import com.project.Models.Tools.Tool;
 
 import java.util.ArrayList;
@@ -90,13 +95,62 @@ public class ToolController {
             return;
         }
 
-        String direction = matcher.group(1).toLowerCase();
-        boolean success = usageStatus(); //I have to check the type of the tool and then use it  !!!!
+        String direction = matcher.group(1);
+
+        boolean success = false; //I have to check the type of the tool and then use it  !!!!
+        int x = App.getGame().getMainPlayer().getX();
+        int y = App.getGame().getMainPlayer().getY();
+        boolean valid = false;
+
+        for (Directions direction0 : Directions.values()) {
+            if (direction0.direction.equals(matcher.group(1))) {
+                x += direction0.x;
+                y += direction0.y;
+                valid = true;
+                break;
+            }
+        }
+        if (!valid) {
+            System.out.println(
+                    "Invalid direction: "
+                            + matcher.group(1)
+            );
+            for (Directions direction1 : Directions.values()) {
+                System.out.println("Valid directions: " + direction1.direction);
+            }
+            return;
+        }
+        valid = false;
+
+        if (x < 0 || y < 0 || x >= Map.getMapLength() || y >= Map.getMapWidth()
+                || !App.getGame().getMap().getBlocks()[x][y]
+                .get(App.getGame().getMap().getBlocks()[x][y].size())
+                .equals(new BlockWrapper(Block.diggedSoil))
+        ) {
+            System.out.println("Incompatible blocks!");
+            return;
+        }
+
+        if (current.isCutTree()) {
+
+        }
         if (success) {
             System.out.println("✅ Used " + current.getName() + " to the " + direction + ".");
         } else {
             System.out.println("⚠ Cannot use " + current.getName() + " in direction: " + direction);
         }
+    }
+
+    public boolean useAxe(int x, int y) {
+        if (App.getGame().getMap().getBlocks()[x][y]
+                .get(App.getGame().getMap().getBlocks()[x][y].size() -1)
+                .equals(MineralBuilder.Wood.foraging)
+        ) {
+            App.getGame().getMainPlayer().getInventory().add(MineralBuilder.Wood.foraging, 1);
+            System.out.println("Added a wood to the inventory.");
+            return true;
+        }
+        return false;
     }
 
     private static boolean usageStatus() {
