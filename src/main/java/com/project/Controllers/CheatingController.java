@@ -7,6 +7,7 @@ import com.project.Models.Item.Item;
 import com.project.Models.Item.Machine;
 
 import java.util.ArrayList;
+import java.util.Map;
 import java.util.regex.Matcher;
 
 public class CheatingController {
@@ -59,6 +60,8 @@ public class CheatingController {
             return;
         }
 
-        //for (ArrayList<Item, Integer> product : machine.getProducts())
+        for (int i = 0; i < machine.getProducts().size(); i++) {
+
+        }
     }
 }
