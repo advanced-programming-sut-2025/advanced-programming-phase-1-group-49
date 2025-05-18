@@ -21,6 +21,8 @@ public class Cheating implements AppMenu {
             System.out.println("""
                     >>> Crafting Commands:
                     - cheat add item -n <item_name> -c <count>
+                    - cheat random machines
+                    - use machine -m <machine-name>
                     - exit""");
             printMenuInfo = !printMenuInfo;
         }
@@ -30,6 +32,12 @@ public class Cheating implements AppMenu {
 
         if ((matcher = CheatCodes.AddItems.getMatcher(command)).find()) {
             CheatingController.addItem(matcher);
+        }
+        else if ((matcher = CheatCodes.RandomMachine.getMatcher(command)).find()) {
+            CheatingController.randomMachines(matcher);
+        }
+        else if ((matcher = CheatCodes.RandomMachine.getMatcher(command)).find()) {
+            CheatingController.useMachine(matcher);
         }
     }
 }
