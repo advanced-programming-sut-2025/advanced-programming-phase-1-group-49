@@ -1,9 +1,10 @@
 package com.project.Models.LivingBeings;
 
+import com.project.Models.Item.Item;
 import com.project.Models.Enums.FPLevel;
 import com.project.Models.Enums.Skills;
 
-public class Fish implements LivingBeings {
+public class Fish implements LivingBeings, Item {
     protected String name;
     protected boolean spring = false;
     protected boolean summer = false;
