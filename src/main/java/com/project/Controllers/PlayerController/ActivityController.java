@@ -45,8 +45,8 @@ public class ActivityController {
                 int[] target = new int[]{current[0] + neighbor[0], current[1] + neighbor[1], current[2] + 1, add, neighbor[0], neighbor[1]};
 
                 if (target[0] >= 0 && target[1] >= 0
-                        && target[0] < Map.getMapLength() && target[1] < Map.getMapWidth()
-                        && forbiddenBlock(target[0], target[1]) && !visited.contains(target[0] + "-" + target[1])) {
+                    && target[0] < Map.getMapLength() && target[1] < Map.getMapWidth()
+                    && forbiddenBlock(target[0], target[1]) && !visited.contains(target[0] + "-" + target[1])) {
                     queue.add(target);
                     visited.add(target[0] + "-" + target[1]);
                 }
@@ -217,7 +217,7 @@ public class ActivityController {
 
     public Result greenHouse() {
         if (player.getCoin() < 1000 || player.getInventory().searchItem("wood") == null
-                || player.getInventory().getQuantity(player.getInventory().searchItem("wood")) <= 0)
+            || player.getInventory().getQuantity(player.getInventory().searchItem("wood")) <= 0)
             return new Result(false, "You don't have enough resource");
         String id = "GreenHouse" + game.getFarmID(player);
         ((GreenHouse) game.getMap().searchObject(id)).switchStatement();
