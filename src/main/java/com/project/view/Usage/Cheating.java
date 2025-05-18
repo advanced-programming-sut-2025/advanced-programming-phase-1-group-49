@@ -1,7 +1,9 @@
 package com.project.view.Usage;
 
+import com.project.Controllers.CheatingController;
 import com.project.Controllers.CraftingController;
 import com.project.Controllers.ForagingController;
+import com.project.Models.Enums.Commands.CheatCodes;
 import com.project.Models.Enums.Commands.Commands;
 import com.project.Models.Enums.Commands.CraftingCommands;
 import com.project.view.AppMenu;
@@ -18,9 +20,7 @@ public class Cheating implements AppMenu {
         if (printMenuInfo) {
             System.out.println("""
                     >>> Crafting Commands:
-                    - crafting show recipes
-                    - crafting craft <item_name>
-                    - place item -n <item_name> -d <direction>
+                    - cheat add item -n <item_name> -c <count>
                     - exit""");
             printMenuInfo = !printMenuInfo;
         }
@@ -28,14 +28,8 @@ public class Cheating implements AppMenu {
         String command = scanner.nextLine();
         Matcher matcher;
 
-        if ((matcher = CraftingCommands.ShowRecipes.getMatcher(command)).find()) {
-            CraftingController.showRecipes(matcher);
-        }
-        else if ((matcher = CraftingCommands.Craft.getMatcher(command)).find()) {
-            CraftingController.craft(matcher);
-        }
-        else if ((matcher = CraftingCommands.Place.getMatcher(command)).find()) {
-            CraftingController.place(matcher);
+        if ((matcher = CheatCodes.AddItems.getMatcher(command)).find()) {
+            CheatingController.addItem(matcher);
         }
     }
 }
