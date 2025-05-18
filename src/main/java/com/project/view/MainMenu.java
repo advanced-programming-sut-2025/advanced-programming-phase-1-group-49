@@ -30,13 +30,17 @@ public class MainMenu implements AppMenu {
         } else if ((matcher = MainMenuCommands.switchMenu.getMatcher(command)).find()) {
             System.out.print(controller.switchMenu(matcher.group(1)));
             printMenuInfo = true;
-        } else if (MainMenuCommands.craftingMenu.getMatcher(command).find()) {
+        } else if (MainMenuCommands.craftingMenu.getMatcher(command).find())
             App.setCurrentMenu(Menu.crafting);
-        } else if (MainMenuCommands.foragingMenu.getMatcher(command).find()) {
+        else if (MainMenuCommands.foragingMenu.getMatcher(command).find())
             App.setCurrentMenu(Menu.foraging);
-        } else if (MainMenuCommands.toolsMenu.getMatcher(command).find()) {
-            App.setCurrentMenu(Menu.tool );
-        } else
+        else if (MainMenuCommands.toolsMenu.getMatcher(command).find())
+            App.setCurrentMenu(Menu.tool);
+        else if (MainMenuCommands.cookingMenu.getMatcher(command).find())
+            App.setCurrentMenu(Menu.cookingMenu);
+        else if (MainMenuCommands.cheatingMenu.getMatcher(command).find())
+            App.setCurrentMenu(Menu.cheating);
+        else
             System.out.println("Invalid command");
     }
 }

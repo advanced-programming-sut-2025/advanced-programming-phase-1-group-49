@@ -2,9 +2,7 @@ package com.project.Models.Enums;
 
 
 import com.project.view.*;
-import com.project.view.Usage.CraftingUsage;
-import com.project.view.Usage.ForagingUsage;
-import com.project.view.Usage.ToolUsage;
+import com.project.view.Usage.*;
 
 public enum Menu {
     MainMenu(new MainMenu()),
@@ -18,7 +16,8 @@ public enum Menu {
     crafting(new CraftingUsage()),
     foraging(new ForagingUsage()),
     tool(new ToolUsage()),
-    ;
+    cheating(new Cheating()),
+    cookingMenu(new CookingUsage());
 
     private final AppMenu menu;
 
