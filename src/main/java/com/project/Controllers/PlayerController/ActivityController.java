@@ -91,6 +91,7 @@ public class ActivityController {
     }
 
     public void GhashKardan(int x, int y) {
+        player.switchGhash();
         nextTurn();
         player.walk(x, y);
         player.decreaseEnergy(player.getEnergy());
@@ -233,6 +234,10 @@ public class ActivityController {
         return new Result(true, result);
     }
 
+    public Result showEnergy() {
+        return new Result(true, "your energy : " + player.getEnergy());
+    }
+
     // cheat codes :
 
     public Result increaseTime(String amountString) {
@@ -273,11 +278,34 @@ public class ActivityController {
         return new Result(true, "current weather :" + game.getTime().getCurrentWeather());
     }
 
+    public Result setEnergy(String amountString) {
+        amountString = amountString.trim();
+        int amount;
+        try {
+            amount = Integer.parseInt(amountString);
+        } catch (NumberFormatException e) {
+            return new Result(false, "Invalid amount value");
+        }
+
+        player.setEnergy(amount);
+
+        return new Result(true, "your energy :" + player.getEnergy());
+    }
+
+    public Result setUnlimitedEnergy() {
+        player.switchUnlimitedEnergy();
+        return new Result(true, "");
+    }
+
     //
 
     public void initialize() {
         game = App.getGame();
         player = game.getPlayer();
+        if (player.getGhash()) {
+            System.out.println("Your are ghash");
+            nextTurn();
+        }
     }
 
     // debugging
