@@ -212,7 +212,7 @@ public class ActivityController {
         AppController.savePlayer(player);
         game.nextTurn();
         initialize();
-        return new Result(true, game.getPlayer() + ", its your turn.");
+        return new Result(true, game.getPlayer().getNickname() + ", its your turn.");
     }
 
     public Result greenHouse() {

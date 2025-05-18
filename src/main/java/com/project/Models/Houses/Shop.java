@@ -42,6 +42,14 @@ public class Shop implements Building {
         return endTime;
     }
 
+    public int getLength() {
+        return length;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
     // Override
 
     @Override
@@ -52,13 +60,5 @@ public class Shop implements Building {
     @Override
     public String tooString() {
         return YELLOW_BG + "S" + RESET;
-    }
-
-    public int getLength() {
-        return length;
-    }
-
-    public int getWidth() {
-        return width;
     }
 }

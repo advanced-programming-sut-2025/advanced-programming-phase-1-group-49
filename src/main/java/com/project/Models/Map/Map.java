@@ -25,7 +25,8 @@ public class Map {
 
     private final ArrayList<GameObject>[][] blocks = new ArrayList[mapLength][mapWidth];
     private final int[][] positions = new int[][]{{3, 5}, {49, 5}, {3, 155}, {49, 155}};
-    private static final ArrayList<Class<?>> forbiddenClasses = new ArrayList<>(List.of(Home.class));
+    private static final ArrayList<Class<?>> forbiddenClasses = new ArrayList<>(List.of(Home.class, Foraging.class,
+            Shop.class, Player.class));
 
     transient private ArrayList<GameObject> objects = new ArrayList<>();
 
@@ -139,7 +140,6 @@ public class Map {
             while (true) {
                 int x = rand.nextInt(20) + position[0];
                 int y = rand.nextInt(100) + position[1];
-                System.out.println(x + " " + y);
                 if (blocks[x][y].get(blocks[x][y].size() - 1).getClass().equals(BlockWrapper.class)
                         && ((BlockWrapper) blocks[x][y].get(blocks[x][y].size() - 1)).getBlock() == Block.soil) {
                     blocks[x][y].add(foraging);
