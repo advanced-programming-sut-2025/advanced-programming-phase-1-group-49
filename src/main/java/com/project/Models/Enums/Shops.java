@@ -11,7 +11,7 @@ public enum Shops {
     Pierre(new Shop(30, 87, 6, 13, 9, 17)),
     StarDrop(new Shop(36, 170, 4, 15, 12, 22));
 
-    private final Shop shop;
+    public final Shop shop;
 
     Shops(Shop shop) {
         this.shop = shop;

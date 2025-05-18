@@ -1,16 +1,12 @@
 package com.project.Controllers;
 
 import com.project.Builders.BuilderEnums.FishBuilder;
-import com.project.Builders.BuilderEnums.ForagingCropBuilder;
 import com.project.Builders.BuilderEnums.MineralBuilder;
 import com.project.Decorators.ToolDecorator;
-import com.project.Directors.ForagingDirector;
 import com.project.Models.App;
-import com.project.Models.Enums.Block;
-import com.project.Models.Enums.Directions;
-import com.project.Models.Enums.Season;
-import com.project.Models.Enums.Skills;
+import com.project.Models.Enums.*;
 import com.project.Models.Item.Foraging;
+import com.project.Models.Item.Item;
 import com.project.Models.LivingBeings.Fish;
 import com.project.Models.LivingBeings.Player;
 import com.project.Models.Map.BlockWrapper;
@@ -18,7 +14,6 @@ import com.project.Models.Map.GameObject;
 import com.project.Models.Map.Map;
 import com.project.Models.Tools.Tool;
 
-import java.util.ArrayList;
 import java.util.regex.Matcher;
 
 public class ToolController {
@@ -87,6 +82,12 @@ public class ToolController {
             System.out.println("⚠ No tool is currently equipped.");
             return;
         }
+        if (current.isFishing() &&
+            !playerIsIn(Shops.FishShop.shop.getX() , Shops.FishShop.shop.getY(), Shops.FishShop.shop.getWidth(), Shops.FishShop.shop.getLength())
+        ) {
+            System.out.println("You are not in Willy's shop!");
+            return;
+        }
         Tool upgraded = new ToolDecorator(current).upgrade();
         App.getGame().getMainPlayer().resetCurrentTool(upgraded);
         System.out.println("✅ Tool upgraded to: " + upgraded.getName());
@@ -139,9 +140,22 @@ public class ToolController {
             success = useAxe(x, y);
         }
         else if (current.isFishing()) {
-            success = usePF(x, y);
+            success = useFP(x, y);
         }
-//        else if ()
+        else if (current.isDigging()) {
+            success = useHoe(x, y);
+        }
+        else if (current.isWatering()) {
+            success = true;
+            useWateringCan(x, y);
+        }
+        else if (current.isUndig()) {
+            success = usePickAxe(x, y);
+        }
+        else {
+            System.out.println("Invalid tool or not undefined tool: " + matcher.group(1));
+        }
+
 
         usageStatus();
         if (success) {
@@ -184,7 +198,7 @@ public class ToolController {
         return success;
     }
 
-    private static boolean usePF(int x, int y) {
+    private static boolean useFP(int x, int y) {
         boolean success = false;
         boolean fishAvailable = false;
         GameObject fish = App.getGame().getMap().getBlocks()[x][y]
@@ -231,6 +245,57 @@ public class ToolController {
         return success;
     }
 
+    private static boolean useHoe(int x, int y) {
+        GameObject object = App.getGame().getMap()
+                .getBlocks()[x][y].get(App.getGame().getMap().getBlocks()[x][y].size() -1);
+
+        if (!object.equals(new BlockWrapper(Block.soil))) {
+            System.out.println("The block is not soil.");
+            return false;
+        }
+
+        App.getGame().getMap().getBlocks()[x][y].remove(object);
+        App.getGame().getMap().getBlocks()[x][y].add(new BlockWrapper(Block.diggedSoil));
+
+        System.out.println("The block is digged soil now!");
+        return true;
+    }
+
+    private static void useWateringCan(int x, int y) {
+        App.getGame().getMap().getBlocks()[x][y].add(new BlockWrapper(Block.water));
+        System.out.println("The block is covered with water.");
+    }
+
+    private static boolean usePickAxe(int x, int y) {
+        Object object = App.getGame().getMap().getBlocks()[x][y]
+                .get(App.getGame().getMap().getBlocks()[x][y].size() -1);
+        if (object.equals(new BlockWrapper(Block.diggedSoil))) {
+            App.getGame().getMap().getBlocks()[x][y].remove(object);
+            App.getGame().getMap().getBlocks()[x][y].add(new BlockWrapper(Block.soil));
+            return true;
+        }
+        if (object instanceof Foraging) {
+            for (MineralBuilder mineralBuilder : MineralBuilder.values()) {
+                Foraging mineral = mineralBuilder.foraging;
+                if (mineral.getName().equals(((Foraging) object).getName())) {
+                    App.getGame().getMap().getBlocks()[x][y].remove(object);
+                    App.getGame().getMainPlayer().getInventory().add(mineral, 1);
+                    System.out.println("Added mineral "
+                            + ((Foraging) object).getName() + " to the inventory.");
+                    return true;
+                }
+            }
+        }
+        if (object instanceof Item) {
+            App.getGame().getMap().getBlocks()[x][y].remove(object);
+            System.out.println("Removed one item on the map");
+            return true;
+        }
+
+        System.out.println("The block is not changed.");
+        return false;
+    }
+
     private static boolean usageStatus() {
         Tool current = App.getGame().getMainPlayer().getCurrentTool();
         int usage = current.getEnergy();
@@ -256,6 +321,17 @@ public class ToolController {
         }
         else if (tool.getSkill().equals(Skills.Fishing)) {
             return (App.getGame().getMainPlayer().getFishingXP() >= level*Player.levelConstant);
+        }
+        return false;
+    }
+
+    public static boolean playerIsIn(int x, int y, int length, int width) {
+        if (App.getGame().getMainPlayer().getX() < x + length
+            && App.getGame().getMainPlayer().getY() < y + width
+            && App.getGame().getMainPlayer().getX() >= x
+            && App.getGame().getMainPlayer().getY() >= y
+        ) {
+            return true;
         }
         return false;
     }
