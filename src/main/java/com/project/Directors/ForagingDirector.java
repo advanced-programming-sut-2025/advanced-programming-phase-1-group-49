@@ -147,7 +147,6 @@ public class ForagingDirector {
         if (season == Season.Spring) {
             for (MineralBuilder mineralBuilder : MineralBuilder.values()) {
                 if (mineralBuilder.foraging.isSpring()) {
-//                    System.Fuck(you);
                     foragings.add(mineralBuilder.foraging);
                     i++;
                 }
@@ -155,7 +154,6 @@ public class ForagingDirector {
         } else if (season == Season.Summer) {
             for (MineralBuilder mineralBuilder : MineralBuilder.values()) {
                 if (mineralBuilder.foraging.isSummer()) {
-//                    System.Fuck(you);
                     foragings.add(mineralBuilder.foraging);
                     i++;
                 }
@@ -163,7 +161,6 @@ public class ForagingDirector {
         } else if (season == Season.Fall) {
             for (MineralBuilder mineralBuilder : MineralBuilder.values()) {
                 if (mineralBuilder.foraging.isFall()) {
-//                    System.Fuck(you);
                     foragings.add(mineralBuilder.foraging);
                     i++;
                 }
@@ -171,7 +168,6 @@ public class ForagingDirector {
         } else if (season == Season.Winter) {
             for (MineralBuilder mineralBuilder : MineralBuilder.values()) {
                 if (mineralBuilder.foraging.isWinter()) {
-//                    System.Fuck(you);
                     foragings.add(mineralBuilder.foraging);
                     i++;
                 }

@@ -3,9 +3,11 @@ package com.project.Models.Map;
 import com.project.Directors.ForagingDirector;
 import com.project.Models.App;
 import com.project.Models.Enums.Block;
+import com.project.Models.Enums.Shops;
 import com.project.Models.Game;
 import com.project.Models.Houses.GreenHouse;
 import com.project.Models.Houses.Home;
+import com.project.Models.Houses.Shop;
 import com.project.Models.Item.Foraging;
 import com.project.Models.LivingBeings.Player;
 import com.project.Models.Time.Time;
@@ -41,6 +43,19 @@ public class Map {
 
         for (int i = 0; i < 4; i++) {
             initFarm(i, positions[i], players[i], time);
+        }
+
+        Shops[] shops = new Shops[]{Shops.FishShop, Shops.StarDrop, Shops.BlackSmith,
+                Shops.Carpenter, Shops.Pierre, Shops.Marnie, Shops.JojaMart};
+
+        for (Shops shop : shops) {
+            Shop s = shop.getShop();
+            for (int i = s.getX(); i < s.getX() + s.getLength(); i++) {
+                for (int j = s.getY(); j < s.getY() + s.getLength(); j++) {
+                    blocks[i][j].add(s);
+                }
+            }
+            objects.add(s);
         }
 
         objects.add(basic);
@@ -121,7 +136,6 @@ public class Map {
         int treeCount = rand.nextInt(5) + 15;
         for (int i = 0; i < treeCount; i++) {
             Foraging foraging = director.randomForagingTree(time.getCurrentSeason());
-            System.out.println(foraging.tooString());
             while (true) {
                 int x = rand.nextInt(20) + position[0];
                 int y = rand.nextInt(100) + position[1];
