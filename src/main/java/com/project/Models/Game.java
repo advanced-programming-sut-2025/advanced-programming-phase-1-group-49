@@ -41,7 +41,7 @@ public class Game {
         Player[] playerArray = new Player[players.size()];
         for (int i = 0; i < playerArray.length; i++)
             playerArray[i] = players.get(farmsOwner.get(i));
-        this.map = new Map(playerArray);
+        this.map = new Map(playerArray, time);
     }
 
     // getter

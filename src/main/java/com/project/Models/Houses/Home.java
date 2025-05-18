@@ -30,7 +30,7 @@ public class Home implements Building {
     }
 
     public int getHomeY() {
-        return 80;
+        return 90;
     }
 
     public int getHomeLength() {

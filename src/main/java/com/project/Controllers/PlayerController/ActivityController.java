@@ -29,7 +29,7 @@ public class ActivityController {
     private int[] bfsSearch(int playerX, int playerY, int x, int y) {
         Queue<int[]> queue = new LinkedList<>();
         Set<String> visited = new HashSet<>();
-        queue.add(new int[]{playerX, playerY, 0, 0});
+        queue.add(new int[]{playerX, playerY, 0, 0, 0, 0});
         visited.add(playerX + "-" + playerY);
 
         while (!queue.isEmpty()) {
@@ -40,9 +40,10 @@ public class ActivityController {
             int[][] neighbors = new int[][]{{1, 0}, {-1, 0}, {0, 1}, {0, -1}, {1, 1}, {-1, -1}, {-1, 1}, {1, -1}};
             for (int[] neighbor : neighbors) {
                 int add = current[3];
-                if (neighbor[0] != 0 && neighbor[1] != 0)
+                if (neighbor[0] != current[4] || neighbor[1] != current[5])
                     add += 1;
-                int[] target = new int[]{current[0] + neighbor[0], current[1] + neighbor[1], current[2] + 1, add};
+                int[] target = new int[]{current[0] + neighbor[0], current[1] + neighbor[1], current[2] + 1, add, neighbor[0], neighbor[1]};
+
                 if (target[0] >= 0 && target[1] >= 0
                         && target[0] < Map.getMapLength() && target[1] < Map.getMapWidth()
                         && forbiddenBlock(target[0], target[1]) && !visited.contains(target[0] + "-" + target[1])) {
