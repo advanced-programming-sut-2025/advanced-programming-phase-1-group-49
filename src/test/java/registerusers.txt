@@ -6,4 +6,12 @@ register -u test3 -p Test!234 Test!234 -n test3 -e test3@gmail.com -g male
 pick question -q 1 -a answer -c answer
 register -u test4 -p Test!234 Test!234 -n test4 -e test4@gmail.com -g male
 pick question -q 1 -a answer -c answer
+menu login
+login -u test1 -p Test!234 -stay logged in
+menu game
+new game -u test2 test3 test4
+4
+3
+2
+1
 

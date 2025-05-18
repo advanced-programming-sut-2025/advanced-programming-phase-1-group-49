@@ -19,6 +19,9 @@ public enum GameCommands implements Commands {
     greenHouse("^\\s*greenhouse\\s+build\\s*$"),
     printMap("^\\s*print\\s+map\\s+(?<x>\\d+)\\s+(?<y>\\d+)\\s+-s\\s+(?<size>\\d+)\\s*$"),
     helpMap("^\\s*help\\s+reading\\s+map\\s*$"),
+    showEnergy("^\\s*energy\\s+show\\s*$"),
+    setEnergy("^\\s*energy\\s+set\\s+-v\\s+(?<value>\\d+)\\s*$"),
+    setUnlimitedEnergy("^\\s*energy\\s+unlimited\\s*$"),
     // cheat codes :
     increaseTime("^\\s*cheat\\s+time\\s+(?<time>\\d+)\\s*$"),
     increaseDate("^\\s*cheat\\s+date\\s+(?<date>\\d+)\\s*$"),

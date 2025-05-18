@@ -8,11 +8,6 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Time {
-
-    /*
-     * ehtemalat Weathers ro bayad benevisam
-     * */
-
     private final ArrayList<ObserveTime> observes = new ArrayList<>();
     private Season currentSeason = Season.Spring;
     private int spentMonth = 0;

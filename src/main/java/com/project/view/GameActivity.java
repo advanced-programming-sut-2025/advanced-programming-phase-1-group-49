@@ -62,6 +62,12 @@ public class GameActivity implements AppMenu {
             controller.gameInfo();
         else if (GameCommands.exitGame.getMatcher(command).find())
             System.out.println(controller.exit());
+        else if (GameCommands.showEnergy.getMatcher(command).find())
+            System.out.println(controller.showEnergy());
+        else if ((matcher = GameCommands.setEnergy.getMatcher(command)).find())
+            System.out.println(controller.setEnergy(matcher.group(1)));
+        else if (GameCommands.setUnlimitedEnergy.getMatcher(command).find())
+            System.out.println(controller.setUnlimitedEnergy());
         else
             System.out.println("Invalid command");
     }

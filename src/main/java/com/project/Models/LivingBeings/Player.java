@@ -37,6 +37,9 @@ public class Player extends Person {
     private int x = 5;
     private int y = 84;
 
+    private boolean unlimitedEnergy = false;
+    private boolean ghash = false;
+
     public static final int levelConstant = 32;
     public static final int levelMax = 4;
 
@@ -50,6 +53,10 @@ public class Player extends Person {
     }
 
     // getter
+
+    public boolean getGhash() {
+        return ghash;
+    }
 
     public String getUsername() {
         return this.username;
@@ -127,6 +134,10 @@ public class Player extends Person {
     }
 
     // setter
+
+    public void setEnergy(int energy) {
+        this.Energy = energy;
+    }
 
     public void setUsername(String username) {
         this.username = username;
@@ -238,7 +249,8 @@ public class Player extends Person {
     // decrease
 
     public void decreaseEnergy(Integer energy) {
-        Energy -= energy;
+        if (!unlimitedEnergy)
+            Energy -= energy;
     }
 
     public void decreaseCoin(Integer coin) {
@@ -254,7 +266,7 @@ public class Player extends Person {
 
     @Override
     public void passByDay() {
-
+        ghash = false;
     }
 
     @Override
@@ -268,6 +280,14 @@ public class Player extends Person {
     }
 
     //
+
+    public void switchUnlimitedEnergy() {
+        unlimitedEnergy = !unlimitedEnergy;
+    }
+
+    public void switchGhash() {
+        ghash = !ghash;
+    }
 
     public int updateLevel(int XP) {
         int result = 0;
