@@ -10,6 +10,7 @@ import com.project.Models.Item.Item;
 import com.project.Models.Map.BlockWrapper;
 import com.project.Models.Map.GameObject;
 import com.project.Models.Map.Map;
+import com.project.Models.Tools.Tool;
 
 import java.util.regex.Matcher;
 
@@ -75,8 +76,6 @@ public class ForagingController {
             );
         }
     }
-
-
 
     public static void craftInfo(Matcher matcher) {
         Foraging crop = null;
@@ -206,6 +205,7 @@ public class ForagingController {
             }
         }
     }
+
     public static void craftInfo(String craftName) {
         Foraging crop = null;
         for (ForagingCropBuilder cropBuilder : ForagingCropBuilder.values()) {
@@ -335,8 +335,7 @@ public class ForagingController {
         }
     }
 
-
-    public static void plant(Matcher matcher) {
+    public static boolean plant(Matcher matcher) {
         int x = App.getGame().getMainPlayer().getX();
         int y = App.getGame().getMainPlayer().getY();
         boolean valid = false;
@@ -357,7 +356,7 @@ public class ForagingController {
             for (Directions direction : Directions.values()) {
                 System.out.println("Valid directions: " + direction.direction);
             }
-            return;
+            return false;
         }
         valid = false;
 
@@ -367,7 +366,7 @@ public class ForagingController {
                 .equals(new BlockWrapper(Block.diggedSoil))
                 ) {
             System.out.println("Incompatible blocks!");
-            return;
+            return false;
         }
 
         int i = -1;
@@ -381,12 +380,11 @@ public class ForagingController {
                 valid = true;
                 App.getGame().getMap().getBlocks()[x][y].add(item);
                 System.out.println("Added item: " + item.getName() + " on x: " + x + " y: " + y);
-                return;
+                return true;
             }
         }
-        if (!valid) {
-            System.out.println("You don't have enough materials!");
-        }
+        System.out.println("You don't have enough materials!");
+        return false;
     }
 
     public static void ShowPlant(Matcher matcher) {
@@ -401,5 +399,25 @@ public class ForagingController {
             return;
         }
         craftInfo(((Foraging) obj).getName());
+    }
+
+    public static void Fertilize(Matcher matcher) {
+        if (!plant(matcher)) {
+            return;
+        }
+
+    }
+
+    public static void HowMuchWater(Matcher matcher) {
+        for (Tool tool : App.getGame().getMainPlayer().getInventory().getTools()) {
+            if (tool.isWatering()) {
+                System.out.println(
+                        "Water supply: " + tool.getAnotherComplement()
+                        + " out of " + tool.getComplement()
+                );
+                break;
+            }
+        }
+        System.out.println("Somehow you don't have a watering can!");
     }
 }

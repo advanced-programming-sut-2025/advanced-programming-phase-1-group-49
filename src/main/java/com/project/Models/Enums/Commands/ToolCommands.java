@@ -11,7 +11,7 @@ public enum ToolCommands implements Commands {
     ToolsUse("^tools\\s+direction\\s+([a-zA-Z0-9_-]+)$"),
 
         ;
-    private final String pattern;
+    public final String pattern;
 
     ToolCommands(String pattern) {
         this.pattern = pattern;

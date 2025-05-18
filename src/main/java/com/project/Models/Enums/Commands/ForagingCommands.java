@@ -8,8 +8,10 @@ public enum ForagingCommands implements Commands {
     CraftInfo("^craftinfo\\s+-n\\s+([a-zA-Z0-9_-]+)$"),
     Plant("^plant\\s+-s\\s+([a-zA-Z0-9_-]+)\\s+-d\\s+([a-zA-Z0-9_-]+)$"),
     ShowPlant("^showplant\\s+-l\\s+(-?\\d+)\\s*,\\s*(-?\\d+)$"),
+    Fertilize("^fertilize\\s+-f\\s+([a-zA-Z0-9_-]+)\\s+-d\\s+([a-zA-Z0-9_-]+)$"),
+    HowMuchWater("^howmuch\\s+water$")
     ;
-    private final String pattern;
+    public final String pattern;
 
     ForagingCommands(String pattern) {
         this.pattern = pattern;

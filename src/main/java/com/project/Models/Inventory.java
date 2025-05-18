@@ -5,7 +5,7 @@ import com.project.Models.Tools.Tool;
 
 import java.util.ArrayList;
 
-public class inventory {
+public class Inventory {
     private final ArrayList<Item> items = new ArrayList<>();
     private final ArrayList<Integer> itemQuantity = new ArrayList<>();
     private final ArrayList<Tool> tools = new ArrayList<>();
@@ -40,7 +40,7 @@ public class inventory {
             tools.add(tool);
             toolQuantity.add(quantity);
         } else
-            toolQuantity.set(tools.indexOf(tool), quantity);
+            toolQuantity.set(tools.indexOf(tool), getQuantity(tool) + quantity);
     }
 
     public void add(Item item, int quantity) {
@@ -48,7 +48,7 @@ public class inventory {
             items.add(item);
             itemQuantity.add(quantity);
         } else
-            itemQuantity.set(items.indexOf(item), quantity);
+            itemQuantity.set(items.indexOf(item), getQuantity(item) + quantity);
     }
 
     //remove

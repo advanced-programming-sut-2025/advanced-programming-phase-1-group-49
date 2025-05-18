@@ -16,7 +16,7 @@ public class Game {
     private final Time time = new Time();
     private static int GameCounter = 0;
     private final int id;
-    private final inventory inventory = new inventory();
+    private final Inventory inventory = new Inventory();
     private int mainPlayer = -1; // game creator
     transient private ArrayList<Player> players = new ArrayList<>();
     private final ArrayList<String> playerUserNames = new ArrayList<>();
@@ -66,7 +66,7 @@ public class Game {
         return map;
     }
 
-    public inventory getInventory() {
+    public Inventory getInventory() {
         return inventory;
     }
 

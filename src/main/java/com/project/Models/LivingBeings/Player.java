@@ -1,11 +1,14 @@
 package com.project.Models.LivingBeings;
 
 import com.project.Builders.AccountBuilder;
+import com.project.Compositors.Ingredients;
 import com.project.Models.App;
 import com.project.Models.Enums.Gender;
 import com.project.Models.Game;
 import com.project.Models.Tools.Tool;
-import com.project.Models.inventory;
+import com.project.Models.Inventory;
+
+import java.util.ArrayList;
 
 public class Player extends Person {
     private int energyLimit = 200;
@@ -27,8 +30,9 @@ public class Player extends Person {
     transient private Game currentGame = null;
     private int gameID = 0;
 
-    private final inventory inventory = new inventory();
+    private final Inventory inventory = new Inventory();
     private int currentToolIndex = -1;
+    private final ArrayList<Ingredients> recipes = new ArrayList<Ingredients>();
 
     private int x = 5;
     private int y = 84;
@@ -83,7 +87,7 @@ public class Player extends Person {
         return currentGame;
     }
 
-    public inventory getInventory() {
+    public Inventory getInventory() {
         return inventory;
     }
 
@@ -116,6 +120,10 @@ public class Player extends Person {
 
     public Integer getCoin() {
         return Coin;
+    }
+
+    public ArrayList<Ingredients> getRecipes() {
+        return recipes;
     }
 
     // setter
@@ -186,6 +194,10 @@ public class Player extends Person {
 
     public void resetCurrentTool(Tool tool) {
         this.inventory.change(tool, currentToolIndex);
+    }
+
+    public void addRecipe(Ingredients recipe) {
+        this.recipes.add(recipe);
     }
 
     // increase
